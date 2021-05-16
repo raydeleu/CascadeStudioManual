@@ -1,0 +1,97 @@
+let clearance = 1;
+let partClearance = 5;
+let baseLen = 25;
+let units = 8;
+let dWid = baseLen / 2.414;
+let bezelInset = 3;
+let boardWidth = units * baseLen + 2 * bezelInset;
+
+let bezelWidth = 14;
+let bezelHeight = 12;
+let bezelLength = boardWidth + 2 * bezelWidth - 2 * bezelInset;
+let bezelInsetOffset = 2;
+
+let boardHeight = 3;
+let pegHeight = 6;
+let pegOffset = pegHeight / 2 + boardHeight;
+let pawnHeight = pegHeight + 4;
+
+let pawnsPerSide = 14;
+
+let assembled = Checkbox("Assembled", false);
+let darkPieces = Checkbox("Dark pieces", false);
+
+function pawn() {
+    let pawnLeg = baseLen - clearance;
+    let basePawn = Box(pawnLeg, pawnLeg, pawnHeight, true);
+    return Intersection([
+        basePawn,
+        Rotate([0, 0, 1], 45, basePawn)
+    ]);
+}
+
+function peg() {
+    let pegLeg = dWid - clearance;
+    return Rotate([0, 0, 1], 45, Box(pegLeg, pegLeg, pegHeight+0.2, true));
+}
+
+function baseBoard() {
+    let board = [Translate([0, 0, boardHeight / 2], Box(boardWidth, boardWidth, boardHeight, true))];
+    for (let x = 1; x < units; x++) {
+        let xOffset = (x - units / 2) * baseLen;
+        for (let y = 1; y < units; y++) {
+            let yOffset = (y - units / 2) * baseLen;
+            board.push(Translate([xOffset, yOffset, pegOffset-0.1],  peg()));
+        }
+    }
+    return Union(board);
+}
+
+function bezel() {
+    return Translate([0, 0, bezelWidth / 2],
+        FilletEdges(
+            Difference(
+                ChamferEdges(Box(bezelLength, bezelHeight, bezelWidth, true), bezelWidth - 0.01, [1, 5]),
+                [Translate([0, boardHeight-bezelHeight/2, bezelWidth / 2 - bezelInset / 2], Box(bezelLength, boardHeight, bezelInset, true))]
+            ),
+            1.5, [15, 19]
+        )
+    );
+}
+
+function bezelSet() {
+    return Rotate([0, 0, 1], 90, Union([
+        Translate([0, -(bezelHeight / 2 + partClearance/2), 0], bezel()),
+        Translate([0, bezelHeight / 2 + partClearance/2, 0], bezel())
+    ]));
+}
+
+function pawnSet() {
+    let pawns = [];
+    for (let y = 0; y < pawnsPerSide/2; y++) {
+        pawns.push(Translate([0, boardWidth/2 - baseLen/2 - y * (baseLen + partClearance), 0], pawn()));
+        pawns.push(Translate([baseLen + partClearance, boardWidth/2 - baseLen/2 -y * (baseLen + partClearance), 0], pawn()));
+    }
+    return Union(pawns);
+}
+
+if (assembled) {
+    Translate([0, 0, bezelInsetOffset], baseBoard());
+    let b = Translate([0, boardWidth/2 + bezelWidth - bezelInset, bezelHeight/2], Rotate([1, 0, 0], 90, bezel()));
+    for (let n=0; n < 4; n++) {
+        b = Rotate([0, 0, 1], 90, b, true);
+    }
+    for (let x=0; x < units; x++) {
+        for (let y=0; y < units; y++) {
+            // show that every position could be filled with one of the 28 actual pawns
+            Translate([-baseLen*units/2 + baseLen/2 + baseLen*x, -baseLen*units/2 + baseLen/2 + baseLen*y, bezelInsetOffset+boardHeight], pawn());
+        }
+    }
+} else if (darkPieces) {
+    Translate([baseLen/2 + partClearance, 0, 0], pawnSet());
+    Translate([-(bezelWidth + partClearance), 0, 0], bezelSet());
+} else {
+    baseBoard();
+    Translate([boardWidth/2 + baseLen/2 + partClearance, 0, 0], pawnSet());
+    Translate([-(boardWidth/2 + bezelWidth + partClearance), 0, 0], bezelSet());
+}

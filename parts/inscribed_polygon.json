@@ -1,0 +1,17 @@
+// A small function to return an array of points that lie on a circle
+
+function InscribedPolygonPoints(radius, numPoints) {
+    const points = []
+    for (let theta = 0; theta < 2*Math.PI; theta += 2*Math.PI / numPoints) {
+        points.push([Math.cos(theta) * radius, Math.sin(theta) * radius, 0])
+    }
+    return points
+}
+
+function InscribedPolygon(radius, numPoints) {
+    return Polygon(InscribedPolygonPoints(radius, numPoints))
+}
+
+InscribedPolygon(10, 6)
+Translate([25, 0, 10], Rotate([0, 1, 0], -45, Extrude(InscribedPolygon(10, 9), [0, 0, 5])))
+Translate([-20, 0, 0], InscribedPolygon(5, 5))

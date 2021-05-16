@@ -1,0 +1,281 @@
+// Variables
+
+const standLength = 70;
+const standHeight = 70;
+
+const taperDepth = 20;
+const leadInDepth = 10;
+
+const cableWidth = 2.7;
+const cableThickness = 1.4;
+const keyWidth = cableWidth;
+
+const standThickness = 3;
+const standRearThickness = 15;
+const laptopThickness = 15.75;
+const laptopLength = 350;
+const laptopWidth = 240;
+
+const harnessWidth = 14;
+const harnessDepth = 10;
+
+const distanceBetweenPort = 14.9
+const portToRearDistance = 33.4
+const portToTopDistance = 7.55;
+
+const a = taperDepth + leadInDepth;
+
+const tolerance = 0.15;
+
+const baseWidth = 70;
+const cableBuffer = 32;
+
+const officialPlug = {
+    width: 10.25,
+    height: 6.1,
+    length: 16.86,
+    radius: 3.05,
+    tailRadius: 2.4
+}
+const fasGearPlug = {
+    width: 11.63,
+    height: 6.95,
+    length: 25, //19.5
+    radius: 0.5,
+    tailRadius: 7.5/2
+}
+const bonelkPlug = {
+    width: 10.38,
+    height: 5.81,
+    length: 19.5,
+    radius: 0.3,
+    tailRadius: 5.78/2
+}
+
+// Call part functions
+
+Translate([0,-10,5], makeHarness(officialPlug));
+Translate([0,-25,5], makeHarness(fasGearPlug));
+Translate([0,-50,5], makeHarness(bonelkPlug));
+
+mainPart()
+
+// Implentation
+
+function makeSmallHarness({width, height, radius, length, tailRadius}) {
+    let cableTunnel = Difference(
+        Cylinder(tailRadius+1+cableThickness, cableWidth),
+        [Cylinder(tailRadius+1, cableWidth)]
+    )
+    cableTunnel = Rotate([0,1,0], 90, cableTunnel)
+    cableTunnel = Translate([-1- cableWidth,0,0], cableTunnel)
+
+    let shape = new Sketch([-harnessWidth/2+cableThickness, -harnessDepth/2+tolerance])
+        .LineTo([-harnessWidth/2+cableThickness, 0])
+        .LineTo([-width/2,0])
+        .LineTo([-width/2,-height/2])
+            .Fillet(radius)
+        .LineTo([width/2,-height/2])
+            .Fillet(radius)
+        .LineTo([width/2,0])
+        .LineTo([harnessWidth/2-cableThickness, -harnessDepth/2+tolerance])
+        .End(true).Face()
+    let shape2 = new Sketch([-harnessWidth/2+cableThickness, -harnessDepth/2+tolerance])
+            .Fillet(2)
+        .LineTo([-harnessWidth/2+cableThickness,tailRadius+0.4])
+            .Fillet(2)
+        .LineTo([0,tailRadius])
+        .LineTo([-tailRadius,tailRadius]).Fillet(tailRadius)
+        .LineTo([-tailRadius,-tailRadius]).Fillet(tailRadius)
+        .LineTo([0,-tailRadius])
+        .LineTo([0,-harnessDepth/2+tolerance+0.02])
+        .End(true).Face()
+    shape2 = Rotate([1,0,0], 90, shape2)
+    shape2 = Rotate([0,0,1], 90, shape2)
+    shape2 = Extrude(shape2, [5,0,0])
+    shape2 = Translate([-5,0,0], shape2)
+    shape2 = Difference(shape2, [cableTunnel])
+
+    let key = Box(keyWidth-tolerance,harnessWidth-cableThickness*2,1)
+    key = Translate([length - standRearThickness/2,-harnessWidth/2+cableThickness,-harnessDepth/2+tolerance-1], key)
+
+    shape = Rotate([1,0,0], 90, shape)
+    shape = Rotate([0,0,1], 90, shape)
+    shape = Extrude(shape, [length,0,0])
+    shape = Union([shape, shape2, key])
+    shape = Translate([-length+standRearThickness,0,0], shape)
+    return shape
+}
+function makeLargeHarness({height, length, tailRadius}) {
+    let cableTunnel = Difference(
+        Cylinder(tailRadius+1+cableThickness, cableWidth),
+        [Cylinder(tailRadius+1, cableWidth)]
+    )
+    cableTunnel = Rotate([0,1,0], 90, cableTunnel)
+    cableTunnel = Translate([-1- cableWidth,0,0], cableTunnel)
+
+    let shape = new Sketch([-harnessWidth/2+cableThickness, -harnessDepth/2+tolerance])
+        .LineTo([-harnessWidth/2+cableThickness,-height/2])
+        .LineTo([harnessWidth/2-cableThickness,-height/2])
+        .LineTo([harnessWidth/2-cableThickness, -harnessDepth/2+tolerance])
+        .End(true).Face()
+    let shape2 = new Sketch([-harnessWidth/2+cableThickness, -harnessDepth/2+tolerance])
+        .LineTo([-harnessWidth/2+cableThickness,tailRadius+0.3])
+            .Fillet(2)
+        .LineTo([0,tailRadius])
+        .LineTo([-tailRadius,tailRadius]).Fillet(tailRadius)
+        .LineTo([-tailRadius,-tailRadius]).Fillet(tailRadius)
+        .LineTo([0,-tailRadius])
+        .LineTo([0,-harnessDepth/2+tolerance+0.02])
+        .End(true).Face()
+    shape2 = Rotate([1,0,0], 90, shape2)
+    shape2 = Rotate([0,0,1], 90, shape2)
+    shape2 = Extrude(shape2, [5,0,0])
+    shape2 = Translate([-5,0,0], shape2)
+    shape2 = Difference(shape2, [cableTunnel])
+
+    let key = Box(keyWidth-tolerance,harnessWidth-cableThickness*2,1)
+    key = Translate([length - standRearThickness/2,-harnessWidth/2+cableThickness,-harnessDepth/2+tolerance-1], key)
+
+    shape = Rotate([1,0,0], 90, shape)
+    shape = Rotate([0,0,1], 90, shape)
+    shape = Extrude(shape, [length,0,0])
+    shape = Union([shape, shape2, key])
+    shape = Translate([-length+standRearThickness,0,0], shape)
+    return shape
+}
+
+function makeHarness({width, height, radius, length, tailRadius}) {
+    if( (width + cableThickness*2) > harnessWidth) {
+        return makeLargeHarness({height, length, tailRadius})
+    }
+    return makeSmallHarness({width, height, radius, length, tailRadius})
+}
+
+function harnessNegative() {
+    const cableTrough = Translate([standRearThickness/2,0,harnessDepth], Box(cableWidth,cableThickness,30))
+    const cableTrough2 = Translate([standRearThickness/2,harnessWidth-cableThickness,harnessDepth], Box(cableWidth,cableThickness,40))
+    const cableHeadSpace =  Translate([standRearThickness/2-cableWidth/2,-cableWidth+cableThickness/2,harnessDepth+4], Box(cableWidth*2,cableWidth*2,30))
+    const cableTopTrough =  Translate([standRearThickness/2,0,harnessDepth+4], Box(cableWidth,harnessWidth,30))
+    const cableUTurnBay = FilletEdges(Translate([standRearThickness/2,0,-4], Box(cableWidth,harnessWidth,6)),4,[8,10])
+    const harnessKey = Translate([standRearThickness/2,0,harnessDepth], Box(keyWidth,harnessWidth,1.2))
+    return Union([
+        cableTrough,
+        cableTrough2,
+        cableTopTrough,
+        cableUTurnBay,
+        cableHeadSpace,
+        harnessKey,
+        Translate([-2,0,0],Box(50,harnessWidth, harnessDepth)),
+    ]);
+};
+// harnessNegative()
+
+
+function makeHarnessNegatives() {
+    let harnessNegatives = Union([
+        harnessNegative(),
+        Translate([0,distanceBetweenPort,0],harnessNegative()),
+    ])
+    let harnessNegativesWithCenterAtMiddleOfBottomPort = Translate(
+        [0,-harnessWidth/2,-harnessDepth/2],
+        harnessNegatives
+    )
+    harnessNegatives = Translate([0,portToRearDistance+standThickness,standThickness+portToTopDistance], harnessNegativesWithCenterAtMiddleOfBottomPort)
+    return harnessNegatives
+}
+
+
+function laptopNegative() {
+    const beveledEdge = (shouldRotate = false) => {
+        let shape = new Sketch([250, 0])
+        .LineTo([17, 0]).Fillet(40)
+        .LineTo([0, 5.5])
+        .LineTo([0, 13.5])
+        .LineTo([9, laptopThickness]).Fillet(40)
+        .LineTo([250,laptopThickness])
+        .End(true).Face()
+        let extrudeDirection = [0,0,250]
+        if (shouldRotate) {
+            shape = Rotate([0,1,0], -90, shape)
+            extrudeDirection = [250,0,0]
+        }
+        shape = Extrude(shape,extrudeDirection)
+        return shape;
+    }
+
+
+
+    let shape = Intersection([
+        beveledEdge(),
+        beveledEdge(true),
+    ], false, Math.random()/10)
+    shape = FilletEdges(shape, 8, [24]) // 4 20
+    shape = FilletEdges(shape, 20, [0]) // 4 20
+    shape = Rotate([1,0,0], -90, shape)
+    shape = Translate([0,0,laptopThickness], shape)
+    shape = Translate([standRearThickness,standThickness,standThickness], shape)
+    return shape
+}
+// laptopNegative()
+
+function mainPart() {
+    let basePlateSketch = () => new Sketch([baseWidth/2, -cableBuffer]).Fillet(5)
+        .LineTo([baseWidth/2, standLength+standRearThickness]).Fillet(5)
+        .LineTo([-baseWidth/2, standLength+standRearThickness]).Fillet(5)
+        .LineTo([-baseWidth/2, -cableBuffer]).Fillet(5)
+        .End(true)
+    let basePlate = basePlateSketch().Face()
+    basePlate = Extrude(basePlate, [0,0,-1])
+    let aThing = Loft([basePlateSketch().Wire(), Translate([0,0,-3], Offset(Offset(basePlateSketch().Wire(),-22),5))])
+    aThing = Translate([0,0,-1], aThing)
+    basePlate = Union([basePlate, aThing])
+    basePlate = Rotate([0,0,1],-90,basePlate)
+    basePlate = Rotate([1,0,0],90,basePlate)
+    basePlate = Translate([0,0,standThickness+laptopThickness/2], basePlate)
+    let boxCut = Box(laptopLength+standRearThickness, 10, standThickness*2+laptopThickness)
+    boxCut = Translate([0,1,0], boxCut)
+    basePlate = Difference(basePlate, [boxCut])
+
+    const mainBodyHalf = Extrude(
+    new Sketch([-cableBuffer,0])
+        .LineTo([-cableBuffer, standHeight]).Fillet(8)
+        .LineTo([standRearThickness + a, standHeight]).Fillet(10)
+        .LineTo([standRearThickness + standLength, a]).Fillet(10)
+        .LineTo([standRearThickness + standLength, 0])
+        .End(true).Face()
+    ,[0,0,standThickness+laptopThickness/2])
+    const mainBodyEnd = Extrude(Translate([0,0,standThickness+laptopThickness/2],
+    new Sketch([-cableBuffer,0])
+        .LineTo([-cableBuffer, standHeight]).Fillet(8)
+        .LineTo([standRearThickness + standLength, standHeight]).Fillet(5)
+        .LineTo([standRearThickness + standLength, 0])
+        .End(true).Face()
+    ),[0,0,standThickness+laptopThickness/2])
+
+    let cableTrough = Box(cableBuffer-2,standHeight-6,laptopThickness)
+    cableTrough = Translate([-cableBuffer+2,-4,standThickness], cableTrough)
+    cableTrough = FilletEdges(cableTrough, 2, [1,2,3,5,6,7,10,11])
+
+    let backPannelHole = Box(10,harnessWidth*2,laptopThickness)
+    backPannelHole = Translate([-cableBuffer,portToRearDistance-harnessDepth/2,standThickness], backPannelHole)
+    backPannelHole = FilletEdges(backPannelHole, 2, [8,9,10,11])
+
+    let backPannelHole2 = Box(10,harnessWidth*1.5,laptopThickness)
+    backPannelHole2 = Translate([-cableBuffer,harnessDepth/2,standThickness], backPannelHole2)
+    backPannelHole2 = FilletEdges(backPannelHole2, 2, [8,9,10,11])
+
+    const smallVal = 1.2
+    const theta = Math.asin((standThickness+smallVal)/350)*180/Math.PI
+    let mainShape = Union([mainBodyHalf, mainBodyEnd])
+    mainShape = Translate([0,smallVal,0], mainShape)
+
+    let laptopNegativeShape = laptopNegative()
+    mainShape = Difference(mainShape, [makeHarnessNegatives(), laptopNegativeShape, backPannelHole, backPannelHole2], false, 0.2)
+    mainShape = Rotate([0,0,1],-theta,mainShape)
+    mainShape = Union([mainShape, basePlate])
+    mainShape = Difference(mainShape, [cableTrough])
+    mainShape = Rotate([1,0,0], 90, mainShape)
+    mainShape = Translate([0,50,0], mainShape)
+    return mainShape
+}

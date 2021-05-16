@@ -1,0 +1,48 @@
+function Rectangle(l, h, center = false){
+  let S = new Sketch([0, 0]).
+    LineTo([l, 0]).
+    LineTo([l, h]).
+    LineTo([0, h]).
+    LineTo([0, 0]).
+    End().Face();
+
+    if(center)S = Translate([-l/2, -h/2,0], S);
+ return S;
+}
+function tr(l, h, x, y, z) {
+  return Translate([x, y, z], Rectangle(l, h, false));
+}
+
+let Base = Extrude(
+  Union([
+    tr( 8, 2,  0, -2, 0),
+    tr( 8,48,  0,  0, 0),
+    tr(32,24,  8,  0, 0 ),
+    tr( 8, 2,  40, -2, 0),
+    tr( 8,48,  40,  0, 0)
+  ]),
+  [0, 0, 36]
+);
+
+let Fond = Translate([8,24,0], Box(32,24,4));
+let M = Rotate([1,0,0], 90, Union([Base, Fond]));
+
+let th1 = []; // tranches H
+let thBase = Translate([-100,0,-100], Box(200,1,200));
+for(let i of [-36, -24,-16, -2]){ th1.push(Intersection([M, Translate([0,i,0], thBase)])); }
+
+let tv1 = []; // tranches V
+let tvBase = Translate([0,-100,-100], Box(1,200, 200));
+for(let i of [0,7,16,24,33,40,47]){ tv1.push(Intersection([M, Translate([i,0,0], tvBase)])); }
+
+let ihv = []; // Intersections H et V
+for(let i = 0; i < th1.length; i++){
+  for(j = 0; j < tv1.length; j++){
+    ihv.push(Intersection([th1[i], tv1[j]]));
+  }
+}
+
+for(let i = 0; i< tv1.length; i++){ Translate([-60, 0, 0], tv1[i]); }
+for(let i = 0; i< th1.length; i++){ Translate([0, 60, 0], th1[i]); }
+Translate([-60, 60, 0], M);
+
