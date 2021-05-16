@@ -13,7 +13,7 @@ The approach to model a 3D shape with code (or script) has become popular throug
 .Simple car model created in OpenSCAD
 [#img-car-opencad]
 [caption= Figure 1: ]
-image::../openscad-car.jpg[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/openscad-car.jpg[]
 
 This shape is created by entering the following script:
 
@@ -49,7 +49,7 @@ The advantage of a BRep kernel is that in addition to the simple boolean operati
 .Example of CascadeStudio shape with fillets
 [#img-ccs-fillets]
 [caption= Figure 2: ]
-image::../ccs-intro.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/ccs-intro.png[]
 
 === Where can you find CascadeStudio?
 
