@@ -23,6 +23,12 @@ let box1 = Extrude(filletsquare(10,20,5),[0,0,20]);
 let rounded_box = FilletEdges(box1, 2, [3,6,12,15,17]);
 let double_rounded_box = FilletEdges(rounded_box, 1, [11,12,10,13,6,2]);
 
+// NOTE:
+// In the example above there is a warning of encountering a NULL face, 
+// which may be caused by the fact that the two fillets in filletsquare
+// are in fact touching, completely removing the straight part between
+// the fillets. 
+
 // using offsets
 let box2 = Translate([20,0,0], box1)
 let shrunk_box= Offset(box2,-2)
