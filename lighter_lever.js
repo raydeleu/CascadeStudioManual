@@ -31,6 +31,7 @@ function lever(r1, r2, d, h, t)
     let c5 = [(r1-t) * Math.sin(a), - (r1-t) * Math.cos(a)];
     let c6 = [r1-t,0]; 
 
+    // sketch of the contour of the lever
     let sketchLever = new Sketch(p1).
                     LineTo(p2).
                     ArcTo(p3,p4).
@@ -45,6 +46,7 @@ function lever(r1, r2, d, h, t)
     let rough_lever = Difference(leverbody,[big_hole, small_hole]);
     // let rough_lever = Difference(leverbody,[big_hole, small_hole, cutoutsmaller]);
 
+    // sketch of the contour of the cut-out between the bearings
     let cutout  = new Sketch(p1).
                     LineTo(p2).
                     ArcTo(c3,p4).
