@@ -179,7 +179,7 @@ let face2 = new Sketch([0,0]).
 .Example of a sketch with ArcTo command
 [#img-ccs-arcto]
 [caption= Figure 3: ]
-image::../ccs-arcto.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/ccs-arcto.png[]
 
 Note that in the example above, only the fillets in the last two lines are visible, as the arc is already chosen tangent to the line.
 
