@@ -76,6 +76,21 @@ function lever(r1, r2, d, h, t)
     let rough_lever2 = Difference(rough_lever, [cutout_top, cutout_bot]);
 
     return rough_lever2
+    
+    // Another interesting approach with sketches that 
+    // contain closed contours within closed contours. 
+    let sketch_holes =  new Sketch(p1).
+                    LineTo(p2).
+                    ArcTo(p3,p4).
+                    LineTo(p5).
+                    ArcTo(p6,p1).
+                    End(true, false)
+                    .Circle([0,0],25, false)
+                    .Circle([d,0],5, false).Face();
+
+    let t_sketch_holes = Translate([0,100,0],sketch_holes);
+    Extrude(t_sketch_holes, [0,0,h]);
+    
 }
 
 lever(30,10,100,40,5)
