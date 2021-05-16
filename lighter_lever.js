@@ -1,26 +1,35 @@
 // CascadeStudio Code to create a lever, consisting of two cylinders joined by tangent walls
 // 
 
-function lever(radius1, radius2, delta_bearings, leverheight, wall_thickness)
+function lever(r1, r2, d, h, t)
 {
-    let sinus_angle = (radius1 - radius2) / delta_bearings
-    let angle = Math.asin(sinus_angle);
+//  This function creates a lever between two bearings, 
+//  the axles of the bearings are aligned
+
+//  r1 = radius larger bearing
+//  r2 = radois smaller bearing
+//  d  = distance between two bearings
+//  h  = height or width of the lever
+//  t  = wallthickness around bearing and cutout
+
+    let sinus_a = (r1 - r2) / d ;
+    let a = Math.asin(sinus_a);
 
     // points of outer contour of the lever
-    let p1 = [radius1 * Math.sin(angle), radius1 * Math.cos(angle)];
-    let p2 = [delta_bearings + radius2 * Math.sin(angle), radius2 * Math.cos(angle)];
-    let p3 = [delta_bearings + radius2, 0];
-    let p4 = [delta_bearings + radius2 * Math.sin(angle), - radius2 * Math.cos(angle)];
-    let p5 = [radius1 * Math.sin(angle), - radius1 * Math.cos(angle)];
-    let p6 = [- radius1, 0 ];
+    let p1 = [r1 * Math.sin(a), r1 * Math.cos(a)];
+    let p2 = [d + r2 * Math.sin(a), r2 * Math.cos(a)];
+    let p3 = [d + r2, 0];
+    let p4 = [d + r2 * Math.sin(a), - r2 * Math.cos(a)];
+    let p5 = [r1 * Math.sin(a), - r1 * Math.cos(a)];
+    let p6 = [- r1, 0 ];
     
     // points of cutout of the lever (not used as cutout became too small)
-    let c1 = [(radius1-wall_thickness) * Math.sin(angle), (radius1-wall_thickness) * Math.cos(angle)];
-    let c2 = [delta_bearings + (radius2-wall_thickness) * Math.sin(angle), (radius2-wall_thickness) * Math.cos(angle)]; ;
-    let c3 = [delta_bearings - radius2 + wall_thickness , 0];
-    let c4 = [delta_bearings + (radius2-wall_thickness) * Math.sin(angle), - (radius2-wall_thickness) * Math.cos(angle)]; 
-    let c5 = [(radius1-wall_thickness) * Math.sin(angle), - (radius1-wall_thickness) * Math.cos(angle)];
-    let c6 = [radius1-wall_thickness,0]; 
+    let c1 = [(r1-t) * Math.sin(a), (r1-t) * Math.cos(a)];
+    let c2 = [d + (r2-t) * Math.sin(a), (r2-t) * Math.cos(a)]; ;
+    let c3 = [d - r2 + t , 0];
+    let c4 = [d + (r2-t) * Math.sin(a), - (r2-t) * Math.cos(a)]; 
+    let c5 = [(r1-t) * Math.sin(a), - (r1-t) * Math.cos(a)];
+    let c6 = [r1-t,0]; 
 
     let sketchLever = new Sketch(p1).
                     LineTo(p2).
@@ -29,10 +38,10 @@ function lever(radius1, radius2, delta_bearings, leverheight, wall_thickness)
                     ArcTo(p6,p1).
                     End(false).Face(true);
     
-    let leverbody = Extrude(sketchLever,[0,0,leverheight]);
+    let leverbody = Extrude(sketchLever,[0,0,h]);
      
-    let big_hole = Cylinder((radius1-wall_thickness), 2* (leverheight + 10), true);
-    let small_hole =  Translate([delta_bearings, 0,0 ], Cylinder((radius2-wall_thickness), 2* (leverheight + 10), true));
+    let big_hole = Cylinder((r1-t), 2* (h + 10), true);
+    let small_hole =  Translate([d, 0,0 ], Cylinder((r2-t), 2* (h + 10), true));
     let rough_lever = Difference(leverbody,[big_hole, small_hole]);
     // let rough_lever = Difference(leverbody,[big_hole, small_hole, cutoutsmaller]);
 
@@ -43,24 +52,24 @@ function lever(radius1, radius2, delta_bearings, leverheight, wall_thickness)
                     ArcTo(c6,p1).
                     End(false).Face(true);
 
-    let cutoutbody = Extrude(cutout,[0,0,leverheight+10]);
-    let cutoutsmaller = Offset(cutoutbody, (-1.5 * wall_thickness));
+    let cutoutbody = Extrude(cutout,[0,0,h+10]);
+    let cutoutsmaller = Offset(cutoutbody, (-1.5 * t));
 
     // REMARK ON FILLETING
     // filleting the cutout proved to be not practical, as selection of all edges 
     // seemed nearly impossible
     // in the end I selected 50 edges and still one edge was not filleted. 
-    // let cutoutround = FilletEdges(cutoutsmaller, wall_thickness/2, 
+    // let cutoutround = FilletEdges(cutoutsmaller, t/2, 
     //  [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,
     //  25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]);
     
     // ALTERNATIVE APPROACH FOR FILLETING
     // make shrunk version of cutout a bit smaller and then offset it again with
     // the filletradius
-    let cutoutbigger = Offset(cutoutsmaller, (0.5 * wall_thickness));
+    let cutoutbigger = Offset(cutoutsmaller, (0.5 * t));
     let cutoutround = cutoutbigger;
-    let cutout_top = Translate([0,0,(leverheight + wall_thickness)/2],cutoutround);
-    let cutout_bot = Translate([0,0,(-leverheight - wall_thickness)/2 -10],cutoutround);
+    let cutout_top = Translate([0,0,(h + t)/2],cutoutround);
+    let cutout_bot = Translate([0,0,(-h - t)/2 -10],cutoutround);
 
     let rough_lever2 = Difference(rough_lever, [cutout_top, cutout_bot]);
 
