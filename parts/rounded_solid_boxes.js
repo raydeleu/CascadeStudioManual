@@ -15,29 +15,35 @@ function RoundAll(shape,fillet)
     return grown_version
 }
 
-let t = 0.5
+function ThinWall(shape,thickness)
+{
+    let shape_original = shape;
+    let shrunk = Offset(shape, -thickness);
+    let hollow = Difference(shape_original,[shrunk]);
+    return hollow;
+}   
+
+
+let t = 0.5;
 
 // only plan-view rounded through fillets in sketch
 let box0 = Translate([-20,0,0],Extrude(filletsquare(10,20,3),[0,0,20]));
-let boxi = Translate([0,0,0],Offset(box0,-2*t))
-let boxir = Offset(boxi,t)
-let boxh = Difference(box0,[boxir])
-let boxh2 = Difference(boxh,[Translate([-20,10,15],Box(50,50,50))]) 
 
+// experiment to make a thin-walled version, cutting it open by subtracting a box
+let box_hollow = ThinWall(box0,t)
+let boxh2 = Difference(box_hollow,[Translate([-20,10,15],Box(50,50,50))]) 
 
 // all edges rounded individually
+// note that only one of the edges in a loop needs to be listed
 let box1 = Extrude(filletsquare(10, 20, 5), [0,0,20]);
-let rounded_box = FilletEdges(box1, 2, [3,6,12,15,17]);
-let double_rounded_box = FilletEdges(rounded_box, 1, [11,12,10,13,6,2]);
-
-// using offsets
-let box2 = Translate([40,0,0], box0, true)
-let shrunk_box= Offset(box2,-2)
-let grown_box = Offset(shrunk_box,2)
+// let rounded_box = FilletEdges(box1, 2, [3,6,12,15,17]);
+let rounded_box = FilletEdges(box1, 2, [3]);
+// let double_rounded_box = FilletEdges(rounded_box, 1, [11,12,10,13,6,2]);
+let double_rounded_box = FilletEdges(rounded_box, 1, [11]);
 
 // using a function 
-let box3 = Translate([60,0,0], box0, true)
+let box3 = Translate([20,0,0],Extrude(filletsquare(10,20,3),[0,0,20]));
 let rounded_box3 = RoundAll(box3,2)
 
 // using a function on a rectangular, unfilleted box
-let box4 = Translate([60,0,0],RoundAll(Box(10,20,20),5))
+let box4 = Translate([40,0,0],RoundAll(Box(10,20,20),5))
