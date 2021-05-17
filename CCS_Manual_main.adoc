@@ -310,9 +310,12 @@ Dilates or contracts a shape by the specified distance. This is similar to the s
     
 
 === FilletEdges(shape, radius, edgeList, keepOriginal?)
-Round-off an array of edges on a shape (derived from mouse hovering)
+Round-off an array of edges on a shape (derived from mouse hovering). Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. The behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
 
     FilletEdges (Cylinder(10, 20), 4*t, [0,2])
+    
+    
+    
 
 === ChamferEdges(shape, distance, edgeList, keepOriginal?)
 Apply a 45-degree cut to an array of edges on a shape
