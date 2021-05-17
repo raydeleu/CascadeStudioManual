@@ -1,5 +1,4 @@
 = CascadeStudio Manual
-
 :toc: 
 :sectnums: 
 
@@ -102,16 +101,43 @@ It is possible to access a fully working version of CascadeStudio by browsing to
 
     https://zalo.github.io/CascadeStudio/
 
+Another alternative is to go to the cadhub website at 
 
+	https://cadhub.xyz/
 
+If you sign up at this website it is possible to create a part in CascadeStudio and share this with other users. The site has a gallery of parts that can be studied to learn from the approaches other users have chosen to model their part. Examples can also be found at 
 
+	https://github.com/zalo/CascadeStudio/discussions/categories/show-and-tell
 
-
-https://cadhub.xyz/
-
-
+but here it is not always possible to check the source code for each part. 
 
 === Local installation
+
+==== Using a local web server
+As the author has published CascadeStudio as an Open Source project, it is possible to download the complete source code from the github page mentioned above. Using the source code it is possible to install a local version on a webserver. Running the program "is as simple as running a server from the root directory (such as the VS Code Live Server, Python live-server, or Node live-server". 
+
+The approach with the VS Code live server is indeed very simple. Follow these steps: 
+
+. install VS Code from [https://code.visualstudio.com]
+. Open VSCode and type ctrl+P, type "ext install ritwickdey.liveserver". Alternatively you can open the extension sidebar which opens the Marketplace. If you enter "live server" a long list of extensions is shown. The server from ritwickdey will occur on top of the list as this is by far the most downloaded version. 
+. download the code of CascadeStudio from https://github.com/zalo/CascadeStudio by pressing the green "Code" button. Choose "Download ZIP". After downloading unpack the zip file somewhere in your file system. 
+. In VS Code, go to "File" and choose the command "Add folder to workspace". Choose the folder "CascadeStudio-master" that you probably just created by unpacking the git repository. 
+. Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio. 
+
+The server seems to run really inside VS Code, so if you quit VS Code the local version of CascadeStudio will also be shut down. 
+
+==== Install CascadeStudio as a Progressive Web App
+An even simpler approach is to install CascadeStudio as a Progressive Web App (PWA). A PWA is a local - almost native - application that can run even without an internet connection. This is achieved by installing a socalled "service worker" that continues to provide the functionality of a web application by using a local cache. To the user the PWA looks identical to a normal application that is installed on the computer. It can be installed in the applications folder and the icon can be shown on the desktop and task bar (or dock). 
+
+To install CascadeStudio as a Web App perform the following steps: 
+
+. Open the page https://zalo.github.io/cascadestudio/ 
+. In the browser address bar, click on the "+" sign 
+. In the dialog "Install App?" choose "Install"
+
+
+
+
 
 
 
