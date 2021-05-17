@@ -1,5 +1,8 @@
 = CascadeStudio Manual
 
+:toc: 
+:sectnums: 
+
 == Introduction
 
 === Purpose
