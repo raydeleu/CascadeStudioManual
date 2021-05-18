@@ -97,19 +97,11 @@ There are also kernels used for socalled Nurbs modelling, used by software packa
 == Starting the program
 
 === On-line
-It is possible to access a fully working version of CascadeStudio by browsing to the following internet address:
+It is possible to access a fully working version of CascadeStudio by browsing to the following internet address: https://zalo.github.io/CascadeStudio/
 
-    https://zalo.github.io/CascadeStudio/
+Another alternative is to go to the cadhub website at https://cadhub.xyz/
 
-Another alternative is to go to the cadhub website at 
-
-	https://cadhub.xyz/
-
-If you sign up at this website it is possible to create a part in CascadeStudio and share this with other users. The site has a gallery of parts that can be studied to learn from the approaches other users have chosen to model their part. Examples can also be found at 
-
-	https://github.com/zalo/CascadeStudio/discussions/categories/show-and-tell
-
-but here it is not always possible to check the source code for each part. 
+If you sign up at this website it is possible to create a part in CascadeStudio and share this with other users. The site has a gallery of parts that can be studied to learn from the approaches other users have chosen to model their part. Examples can also be found at https://github.com/zalo/CascadeStudio/discussions/categories/show-and-tell but here it is not always possible to check the source code for each part. 
 
 === Local installation
 
