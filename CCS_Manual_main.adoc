@@ -489,7 +489,9 @@ for(let y = -80; y < 80; y += 40){
 }
 
 == Create new functions
+New functions can be declared according to the Javascript syntax. This starts with the keyword "function", then a function name (often with a capital first character) and then two rounded brackets around a list of parameters. The function performs some action using the parameters as input and can return values, wires, shapes et cetera. In the example below the function Sphere requires a definition of the radius and returns the shape of a sphere around the point [0,0,0].  
 
+----
  function Sphere(radius) {
    let curSphere = CacheOp(arguments, () => {
     // Construct a Sphere Primitive
@@ -500,6 +502,66 @@ for(let y = -80; y < 80; y += 40){
    sceneShapes.push(curSphere);
    return curSphere;
   }
+---- 
+
+
+
+== Comparison to similar tools
+
+
+
+== A short introduction to Javascript
+
+
+The following math operations are supported:
+
+Addition +,
+Subtraction -,
+Multiplication *,
+Division /,
+Remainder %,
+Exponentiation **
+
+precedence standard
+
+Modify-in-place
+We often need to apply an operator to a variable and store the new result in that same variable.
+
+For example:
+
+let n = 2;
+n = n + 5;
+n = n * 2;
+This notation can be shortened using the operators += and *=:
+
+let n = 2;
+n += 5; // now n = 7 (same as n = n + 5)
+n *= 2; // now n = 14 (same as n = n * 2)
+
+alert( n ); // 14
+
+Greater/less than: a > b, a < b.
+Greater/less than or equals: a >= b, a <= b.
+Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment.
+Not equals. In maths the notation is ≠, but in JavaScript it’s written as a != b.
+
+
+
+if (condition) {   } else {  } 
+
+for (let i=0 ; i<=n ; i++){   }
+
+
+=== equality without type conversion
+== equal
+> < => <=
+|| OR
+&& AND
+! NOT (result = !value)
+
+
+
+
 
 
 
@@ -523,7 +585,4 @@ Button(name = "Action")
 === SaveFile(filename, fileURL)
 
 
-
-
-== Comparison to similar tools
 
