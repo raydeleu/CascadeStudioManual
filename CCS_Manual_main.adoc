@@ -146,7 +146,31 @@ Another drawback that users should consider is the difficulty of finding errors 
 And finally there are situations where even returning to the previous, working code does not prevent the code from crashing. It might help to disable the caching functionality. If nothing helps, try to save your code to a separate text file and start over in a fresh interface. 
 
 
-== A simple example
+== First steps
+
+=== The user interface
+
+
+
+=== The first example program
+
+
+----
+let holeRadius = Slider("Radius", 30 , 20 , 40);
+
+let sphere     = Sphere(50);
+let cylinderZ  =                     Cylinder(holeRadius, 200, true);
+let cylinderY  = Rotate([0,1,0], 90, Cylinder(holeRadius, 200, true));
+let cylinderX  = Rotate([1,0,0], 90, Cylinder(holeRadius, 200, true));
+
+Translate([0, 0, 50], Difference(sphere, [cylinderX, cylinderY, cylinderZ]));
+
+Translate([-25, 0, 40], Text3D("Hi!", 36, 0.15, 'Consolas'));
+----
+
+
+=== Building a simple car
+
 Let us start with a simple example, constructing a car similar to the one shown in the introduction. To create this car in Cascase Studio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press [F5] to interpret the code. The result will be shown on the right side. Note that the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
 
 
