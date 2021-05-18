@@ -155,7 +155,7 @@ Some of the modelling approaches involve drawing a 2-dimensional sketch first an
 .Using a 2-dimensional sketch as basis to create 3-dimensional shapes
 [#img-ccs-sketch]
 [caption= Figure 3: ]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch-to-shape.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_to_shape.png[1000]
 
 
 ==== new Sketch
