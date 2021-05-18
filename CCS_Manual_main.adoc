@@ -1,4 +1,6 @@
 = CascadeStudio Manual
+:docdate:
+:experimental: 
 :toc: 
 :sectnums: 
 
@@ -14,8 +16,9 @@ The approach to model a 3D shape with code (or script) has become popular throug
 
 .Simple car model created in OpenSCAD
 [#img-car-opencad]
-[caption= Figure 1: ]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad-car.jpg[]
+
+
 
 This shape is created by entering the following script:
 
@@ -50,8 +53,9 @@ The advantage of a BRep kernel is that in addition to the simple boolean operati
 
 .Example of CascadeStudio shape with fillets
 [#img-ccs-fillets]
-[caption= Figure 2: ]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/css-car-v2.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-car-v2.png[]
+
+
 
 === Where can you find CascadeStudio?
 
@@ -129,11 +133,6 @@ To install CascadeStudio as a Web App perform the following steps:
 
 
 
-
-
-
-
-
 == Warnings before using CascadeStudio
 
 === Apart from this document, there is no manual
@@ -149,23 +148,35 @@ And finally there are situations where even returning to the previous, working c
 == First steps
 
 === The user interface
+After starting the program the following interface is presented to the user: 
+
+.Interface of CascadeStudio
+[#img-ccs-interface]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/interface.png[]
+
+'''
 The interface of CascadeStudio is relatively straightforward. The main window is split into three parts, namely:
 
 * the code editor
 * the 3D window
 * the processing log 
 
-The users enters the code to generate a 3D shape into the code editor. When the code is complete the program can be triggered by keying [F5] or clicking on the "Evaluate" button in the 3D window dialog. The processing log shows the result of the processing. If this log end with the message "Generation Complete!" the code most likely did not contain any errors. If there are errors in the code, the processing log will indicate what is wrong. Sometimes the line numbers of the error message make no sense. In that case it can help to analyse what shapes have been succesfully built or which command is mentioned in the error log. This can often indicate the line where the first error occured in the code. 
+The users enters the code to generate a 3D shape into the code editor. When the code is complete the program can be triggered by keying kbd:[F5] or clicking on the "Evaluate" button in the 3D window dialog. The processing log shows the result of the processing. If this log end with the message "Generation Complete!" the code most likely did not contain any errors. If there are errors in the code, the processing log will indicate what is wrong. Sometimes the line numbers of the error message make no sense. In that case it can help to analyse what shapes have been succesfully built or which command is mentioned in the error log. This can often indicate the line where the first error occured in the code. 
 
+The menu bar contains the following items: 
 
+Cascade Studio 0.0.7:: Opens the github page where the source code of the software can be found
+Save project:: Opens a dialog to save the current code. The code is stored inside a json file, which is a plain ascii file. Note that this file contains much more information than only the code shown in the code editor. 
+Load project:: Opens a dialog to browse for an earlier stored json file
+Save STEP :: saves the current 3D model in the STEP format. STEP stands for "Standard for the Exchange of Product Data" and is a format defined in ISO 10303. It can describe a shape in terms of curves and faces. Additionally it can contain information on material, tolerances and colour of the object.   
+SAVE STL:: saves the current 3D model in the STL format. STL or Stereo Lithography format describes the model with a mesh of triangle-shaped polygons. It is therefore an approximation of the 3D shape and may be considered a "lossy" format: data is lost in the conversion towards STL and the original format cannot be recovered from this format. 
+SAVE OBJ:: saves the current 3D model in a Wavefront Object format. The OBJ format can contain both information on polygons and curves. It can therefore combine features of both the STEP format and the STL format. However, information on materials and tolerances are not included in the OBJ file. Other 3D programs offer the option to combine a material file with the OBJ file so that an object can be imported into a 3D software package with the correct texture and materials applied to the shape.
+Import STEP/IGES/STL:: import a 3D shape in the STEP, IGES and STL format. OpenCascade can only read ASCII-encoded files, not binary encoded files. The imported shapes can be manipulated, but many of the construction commands cannot be applied to these shapes. 
+Clear Imported Files:: This menu item clears the imported data from the current JSON file. 
 
-.Interface of CascadeStudio
-[#img-ccs-interface]
-[caption= Figure 3: ]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/interface.png[]
 
 === The first example program
-
+After starting the program the code editor always contains the code shown below: 
 
 ----
 let holeRadius = Slider("Radius", 30 , 20 , 40);
@@ -180,10 +191,21 @@ Translate([0, 0, 50], Difference(sphere, [cylinderX, cylinderY, cylinderZ]));
 Translate([-25, 0, 40], Text3D("Hi!", 36, 0.15, 'Consolas'));
 ----
 
+.Default code
+[#img-ccs-default]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/first-example.png[]
+
+... 
+This default code already introduces the user to several concepts of the code which is written in Javascript format: 
+
+Comment lines:: Comment lines start with two forward slashes "//"
+Variable declarations:: Variables are declared with the keyword "let". It is not necessary to declare the type of data that is held in the variable. As shown in the example it is possible to declare a variable and assign a value to it in a single line. However, Javascript also allows to do this on two separate lines. Note that a variable name cannot be declared twice. 
+Functions:: CascadeStudio offers some functions to decribe or construct 3D shapes. The first six comment lines already mention the most important functions that are offered. As we will see later, it is also possible to define new functions. 
+
+A good starting point can be to apply small changes to the code and to see what happens. The first changes can even be performed using the 3D dialog. The slider labelled "Radius" can be used to adapt the radius of the cylinder that is central to the 3D shape. 
 
 === Building a simple car
-
-Let us start with a simple example, constructing a car similar to the one shown in the introduction. To create this car in Cascase Studio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press [F5] to interpret the code. The result will be shown on the right side. Note that the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
+As a next step, let's try to construct a simple version of the car shape shown in the introduction (see xref:img-ccs-fillets[caption]), constructing a car similar to the one shown in the introduction. To create this car in Cascase Studio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press [F5] to interpret the code. The result will be shown on the right side. Note that the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
 
 
 
