@@ -146,6 +146,57 @@ Another drawback that users should consider is the difficulty of finding errors 
 And finally there are situations where even returning to the previous, working code does not prevent the code from crashing. It might help to disable the caching functionality. If nothing helps, try to save your code to a separate text file and start over in a fresh interface. 
 
 
+== A simple example
+Let us start with a simple example, constructing a car similar to the one shown in the introduction. To create this car in Cascase Studio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press [F5] to interpret the code. The result will be shown on the right side. Note that the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
+
+
+
+----
+// Define car design variables
+let car_length      = 50;
+let wheel_base      = 33;
+let car_width       = 20;
+let cabin_width     = 18;
+let cabin_length    = 25;
+let car_height      = 14;
+let bonnet_height   = 8;
+let bonnet_rounding = 4;
+let bonnet_length   = 15;
+let road_clearance  = 3; 
+
+// Derived properties
+let cabin_narrowing = (car_width - cabin_width)/2;
+let cabin_base      = road_clearance + bonnet_height
+let cabin_height    = car_height-bonnet_height
+
+// Draw car body and passenger cabin
+let car_body        = Translate([0,0,road_clearance],Box(car_length,car_width,bonnet_height))
+let car_cabin       = Translate([bonnet_length,cabin_narrowing,cabin_base],
+                            Box(cabin_length, cabin_width, cabin_height))
+
+// Sculpt the car body more aerodynamically
+let car_body_rounded = FilletEdges(car_body,bonnet_rounding,[1,5])
+let cabin_aero       = ChamferEdges(car_cabin, cabin_height-0.5 , [1,5])
+
+// Define wheels and wheel wells (Front/Rear - Left/Right)
+let wheel_FL         = Rotate([1,0,0],-90, Translate([8,-4,0.5], Cylinder(5,3,true)))
+let wheel_well_FL    = Offset(wheel_FL,1.5,0.01,true)
+let wheel_RL         = Translate([wheel_base,0,0], wheel_FL, true)
+let wheel_well_RL    = Translate([wheel_base,0,0], wheel_well_FL, true)
+let wheel_FR         = Translate([0,car_width-1 ,0], wheel_FL, true)
+let wheel_well_FR    = Translate([0,car_width-1,0], wheel_well_FL, true)
+let wheel_RR         = Translate([wheel_base,0,0], wheel_FR, true)
+let wheel_well_RR    = Translate([wheel_base,0,0], wheel_well_FR, true)
+
+// Subtract the wheel wells from the car-body
+Difference(car_body_rounded,[wheel_well_FL, 
+                        wheel_well_RL, 
+                        wheel_well_FR, 
+                        wheel_well_RR])
+
+----
+
+
 
 == Commands
 
