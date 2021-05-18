@@ -51,7 +51,7 @@ The advantage of a BRep kernel is that in addition to the simple boolean operati
 .Example of CascadeStudio shape with fillets
 [#img-ccs-fillets]
 [caption= Figure 2: ]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/css-car.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/css-car-v2.png[]
 
 === Where can you find CascadeStudio?
 
@@ -149,8 +149,20 @@ And finally there are situations where even returning to the previous, working c
 == First steps
 
 === The user interface
+The interface of CascadeStudio is relatively straightforward. The main window is split into three parts, namely:
+
+* the code editor
+* the 3D window
+* the processing log 
+
+The users enters the code to generate a 3D shape into the code editor. When the code is complete the program can be triggered by keying [F5] or clicking on the "Evaluate" button in the 3D window dialog. The processing log shows the result of the processing. If this log end with the message "Generation Complete!" the code most likely did not contain any errors. If there are errors in the code, the processing log will indicate what is wrong. Sometimes the line numbers of the error message make no sense. In that case it can help to analyse what shapes have been succesfully built or which command is mentioned in the error log. This can often indicate the line where the first error occured in the code. 
 
 
+
+.Interface of CascadeStudio
+[#img-ccs-interface]
+[caption= Figure 3: ]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/interface.png[]
 
 === The first example program
 
