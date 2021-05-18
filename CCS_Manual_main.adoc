@@ -51,7 +51,7 @@ The advantage of a BRep kernel is that in addition to the simple boolean operati
 .Example of CascadeStudio shape with fillets
 [#img-ccs-fillets]
 [caption= Figure 2: ]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-car.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/css-car.png[]
 
 === Where can you find CascadeStudio?
 
