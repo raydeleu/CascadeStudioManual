@@ -152,6 +152,11 @@ And finally there are situations where even returning to the previous, working c
 === Sketch
 Some of the modelling approaches involve drawing a 2-dimensional sketch first and than creating a wire or solid from this sketch by extruding, revolving or lofting the 2D shapes into a 3-dimensional shape.
 
+.Using a 2-dimensional sketch as basis to create 3-dimensional shapes
+[#img-ccs-sketch]
+[caption= Figure 3: ]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch-to-shape.png[]
+
 
 ==== new Sketch
 A new sketch is started with the command
