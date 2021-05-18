@@ -163,6 +163,8 @@ The interface of CascadeStudio is relatively straightforward. The main window is
 
 The users enters the code to generate a 3D shape into the code editor. When the code is complete the program can be triggered by keying kbd:[F5] or clicking on the "Evaluate" button in the 3D window dialog. The processing log shows the result of the processing. If this log end with the message "Generation Complete!" the code most likely did not contain any errors. If there are errors in the code, the processing log will indicate what is wrong. Sometimes the line numbers of the error message make no sense. In that case it can help to analyse what shapes have been succesfully built or which command is mentioned in the error log. This can often indicate the line where the first error occured in the code. 
 
+The shape in the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
+
 The menu bar contains the following items: 
 
 Cascade Studio 0.0.7:: Opens the github page where the source code of the software can be found
@@ -205,9 +207,7 @@ Functions:: CascadeStudio offers some functions to decribe or construct 3D shape
 A good starting point can be to apply small changes to the code and to see what happens. The first changes can even be performed using the 3D dialog. The slider labelled "Radius" can be used to adapt the radius of the cylinder that is central to the 3D shape. 
 
 === Building a simple car
-As a next step, let's try to construct a simple version of the car shape shown in the introduction (see xref:img-ccs-fillets[caption]), constructing a car similar to the one shown in the introduction. To create this car in Cascase Studio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press [F5] to interpret the code. The result will be shown on the right side. Note that the 3D view can be manipulated with the mouse. Pressing the left mouse button (LMB) while dragging rotates the view, pressing the right mouse button (RMB) while dragging pans or shifts the field of view. Rolling the scroll wheel with the mouse pointer inside the 3D view zooms in and out. 
-
-
+As a next step, let's try to construct a simple version of the car shape shown in the introduction (see <<img-ccs-fillets>>). To create this car in CascadeStudio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press kbd:[F5] to interpret the code. The result will be shown on the right side in the 3D window. 
 
 ----
 // Define car design variables
@@ -253,6 +253,7 @@ Difference(car_body_rounded,[wheel_well_FL,
                         wheel_well_RR])
 
 ----
+
 
 
 
