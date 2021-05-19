@@ -115,10 +115,24 @@ As the author has published CascadeStudio as an Open Source project, it is possi
 The approach with the VS Code live server is indeed very simple. Follow these steps: 
 
 . install VS Code from [https://code.visualstudio.com]
-. Open VSCode and type ctrl+P, type "ext install ritwickdey.liveserver". Alternatively you can open the extension sidebar which opens the Marketplace. If you enter "live server" a long list of extensions is shown. The server from ritwickdey will occur on top of the list as this is by far the most downloaded version. 
+. Open VSCode and type ctrl+P, type "ext install ritwickdey.liveserver". 
++
+--
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_command.png[]
+--
+
+. Alternatively you can open the extension sidebar which opens the Marketplace. If you enter "live server" a long list of extensions is shown. The server from ritwickdey will occur on top of the list as this is by far the most downloaded version. 
++
+--
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_extensions.png[]
+--
 . download the code of CascadeStudio from https://github.com/zalo/CascadeStudio by pressing the green "Code" button. Choose "Download ZIP". After downloading unpack the zip file somewhere in your file system. 
 . In VS Code, go to "File" and choose the command "Add folder to workspace". Choose the folder "CascadeStudio-master" that you probably just created by unpacking the git repository. 
-. Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio. 
+. Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio.
++
+--
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_start_liveserver.png[]
+--
 
 The server seems to run really inside VS Code, so if you quit VS Code the local version of CascadeStudio will also be shut down. 
 
