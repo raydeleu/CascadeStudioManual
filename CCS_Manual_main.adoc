@@ -115,7 +115,7 @@ As the author has published CascadeStudio as an Open Source project, it is possi
 The approach with the VS Code live server is indeed very simple. Follow these steps: 
 
 . install VS Code from [https://code.visualstudio.com]
-. Open VSCode and type ctrl+P, type "ext install ritwickdey.liveserver". 
+. Open VSCode and type kbd:[CMD]+[P] to open the command palette and enter "ext install ritwickdey.liveserver". 
 +
 --
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_command.png[]
