@@ -12,7 +12,7 @@ This document is intended to create a short introduction and manual for the soft
 === What is CascadeStudio?
 CascadeStudio is a software package that allows the user to enter a kind of script to create a 3D model. This model can then be exported in several formats,  allowing the user to create nice images (renders) or to send the shape to a 3D printer.
 
-The approach to model a 3D shape with code (or script) has become popular through the availability of a software package called OpenSCAD. OpenSCAD has been used initially to model simple shapes for 3D modelling. It uses a technique called Constructive Solid Geometry (CSG), which indicates that 3D shapes are created by combining simple geometric shapes such as boxes, spheres, cylinders into more complex shapes. The operations used to combine these shapes are called boolean operations.
+The approach to model a 3D shape with code (or script) has become popular through the availability of a software package called OpenSCAD (Open Scripted-Computer-Aided-Design). OpenSCAD has been used initially to model simple shapes for 3D modelling. It uses a technique called Constructive Solid Geometry (CSG), which indicates that 3D shapes are created by combining simple geometric shapes such as boxes, spheres, cylinders into more complex shapes. The operations used to combine these shapes are called boolean operations.
 
 .Simple car model created in OpenSCAD
 [#img-car-opencad]
