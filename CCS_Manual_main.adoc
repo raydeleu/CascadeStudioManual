@@ -140,6 +140,13 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_app_dialog.png[]
 -- 
 
+. When the installation is complete the app can be found in the application folder of your web browser. For example, if you are using Chrome browser, it will be available as a Chrome App. 
++
+--
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/chrome_apps.png[]
+-- 
+
+
 ''''
 == Warnings before using CascadeStudio
 
