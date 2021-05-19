@@ -135,12 +135,12 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_
 -- 
 
 . In the dialog "Install App?" choose "Install"
-
-.Dialog to install CascadeStudio as a (Chrome) App
-[#img-install-app]
++
+--
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_app_dialog.png[]
+-- 
 
-
+''''
 == Warnings before using CascadeStudio
 
 === Apart from this document, there is no manual
