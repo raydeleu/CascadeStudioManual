@@ -129,14 +129,16 @@ To install CascadeStudio as a Web App perform the following steps:
 
 . Open the page https://zalo.github.io/cascadestudio/ 
 . In the browser address bar, click on the "+" sign (MS Windows) or on the "download to computer" icon (MacOS). 
++
+----
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_button.png[]
+---- 
+
+. In the dialog "Install App?" choose "Install"
 
 .Dialog to install CascadeStudio as a (Chrome) App
 [#img-install-app]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_app_dialog.png[]
-
- 
-. In the dialog "Install App?" choose "Install"
-
 
 
 == Warnings before using CascadeStudio
