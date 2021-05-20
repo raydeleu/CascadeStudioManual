@@ -118,13 +118,13 @@ The approach with the VS Code live server is indeed very simple. Follow these st
 . Open VSCode and type kbd:[CMD]+ kbd:[P] to open the command palette and enter "ext install ritwickdey.liveserver". 
 +
 --
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_command.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_command.png[width=500]
 --
 
 . Alternatively you can open the extension sidebar which opens the Marketplace. If you enter "live server" a long list of extensions is shown. The server from ritwickdey will occur on top of the list as this is by far the most downloaded version. 
 +
 --
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_extensions.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_extensions.png[width=300]
 --
 . download the code of CascadeStudio from https://github.com/zalo/CascadeStudio by pressing the green "Code" button. Choose "Download ZIP". After downloading unpack the zip file somewhere in your file system. 
 . In VS Code, go to "File" and choose the command "Add folder to workspace". Choose the folder "CascadeStudio-master" that you probably just created by unpacking the git repository. 
@@ -145,7 +145,7 @@ To install CascadeStudio as a Web App perform the following steps:
 . In the browser address bar, click on the "+" sign (MS Windows) or on the "download to computer" icon (MacOS). 
 +
 --
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_button.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_button.png[width=300]
 -- 
 
 . In the dialog "Install App?" choose "Install"
