@@ -4,10 +4,7 @@ let car_width       = 20;
 let overhang_front  = 8;
 let overhang_rear   = 9;
 let cabin_width     = 16;
-let cabin_length    = 25;
-// 33 = touring/stationwagon
-// 25 = sedan
-// 15 = pickup
+let cabin_length    = 25; // 33 = station, 25=sedan, 15=pickup
 let car_height      = 14;
 let bonnet_height   = 8;
 let bonnet_rounding = 4;
