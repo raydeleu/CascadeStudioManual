@@ -23,6 +23,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad
 This shape is created by entering the following script:
 
 .Code to create a car in OpenSCAD, using two boxes and 6 cylinders (4 wheels and two axles)
+
 [source, javascript]
 ----
 cube([60,20,10],center=true);
@@ -171,13 +172,16 @@ Although CascadeStudio shows a lot of promise, it needs to be mentioned that the
 === Finding errors in the code is difficult
 Another drawback that users should consider is the difficulty of finding errors in the code. The program supplies error warnings, but these are not very informative and sometimes seem to have no relation at all to the code in the editor. 
 
+.Errors displayed in the console window
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs_error.png[width=1000]
-
 
 
 Pressing kbd:[F8] in the editor lets the cursor jump to the first error found. Note that the error displayed in the editor is often much more precise and contains more information on the possible cause of the error. Therefore the best advice is to use this method of debugging errors in the code and only use the console to determine if the build was succesful. 
 
+.Errors displayed in the editor pane 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/errors_F8.png[]
+
+''''
 
 Furthermore a good programming advice is to build the object in small steps, verifying after each step if an error was introduced. Note that the code is sensitive to missing brackets, so it is good practice to use proper indentation of the code to alleviate finding missing brackets.  
 
