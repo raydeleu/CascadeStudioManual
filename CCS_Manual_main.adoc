@@ -323,6 +323,12 @@ Difference(car_rounded,[wheel_well_FL,
 
 
 
+
+https://cadquery.readthedocs.io/en/latest/designprinciples.html
+
+
+
+
 == Commands
 
 === Sketch
