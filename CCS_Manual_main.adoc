@@ -23,6 +23,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad
 This shape is created by entering the following script:
 
 .Code to create a car in OpenSCAD, using two boxes and 6 cylinders (4 wheels and two axles)
+[source, javascript]
 ----
 cube([60,20,10],center=true);
 translate([5,0,10 - 0.001])
@@ -211,6 +212,7 @@ Clear Imported Files:: This menu item clears the imported data from the current 
 === The first example program
 After starting the program the code editor always contains the code shown below: 
 
+[source, javascript]
 ----
 let holeRadius = Slider("Radius", 30 , 20 , 40);
 
@@ -240,6 +242,7 @@ A good starting point can be to apply small changes to the code and to see what 
 === Building a simple car
 As a next step, let's try to construct a simple version of the car shape shown in the introduction (see <<img-ccs-fillets>>). To create this car in CascadeStudio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press kbd:[F5] to interpret the code. The result will be shown on the right side in the 3D window. 
 
+[source, javascript]
 ----
 // Define car design variables
 let car_length      = 50;
@@ -322,24 +325,33 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_t
 ==== new Sketch
 A new sketch is started with the command
 
-	let mysketch = new Sketch([xvalue,yvalue])
+[source, javascript]
+----
+let mysketch = new Sketch([xvalue,yvalue])
 
-    let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
+let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                LineTo([ 10*t,-8*t]).Fillet(2*t).
                LineTo([  0*t, 8*t]).Fillet(2*t).
                End(true).Face();
+----
+
 
 This is unique for all functions, as that it needs to be called with the "new" keyword prepended.
 The sketch can be expanded by adding lines, arcs, cirles, splines and fillets
 	
 ==== .LineTo
 
+[source, javascript]
+----
  mysketch.LineTo([xvalue2,yvalue2])
- 
+----
 ==== .Fillet
 
+[source, javascript]
+----
  mysketch.LineTo([xvalue2,yvalue2]).Fillet(filletradius)
- 
+----
+
 ==== this.End(closed, reversed)
 
  mysketch.LineTo([xvalue2,yvalue2]).End(true)
@@ -353,10 +365,13 @@ The command .Face() makes a face out of the closed contour.
 
 If the boolean is set to true, the face is reversed. In the viewport the face can only be seen from the reverse side.
 
+[source, javascript]
+----
  let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                LineTo([ 10*t,-8*t]).Fillet(2*t).
                LineTo([  0*t, 8*t]).Fillet(2*t).
                End(true).Face(true);
+----
 
 ==== this.Wire(reversed?)
 The command .Wire() creates a wire (a set of connected points in 2D space). Wires can be used to Loft a solid or to extrude a shell.
@@ -369,6 +384,7 @@ Just as with a face, a boolean "true" can be added to Wire to reverse the direct
 === this.ArcTo(pointOnArc, arcEnd)
 With ArcTo it is possible to define an from the last point to the end point and adding a point on the arc.
 
+[source, javascript]
 ----
 let face2 = new Sketch([0,0]).
                LineTo([ 5,0]).
@@ -395,7 +411,10 @@ Constructs a BSpline from the previous point through this set of points.
 === Polygon(points, wire)
 With the Polygon command it is possible to shorten the definition of a sketch. The Polygon is defined by a number of three dimensional point in space, defined as [x,y,z] coordinates.
 
+[source, javascript]
+----
  Polygon([[-25, -15, 0], [25, -15, 0], [0, 35, 0]], true)
+---- 
 
 The boolean indicates whether the Polygon describes a Wire (true) or a Face (false).
 
@@ -528,6 +547,7 @@ CSG boolean  a set of shapes from a target shape
 
 === RemoveInternalEdges(shape, keepShape)
 
+
 // Line up the above shapes into a grid pattern for easy display
 let shapeInd = 0;
 for(let y = -80; y < 80; y += 40){
@@ -542,6 +562,7 @@ for(let y = -80; y < 80; y += 40){
 == Create new functions
 New functions can be declared according to the Javascript syntax. This starts with the keyword "function", then a function name (often with a capital first character) and then two rounded brackets around a list of parameters. The function performs some action using the parameters as input and can return values, wires, shapes et cetera. In the example below the function Sphere requires a definition of the radius and returns the shape of a sphere around the point [0,0,0].  
 
+[source, javascript]
 ----
  function Sphere(radius) {
    let curSphere = CacheOp(arguments, () => {
@@ -558,6 +579,7 @@ New functions can be declared according to the Javascript syntax. This starts wi
 
 In the following example a new function is created by modifying the existing function called Circle to become a function Ellipse. Circle is a standard function provided by Cascade Studio in its library https://github.com/zalo/CascadeStudio/blob/master/js/CADWorker/CascadeStudioStandardLibrary.js. This function looks like this: 
 
+[source, javascript]
 ----
 function Circle(radius, wire) {
   let curCircle = CacheOp(arguments, () => {
@@ -577,6 +599,7 @@ Extrude(Circle(10,false),[0,0,20])
 
 With some researching into the options of the OpenCascade Library, see https://dev.opencascade.org/doc/refman/html/class_g_c___root.html other functions provided by OpenCascade can be found. If we compare the function GC_MakeEllipse with GC_MakeCircle we can see that they are quite similar, except for the fact that an ellipse is defined by two radii instead of one. As a first experiment we take the function for Circle, change every occurence of the word Circle into Ellipse and add one extra parameter to its call. We then get: 
 
+[source, javascript]
 ----
 function Ellipse(radius1, radius2, wire) {
   let curEllipse = CacheOp(arguments, () => {
