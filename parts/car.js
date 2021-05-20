@@ -44,6 +44,7 @@ let wheel_FL         = Rotate([1,0,0],-90, Translate([overhang_front,-4,0.5], Cy
 let wheel_well_FL    = Offset(wheel_FL,1.5,0.01,true)
 let wheel_RL         = Translate([wheel_base,0,0], wheel_FL, true)
 let wheel_well_RL    = Translate([wheel_base,0,0], wheel_well_FL, true)
+let wheel_FR         = Rotate([0,0,1],180,Translate([-(2*overhang_front),-car_width ,0], wheel_FL, true))
 let wheel_FR         = Translate([0,car_width-1 ,0], wheel_FL, true)
 let wheel_well_FR    = Translate([0,car_width-1,0], wheel_well_FL, true)
 let wheel_RR         = Translate([wheel_base,0,0], wheel_FR, true)
