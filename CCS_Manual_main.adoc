@@ -553,7 +553,63 @@ New functions can be declared according to the Javascript syntax. This starts wi
   }
 ---- 
 
+== Interface items
 
+=== Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
+Creates a simple slider that can be used to adjust parameters of the model
+
+ let t = Slider("Param", 1, 0.4, 1.75);
+
+=== Checkbox(name = "Toggle", defaultValue = false)
+
+
+ if (Checkbox("Loft?", true)){ Loft([face1, face2, face3], true); }
+
+Button(name = "Action")
+
+
+=== SaveFile(filename, fileURL)
+
+
+
+== Modifying CascadeStudio
+As the code of CascadeStudio is available, it is possible to change items to your personal preferences. In this section some options for changes to the interface will be highlighted. 
+
+=== Modifying the panel lay-out
+When the program is started, the editor window is on the left, the 3D view on the right and the console log in the bottom of the 3D view. It is possible to adjust the position of the dividers between the panels but also to grab the tab of each panel and drag it to a completely different position. It is even possible to drag tabs into the same panel, for example to hide the console log behind the editor. 
+
+
+=== Modifying the 3D view
+
+
+
+== Shortcut keys
+=== General
+
+kbd:[F5]	Recalculate/Render
+
+
+=== Editor
+
+
+kbd: [F1]		Open command palette
+kbd: [F12]		Go to definition
+kbd: [CMD] + kbd:[F]	Find
+kbd: [CMD] + kbd:[E]	Find selected text 
+kbd: [ENTER]		Find next
+kbd: [ALT] + kbd:[UP] 	Move line up
+kbd: [ALT] + kbd:[DN] 	Move line down
+kbd: [CTRL] + kbd:[Space] Trigger suggestion/info
+
+kbd: [CMD] + kbd:[']']  Indent
+kbd: [CMD] + kbd:['[']  Outdent
+kbd: [ALT] + kbd:[DN] 	Move line down
+kbd: [ALT] + kbd:[DN] 	Move line down
+
+kbd: [CMD] + kbd:[/]	Toggle comment line 
+kbd: [SHIFT] + kbd:[ALT] + kbd:[A] Toggle block comment
+kbd:[SHIFT] + kbd:[ALT] + kbd:[UP] Copy line up
+kbd:[SHIFT] + kbd:[ALT] + kbd:[DN] Copy line down
 
 == Comparison to similar tools
 
@@ -616,22 +672,3 @@ for (let i=0 ; i<=n ; i++){   }
 
 
 	
-== Interface items
-
-=== Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
-Creates a simple slider that can be used to adjust parameters of the model
-
- let t = Slider("Param", 1, 0.4, 1.75);
-
-=== Checkbox(name = "Toggle", defaultValue = false)
-
-
- if (Checkbox("Loft?", true)){ Loft([face1, face2, face3], true); }
-
-Button(name = "Action")
-
-
-=== SaveFile(filename, fileURL)
-
-
-
