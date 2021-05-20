@@ -555,6 +555,52 @@ New functions can be declared according to the Javascript syntax. This starts wi
   }
 ---- 
 
+
+In the following example a new function is created by modifying the existing function called Circle to become a function Ellipse. Circle is a standard function provided by Cascade Studio in its library https://github.com/zalo/CascadeStudio/blob/master/js/CADWorker/CascadeStudioStandardLibrary.js. This function looks like this: 
+
+----
+function Circle(radius, wire) {
+  let curCircle = CacheOp(arguments, () => {
+    let circle = new oc.GC_MakeCircle(new oc.gp_Ax2(new oc.gp_Pnt(0, 0, 0),
+      new oc.gp_Dir(0, 0, 1)), radius).Value();
+    let edge = new oc.BRepBuilderAPI_MakeEdge(circle).Edge();
+    let circleWire = new oc.BRepBuilderAPI_MakeWire(edge).Wire();
+    if (wire) { return circleWire; }
+    return new oc.BRepBuilderAPI_MakeFace(circleWire).Face();
+  });
+  sceneShapes.push(curCircle);
+  return curCircle;
+}
+
+Extrude(Circle(10,false),[0,0,20])
+----
+
+With some researching into the options of the OpenCascade Library, see https://dev.opencascade.org/doc/refman/html/class_g_c___root.html other functions provided by OpenCascade can be found. If we compare the function GC_MakeEllipse with GC_MakeCircle we can see that they are quite similar, except for the fact that an ellipse is defined by two radii instead of one. As a first experiment we take the function for Circle, change every occurence of the word Circle into Ellipse and add one extra parameter to its call. We then get: 
+
+----
+function Ellipse(radius1, radius2, wire) {
+  let curEllipse = CacheOp(arguments, () => {
+    let ellipse = new oc.GC_MakeEllipse(new oc.gp_Ax2(new oc.gp_Pnt(0, 0, 0),
+      new oc.gp_Dir(0, 0, 1)), radius1, radius2).Value();
+    let edge = new oc.BRepBuilderAPI_MakeEdge(ellipse).Edge();
+    let ellipseWire = new oc.BRepBuilderAPI_MakeWire(edge).Wire();
+    if (wire) { return ellipseWire; }
+    return new oc.BRepBuilderAPI_MakeFace(ellipseWire).Face();
+  });
+  sceneShapes.push(curEllipse);
+  return curEllipse;
+}
+
+Extrude(Ellipse(30,15,false),[0,0,20])
+----
+
+This works like a charm! 
+
+
+
+
+
+
 == Interface items
 
 === Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
@@ -583,7 +629,17 @@ When the program is started, the editor window is on the left, the 3D view on th
 
 === Modifying the 3D view
 
+----
+this.backgroundColor  = 0x222222; // light: 0xa0a0a0  def: 0x222222  blue: 0xb5dcff
+----
 
+----
+this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
+      new THREE.MeshPhongMaterial({
+        color: 0x61b87a, depthWrite: true,   //def: 0x080808
+----
+	
+	
 
 == Shortcut keys
 === General
