@@ -174,7 +174,7 @@ Another drawback that users should consider is the difficulty of finding errors 
 
 .Errors displayed in the console window
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs_error.png[width=1000]
-
+''''
 
 Pressing kbd:[F8] in the editor lets the cursor jump to the first error found. Note that the error displayed in the editor is often much more precise and contains more information on the possible cause of the error. Therefore the best advice is to use this method of debugging errors in the code and only use the console to determine if the build was succesful. 
 
@@ -242,7 +242,7 @@ Translate([-25, 0, 40], Text3D("Hi!", 36, 0.15, 'Consolas'));
 [#img-ccs-default]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/first-example.png[]
 
-... 
+''''
 This default code already introduces the user to several concepts of the code which is written in Javascript format: 
 
 Comment lines:: Comment lines start with two forward slashes "//"
@@ -716,6 +716,27 @@ kbd:[SHIFT] + kbd:[ALT] + kbd:[DN] Copy line down
 
 == A short introduction to Javascript
 
+=== How to learn to program? 
+For this manual it is assumed that the reader has at least some programming experience. If not, then there are plenty of tutorials available on-line to get some experience in programming. It is difficult to give some advice on which programming language should be the first choice when learning to program. The Python programming language is probably a good starting point for many people as this is a relatively simple language that can be used for both small scripts - even as a small calculator inside a console window - and large programs. Python is also used extensively as a scripting language for other software packages. For example for people that are interested in 3D modelling two other interesting programs are Freecad (https://www.freecadweb.org/) and Blender (https://www.blender.org/). Both programs can be extended using Python scripts. When working on MacOS, Python is already pre-installed. Opening a console window and typing "python" or "python3" is sufficient to get a socalled interactive session to run Python scripts. When working on Windows or Linux it is probably necessary to install Python. Go to https://www.python.org/ to find your options for each operating system. 
+
+Another interesting choice, especially when you want to work with CascadeStudio, is to use Javascript. Javascript is a scripting language that is used often in web pages. When you are reading this in a web browser, you already have software available to run Javascript. 
+
+And of course you can also start to program using CascadeStudio! Many of the general concepts of programming will be necessary to work with CascadeStudio and if you start with small examples and build from them, you will automatically learn more and more of the programming language. 
+
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics
+
+
+
+
+
+
+
+
+
+=== Variables 
+
+
+=== Operations
 
 The following math operations are supported:
 
@@ -749,21 +770,29 @@ Greater/less than or equals: a >= b, a <= b.
 Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment.
 Not equals. In maths the notation is ≠, but in JavaScript it’s written as a != b.
 
-
+=== Conditions and loops
 
 if (condition) {   } else {  } 
 
 for (let i=0 ; i<=n ; i++){   }
 
-
+----
 === equality without type conversion
 == equal
 > < => <=
 || OR
 && AND
 ! NOT (result = !value)
+----
 
 
+=== Comments 
+
+
+=== Functions
+
+
+=== Modules
 
 
 
