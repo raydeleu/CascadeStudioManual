@@ -51,7 +51,10 @@ translate([20,0,0])
 
 CascadeStudio takes this approach a step further. It still retains the approach that shapes are created with a simple script, but it uses a more advanced 3D kernel that allows BRep (Boundary Representation) modelling. In this type of 3D kernel a solid is represented as a collection of surface elements - described using a mathematical equation - that define the boundary between interior and exterior points.
 
-The advantage of a BRep kernel is that in addition to the simple boolean operations it is possible to define how the surfaces are linked to each other. This allows a more easy creation of angled edges (chamfers) or rounded edges (fillets).
+The advantage of a BRep kernel is that in addition to the simple boolean operations it is possible to define how the surfaces are linked to each other. This allows a more easy creation of angled edges (chamfers) or rounded edges (fillets). 
+
+Sometimes it is argued that a proper 3D kernel also has infinite accuracy as the shapes are defined by mathematical equations that are continuous. While this seems a reasonable assumption, we should also consider how the 3D shape is used. In the end the design is often exported to a 3D printer or CNC machine in a socalled STL (stereolithography) model. In the STL format the shape is again represented by small faces. The granularity or resolution of these faces can often be indicated during the export. The smaller the resolution, the longer an export will take and the larger the resulting file will be. If the resolution of the produced file is visible in the end-product is determined both by the resolution of the data used to control the machine that is producing the part (or the mold for a part) and by the manufacturing process. For example, if a CNC (computer numerical control) mill is used to produce a part, the inner radii are often determined by the diameter of the tool that is used to mill the product. The radius will be very smooth as it is produced by a revolving tool (the socalled end-mill). 
+
 
 .Example of CascadeStudio shape with fillets
 [#img-ccs-fillets]
