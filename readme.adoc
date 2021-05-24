@@ -672,6 +672,14 @@ As the code of CascadeStudio is available, it is possible to change items to you
 === Modifying the panel lay-out
 When the program is started, the editor window is on the left, the 3D view on the right and the console log in the bottom of the 3D view. It is possible to adjust the position of the dividers between the panels but also to grab the tab of each panel and drag it to a completely different position. It is even possible to drag tabs into the same panel, for example to hide the console log behind the editor. 
 
+
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_interface_layout.png[]
+
+
+
+
+
+
 === Change the initial code shown after startup
 
 After startup, CascadeStudio always contains a small piece of code that produces the logo of the program. This code is contained in the file `CascadeStudio/js/MainPage/CascadeMain.js`. You can find the relevant code by searching for the text `let starterCode = `. If you enter your own code here this will be shown after startup of your local version. 
@@ -684,6 +692,8 @@ The view can be modified using the code in `CascadeStudio/js/MainPage/CascadeVie
 this.backgroundColor  = 0x222222; // light: 0xa0a0a0  def: 0x222222  blue: 0xb5dcff
 ----
 
+
+
 [source, javascript]
 ----
 this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
@@ -691,6 +701,7 @@ this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
         color: 0x61b87a, depthWrite: true,   //def: 0x080808
 ----
 
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_floor_background.png[]
 
 
 
