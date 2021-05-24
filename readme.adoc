@@ -703,6 +703,15 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_
 
 In the example above not only the colour of the background and floor were changed, but also the socalled `matcap` that determines how the 3D shape is rendered in the studio lights. The `matcap` is a small image file contained in the directory `CascadeStudio/textures/`. If you look on the internet for matcap files you can find many examples. In the image above I used the `red car paint` matcap from Blender (https://www.blender.org). Examples for matcap files can be found in https://devtalk.blender.org/t/call-for-content-matcaps/737. 
 
+To see a different matcap you can change the name of your new matcap file into `dullFrontLitMetal.png`. If you want it a bit easier to change the file, adapt the file name `dullFrontLitMetal.png` in the code sample below into something like `matcap.png`. When you want to load a different matcap, place the image file in the directory `CascadeStudio/textures/`, make a copy and rename it to matcap.png. When you want a different matcap, just delete the file `matcap.png` and repeat the process for a different image file. Remember to always create a copy of your image file, else you may have deleted your favourite matcap. 
+
+[source, javascript]
+----
+ // Load the Shiny Dull Metal Matcap Material
+  this.loader = new THREE.TextureLoader(); this.loader.setCrossOrigin ('');
+  this.matcap = this.loader.load('./textures/dullFrontLitMetal.png', (tex) => { this.environment.viewDirty = true; } );
+  
+----
 
 
 == Shortcut keys
