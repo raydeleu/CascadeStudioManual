@@ -673,7 +673,7 @@ As the code of CascadeStudio is available, it is possible to change items to you
 When the program is started, the editor window is on the left, the 3D view on the right and the console log in the bottom of the 3D view. It is possible to adjust the position of the dividers between the panels but also to grab the tab of each panel and drag it to a completely different position. It is even possible to drag tabs into the same panel, for example to hide the console log behind the editor. 
 
 
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_interface_layout.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_interface_layout.png[width=500]
 
 
 
@@ -692,8 +692,6 @@ The view can be modified using the code in `CascadeStudio/js/MainPage/CascadeVie
 this.backgroundColor  = 0x222222; // light: 0xa0a0a0  def: 0x222222  blue: 0xb5dcff
 ----
 
-
-
 [source, javascript]
 ----
 this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
@@ -701,8 +699,9 @@ this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
         color: 0x61b87a, depthWrite: true,   //def: 0x080808
 ----
 
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_floor_background.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/changed_floor_background.png[width=500]
 
+In the example above not only the colour of the background and floor were changed, but also the socalled `matcap` that determines how the 3D shape is rendered in the studio lights. The `matcap` is a small image file contained in the directory `CascadeStudio/textures/`. If you look on the internet for matcap files you can find many examples. In the image above I used the `red car paint` matcap from Blender (https://www.blender.org). Examples for matcap files can be found in https://devtalk.blender.org/t/call-for-content-matcaps/737. 
 
 
 
