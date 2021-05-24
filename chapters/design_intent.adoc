@@ -1,0 +1,19 @@
+== Design principles
+
+
+
+At https://cadquery.readthedocs.io/en/latest/designprinciples.html there 
+
+
+=== Begin with the end in mind
+The sentence "Begin with the end in mind" is the second habit defined in "The seven habits of highly effective people". This habit should also apply to your 3D modelling. 
+
+
+
+
+
+
+
+
+
+CAD models as source code makes sense
