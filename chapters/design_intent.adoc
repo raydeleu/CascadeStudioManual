@@ -10,11 +10,19 @@ The sentence "Begin with the end in mind" is the second habit defined in "The se
 
 
 Design in CAD vs Blender - Daphne Laméris (see https://www.youtube.com/watch?v=aiq8vePQIeU). 
+A vision of blender in automotive design - Odilon Loiez (see https://www.youtube.com/watch?v=tABQPqplco0)
+How to Photorealistic Visualize a Motorbike https://www.youtube.com/watch?v=rYGbZXPFmpA
 
-* definition of relations
+https://www.youtube.com/c/flowwiescorner/videos 
+
+
+
+* definition of relations, clear measurements
 * lockability
 * 2D drawings and export
 * manufacturing features
+* derive bill of materials
+* interaction with analysis software such as structural analysis (Finite Element Methods, FEM). 
 
 Free CAD tools
 * Fusion 360
@@ -30,6 +38,8 @@ Not so expensive
 * Rhino3D
 
 Curves and organic shapes
+Manifold models
+
 
 
 
@@ -48,7 +58,7 @@ Many scripting languages do not provide a way to capture design intent– becaus
 CAD models as source code makes sense
 
 - easy to capture design history
-- changes are always reversible
+- changes are always reversible (non-destructive workflow)
 - modelling hierarchy is obvious in the code
 - easy to communicate design decisions to others
 
