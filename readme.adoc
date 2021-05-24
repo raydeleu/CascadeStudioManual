@@ -690,12 +690,17 @@ this.groundMesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(2000, 2000),
 == Shortcut keys
 === General
 
+[cols="1,1"]
+|===
 kbd:[F5]	Recalculate/Render
+|===
 
 
 === Editor
 
 
+[cols="1,1"]
+|===
 kbd: [F1]		Open command palette
 kbd: [F12]		Go to definition
 kbd: [CMD] + kbd:[F]	Find
@@ -704,16 +709,23 @@ kbd: [ENTER]		Find next
 kbd: [ALT] + kbd:[UP] 	Move line up
 kbd: [ALT] + kbd:[DN] 	Move line down
 kbd: [CTRL] + kbd:[Space] Trigger suggestion/info
+|===
 
+[cols="1,1"]
+|===
 kbd: [CMD] + kbd:[']']  Indent
 kbd: [CMD] + kbd:['[']  Outdent
 kbd: [ALT] + kbd:[DN] 	Move line down
 kbd: [ALT] + kbd:[DN] 	Move line down
+|===
 
+[cols="1,1"]
+|===
 kbd: [CMD] + kbd:[/]	Toggle comment line 
 kbd: [SHIFT] + kbd:[ALT] + kbd:[A] Toggle block comment
 kbd:[SHIFT] + kbd:[ALT] + kbd:[UP] Copy line up
 kbd:[SHIFT] + kbd:[ALT] + kbd:[DN] Copy line down
+|===
 
 == Comparison to similar tools
 
