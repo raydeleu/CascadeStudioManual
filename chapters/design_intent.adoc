@@ -9,7 +9,36 @@ At https://cadquery.readthedocs.io/en/latest/designprinciples.html there
 The sentence "Begin with the end in mind" is the second habit defined in "The seven habits of highly effective people". This habit should also apply to your 3D modelling. 
 
 
+Design in CAD vs Blender - Daphne Laméris (see https://www.youtube.com/watch?v=aiq8vePQIeU). 
 
+* definition of relations
+* lockability
+* 2D drawings and export
+* manufacturing features
+
+Free CAD tools
+* Fusion 360
+* OnShape
+* FreeCAD
+* SolidEdge Community Edition
+* BricsCAD Shape
+* OpenSCAD
+
+Not so expensive
+* Moi3D
+* Alibre Atom
+* Rhino3D
+
+Curves and organic shapes
+
+
+
+
+
+=== Design intent should drive definition
+
+
+Many scripting languages do not provide a way to capture design intent– because they require that you always work in global coordinates. CadQuery is different– you can locate features relative to others in a relative way– preserving the design intent just like a human would when creating a drawing or building an object.
 
 
 
@@ -17,3 +46,15 @@ The sentence "Begin with the end in mind" is the second habit defined in "The se
 
 
 CAD models as source code makes sense
+
+- easy to capture design history
+- changes are always reversible
+- modelling hierarchy is obvious in the code
+- easy to communicate design decisions to others
+
+Import of existing parts should be possible
+- standard parts are often available in a library
+- interaction with existing CAD tools should be possible
+
+
+
