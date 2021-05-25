@@ -741,8 +741,8 @@ kbd:[F5]	| Recalculate/Render
 | kbd:[CMD] + kbd:['[']  | Outdent
 | kbd:[ALT] + kbd:[DN] 		| 	Move line down
 | kbd:[ALT] + kbd:[DN] 		| 	Move line down
-| kbd: [CMD] + kbd:[/]		| Toggle comment line 
-| kbd: [SHIFT] + kbd:[ALT] + kbd:[A] | Toggle block comment
+| kbd:[CMD] + kbd:[/]		| Toggle comment line 
+| kbd:[SHIFT] + kbd:[ALT] + kbd:[A] | Toggle block comment
 | kbd:[SHIFT] + kbd:[ALT] + kbd:[UP] | Copy line up
 | kbd:[SHIFT] + kbd:[ALT] + kbd:[DN] | Copy line down
 |===
