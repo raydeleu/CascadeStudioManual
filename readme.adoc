@@ -191,7 +191,14 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/errors_F
 Furthermore a good programming advice is to build the object in small steps, verifying after each step if an error was introduced. Note that the code is sensitive to missing brackets, so it is good practice to use proper indentation of the code to alleviate finding missing brackets.  
 
 === The program sometimes acts unpredictable
-And finally there are situations where even returning to the previous, working code does not prevent the code from crashing. It might help to disable the caching functionality. If nothing helps, try to save your code to a separate text file and start over in a fresh interface. 
+And finally there are situations where even returning to the previous, working code does not prevent the code from crashing. It might help to disable the caching functionality. If nothing helps, try to save your code to a separate text file and start over in a fresh interface. Other reasons for unexpected behaviour can be: 
+
+* shapes that seem correct on the display are in fact faulty, for example due to lines that are not connected;  
+* sketches form intersecting contours;
+* boolean operations of shapes that have coplanar faces;
+* fillets in corners that are too tight; 
+
+The causes listed above will be explained later on in the document. Note that these issues are found in any CAD package and are not an indication of lacking software quality. Most of these are limits in the mathematical methods used to define the shape in 3D. The only caveat of CascadeStudio in this respect is that spotting these errors can be a little bit more difficult as the result of the definition of the shape is only visible after running the evaluation of the code. 
 
 
 == First steps
