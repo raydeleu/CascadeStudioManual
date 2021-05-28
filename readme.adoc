@@ -365,8 +365,7 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                End(true).Face();
 ----
 
-
-This is unique for all functions, as that it needs to be called with the "new" keyword prepended.
+The Sketch function is unique for all functions, as that it needs to be called with the "new" keyword prepended.
 The sketch can be expanded by adding lines, arcs, cirles, splines and fillets
 	
 ==== .LineTo
@@ -416,11 +415,37 @@ With ArcTo it is possible to define an from the last point to the end point and 
 
 [source, javascript]
 ----
-let face2 = new Sketch([0,0]).
-               LineTo([ 5,0]).
-               ArcTo([  10,5],[5,10]).Fillet(2).
-               LineTo([0,10]).Fillet(2).
-               End(true).Fillet(2).Face();
+// sketch with arc 
+let arc_test = new Sketch([0,0])
+.LineTo([10,0])
+.ArcTo([15,5],[10,10])
+.LineTo([0,10]).Fillet(2)
+.End(true).Fillet(2).Face();
+
+arc_test_displaced = Translate([0,-15,0], arc_test);
+Extrude(arc_test_displaced,[0,0,30]);
+
+// same shape created with two fillets
+// note the additional edge
+let fillet_test = new Sketch([0,0])
+.LineTo([15,0]).Fillet(5)
+.LineTo([15,10]).Fillet(5)
+.LineTo([0,10]).Fillet(2)
+.LineTo([0,0]).Fillet(2)
+.End(false).Face();
+Extrude(fillet_test,[0,0,20])
+ 
+// It is not possible to combine the end of an arc or fillet
+// with a fillet, but two matching fillets work 
+let fillet_fillet = new Sketch([0,0])
+.LineTo([15,0]).Fillet(3)
+.LineTo([15,3]).Fillet(2)
+.LineTo([15,5]).Fillet(2)
+.LineTo([0,5]).Fillet(2)
+.LineTo([0,0]).Fillet(2)
+.End(false).Face();
+
+Translate([0,15,0],Extrude(fillet_fillet,[0,0,10]))
 ----
 
 .Example of a sketch with ArcTo command
@@ -428,9 +453,7 @@ let face2 = new Sketch([0,0]).
 [caption= Figure 3: ]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arcto.png[]
 
-Note that in the example above, only the fillets in the last two lines are visible, as the arc is already chosen tangent to the line.
-
-
+Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
 === this.BezierTo(bezierControlPoints)
 Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve.
@@ -466,7 +489,7 @@ The Bspline function draws a spline through the points that are entered as a lis
 == Three dimensional shapes
 
 === Box(x, y, z, centered)
-Creates a rectangular prism with these X, Y, and Z Dimensions
+The function Box creates a rectangular solid prism with the dimensions x,y,z. The fourth parameter, which is a boolean, indicates whether the box is placed with its center at the position [0,0,0] or with its first corner. 
 
     Box(20, 20, 20*t),
 
