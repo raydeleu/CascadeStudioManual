@@ -2,6 +2,28 @@
 
 === What is parametric modelling
 
-CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. The fact that the design features are parameters makes the design adaptable. 
+CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. The fact that the design features are parameters makes the design adaptable. However, the user is still responsible for setting up the design in a way that it captures the design intent, as opposed to just the dimensions of a product. This is best explained with an example. 
+
+The following image shows an image by JokoEngineeringHelp (https://youtube.com/c/JokoEngineeringHelp) of a practice part to learn modelling in different CAD programs. Although this brackets is completely defined by the dimensions shown in the technical drawing, it does not seem to be designed with parametric modelling in mind. 
+
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/forked_bracket_joko.png[forked_bracket,800]
+
+For an engineer drafting this part, four dimensions might be really relevant, namely: 
+
+* the distance between the two fixtures that the brackets is supposed to bind together;
+* the radius of the two axles that are connected using the bracket;
+* the distance between the two prongs of the fork, as supposedly something has to fit between it resulting in the design decision to make this a "forked" bracket;
+* the thickness of the material around the axles, as this defines the strength of the bracket; 
+
+Of these four design parameters, only the inner radii are defined in the drawing. The other parameters have to be derived from the dimensions shown in the drawing. So for example, the distance between the two axles is not defined, but has to be derived from the total length of the product and the two outer radii around the axles. If we increase the distance between the two axles but keep the distance between the two prongs identical, the angle of the forked part would change. In the drawing this angle is fixed at 32.5 degrees. If the designer would add material to the end of the prongs to make them stronger, the distance between the prongs would shrink. 
+
+
+
+
+
+
+
+
+
 
 As the program always constructs the end-result by running the complete script, it is possible to change the design features to adapt the design. 
