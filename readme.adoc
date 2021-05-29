@@ -4,7 +4,108 @@
 :toc: 
 :sectnums: 
 
-include::introduction.adoc[]
+== Introduction
+
+=== Purpose
+This document is intended to create a short introduction and manual for the software CascadeStudio, created by Johnathon Selstad (@zalo).
+
+=== What is CascadeStudio?
+CascadeStudio is a software package that allows the user to enter a kind of script to create a 3D model. This model can then be exported in several formats,  allowing the user to create nice images (renders) or to send the shape to a 3D printer.
+
+The approach to model a 3D shape with code (or script) has become popular through the availability of a software package called OpenSCAD (Open Scripted-Computer-Aided-Design). OpenSCAD has been used initially to model simple shapes for 3D modelling. It uses a technique called Constructive Solid Geometry (CSG), which indicates that 3D shapes are created by combining simple geometric shapes such as boxes, spheres, cylinders into more complex shapes. The operations used to combine these shapes are called boolean operations.
+
+.Simple car model created in OpenSCAD
+[#img-car-opencad]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad-car.jpg[]
+
+
+
+This shape is created by entering the following script:
+
+.Code to create a car in OpenSCAD, using two boxes and 6 cylinders (4 wheels and two axles)
+
+[source, javascript]
+----
+cube([60,20,10],center=true);
+translate([5,0,10 - 0.001])
+    cube([30,20,10],center=true);
+translate([-20,-15,0])
+    rotate([90,0,0])
+    cylinder(h=3,r=8,center=true);
+translate([-20,15,0])
+    rotate([90,0,0])
+    cylinder(h=3,r=8,center=true);
+translate([20,-15,0])
+    rotate([90,0,0])
+    cylinder(h=3,r=8,center=true);
+translate([20,15,0])
+    rotate([90,0,0])
+    cylinder(h=3,r=8,center=true);
+translate([-20,0,0])
+    rotate([90,0,0])
+    cylinder(h=30,r=2,center=true);
+translate([20,0,0])
+    rotate([90,0,0])
+    cylinder(h=30,r=2,center=true);
+----
+
+CascadeStudio takes this approach a step further. It still retains the approach that shapes are created with a simple script, but it uses a more advanced 3D kernel that allows BRep (Boundary Representation) modelling. In this type of 3D kernel a solid is represented as a collection of surface elements - described using a mathematical equation - that define the boundary between interior and exterior points.
+
+The advantage of a BRep kernel is that in addition to the simple boolean operations it is possible to define how the surfaces are linked to each other. This allows a more easy creation of angled edges (chamfers) or rounded edges (fillets). 
+
+
+.Example of CascadeStudio shape with fillets
+[#img-ccs-fillets]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-car-v2.png[]
+
+
+
+=== Where can you find CascadeStudio?
+
+CascadeStudio is offered as an open source software at the following github address:
+
+https://github.com/zalo/CascadeStudio
+
+Github is a website intended to develop code. It allows to download complete repositories, change parts and perform version control on the code. Github is especially suited to allow more developers to work on the same set of code files. This also means that you can download all code required to build the software and even create your own version (called "fork") from it.
+
+Johnathon did not start from scratch but took some components that are available as open source as well. The most important components used to create CascadeStudio are:
+
+* opencascade.js (CAD Kernel)
+* Monaco Editor (Text Editing and Intellisense)
+* Golden Layout (Windowing System)
+* three.js (3D Rendering Engine)
+* controlkit.js (Buttons/Sliders),
+* opentype.js (Font Parsing)
+* rawinflate/rawdeflate (URL Code Serialization)
+* potpack (Texture Atlas Packing)
+
+=== OpenCascade 3D kernel
+CascadeStudio uses the OpenCascade 3D modelling CAD (computer aided design) kernel. This is the same kernel that is used in the FreeCad application. In many respects therefore the output of CascadeStudio is comparable to FreeCad.
+
+The OpenCascade kernel was developed originally by a set of people that started as part of Matra Datavision. Their first CAD system called Euclid was already developed in 1980. This software has evolved an in the passing years the company changed hands several times, first to Areva, then EADS and since 2014 it is part of Capgemini.
+
+The name Cascade is derived from CAS.CADE (Computer Aided Software for Computer Aided Design and Engineering). In 1999 Matra Datavision published CAS.CADE in open source on the Internet as Open CASCADE later renamed to Open CASCADE Technology.
+
+https://www.opencascade.com/
+
+It is interesting to note that the number of 3D kernels used worlwide is rather limited. The most well-known kernels are:
+
+* ACIS by Spatial
+* ShapeManager by Autodesk, which is in fact a fork from ACIS
+* CGM (Convergence Geometric Modeller) also by Spatial and used in the famous CATIA software.
+* Parasolid by Siemens
+* C3D Toolkit by C3D Labs
+* Open CASCADE
+
+There are also kernels used for socalled Nurbs modelling, used by software packages such as Rhino and Moi3D (Moment of Inspiration). These kernels also use the BRep approach where the surfaces are described by socalled Non-Uniform Rational B-Splines (NURBS). The advantage of NURBS is that these are capable to describe both complex shapes and simple geometric shapes like lines and arcs.
+
+Sometimes it is argued that a proper 3D kernel has infinite accuracy as the shapes are defined by mathematical equations that are continuous. While this seems a reasonable assumption, we should also consider how the 3D shape is used. During the creation of the part the person constructing the part uses a visualisation of the part on the computer screen. To produce this visualisation, the computer has to calculate the position of points and edges. This is not done with infinite accuracy. In CascadeStudio there is a slider that determines the "mesh-resolution". The default setting is 0.10 and provides a smooth image. If we increase the mesh-resolution, the mesh-resolution becomes in fact more coarse and circles show straight segments. 
+
+After the design the part is often exported to a 3D printer or CNC machine in a socalled STL (stereolithography) model. In the STL format the shape is again represented by small faces. The granularity or resolution of these faces can often be indicated during the export. The smaller the resolution, the longer an export will take and the larger the resulting file will be. If the resolution of the produced file is visible in the end-product is determined both by the resolution of the data used to control the machine that is producing the part (or the mold for a part) and by the manufacturing process. For example, if a CNC (computer numerical control) mill is used to produce a part, the inner radii are often determined by the diameter of the tool that is used to mill the product. The radius will be very smooth as it is produced by a revolving tool (the socalled end-mill). 
+
+If you want to know more on manufacturing techniques, many resources can be found on the internet. At https://www.making.unsw.edu.au/learn/ there are some short tutorials on different manufacturing techniques to produce your own part. 
+
+
 
 == Starting the program
 
