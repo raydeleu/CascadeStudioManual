@@ -1,0 +1,7 @@
+== Parametric modelling
+
+=== What is parametric modelling
+
+CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. The fact that the design features are parameters makes the design adaptable. 
+
+As the program always constructs the end-result by running the complete script, it is possible to change the design features to adapt the design. 
