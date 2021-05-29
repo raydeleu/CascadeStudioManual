@@ -1,6 +1,6 @@
 == Parametric modelling
 
-=== What is parametric modelling
+=== What is parametric modelling? 
 
 CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. The fact that the design features are parameters makes the design adaptable. However, the user is still responsible for setting up the design in a way that it captures the design intent, as opposed to just the dimensions of a product. This is best explained with an example. 
 
@@ -20,6 +20,8 @@ Of these four design parameters, only the inner radii are defined in the drawing
 To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent.png[]
+
+=== Why use parametric modelling? 
 
 
 
