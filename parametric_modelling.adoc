@@ -27,7 +27,22 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_d
 
 
 
+=== Parametric modelling using code
 
+
+taken from https://cadquery.readthedocs.io/en/latest/designprinciples.html
+
+CAD models have many things in common with software, and would benefit greatly from the use of tools that are standard in the software industry, such as:
+
+Easily re-using features between objects
+
+Storing objects using version control systems
+
+Computing the differences between objects by using source control tools
+
+Share objects on the Internet
+
+Automate testing and generation by allowing objects to be built from within libraries
 
 
 
