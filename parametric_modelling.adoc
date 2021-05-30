@@ -6,8 +6,13 @@ CascadeStudio, like all script or code based computer aided design (SCAD) progra
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[]
 
+The design variations can even be larger, as demonstrated in this image that shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads). 
+
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
+
 The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
 
+=== Design intent
 However, it is not sufficient to define certain parameters in a model. It is also important to define the relationship between certain dimensions in a model. This relationship is also known as the design intent. The design intent defines how dimensions or features in an object change when one of the parameters in the object is changed. This is best explained with an example. 
 
 The following image shows an image by JokoEngineeringHelp (https://youtube.com/c/JokoEngineeringHelp) of a practice part to learn modelling in different CAD programs. Although this crank is completely defined by the dimensions shown in the technical drawing, it does not seem to be designed with parametric modelling in mind. 
