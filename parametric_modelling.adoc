@@ -41,6 +41,8 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_d
 
 
 taken from https://cadquery.readthedocs.io/en/latest/designprinciples.html
+https://www.engineering.com/story/whats-the-difference-between-parametric-and-direct-modeling
+
 
 CAD models have many things in common with software, and would benefit greatly from the use of tools that are standard in the software industry, such as:
 
