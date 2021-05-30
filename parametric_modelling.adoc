@@ -35,13 +35,25 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_d
 The image also show a proposal for design parameters that probably better fit the requirements for the crank. 
 
 === Why use parametric modelling? 
+Some of the reasons to use parametric modelling were already mentioned above. The list below shows a summary of the most important reasons for using parametric modelling: 
+
+==== Re-use a part or feature in different designs
+For parts that are used very often you can use standard parts in a kind of library, but also use a generalized design with parameters. For example, if you want to use screws and bolts you can prepare a copy for each length of the thread of a screw, but using a parametric design that allows the user to enter the required specific length of the thread avoids the creation of a large library of parts. 
+
+==== Change the dimensions to fit with other components or different sizes of users
+Parts that have to fit together with existing other parts or parts designed by different people may have to follow design decisions leading to the change of this part. For example, if you just designed a clamp to hold a cable in place and you would have to use a slightly different diameter of cable, it would be much more practical to change your existing design than starting over with a completely new design. 
+
+==== Change the dimensions to account for tolerances of the manufacturing method
+Small changes in the required dimensions can also result from the manufacturing method that is not always known up front. Say you were producing a part in small numbers, youn would probably use a very flexible production method with low set-up costs, such as 3D printing. When your product is sold in higher numbers, you would change the production method to injection molding, with high costs to set-up your tools but very low cost per item. This change however could result in other tolerances or small changes to the shape of the product. 
+
+==== Change a part after performing structural, thermodynamical or aerodynamical analysis 
+After you have designed your product, you will probably perform an analysis and test to determine whether the part can withstand its intended use. Some of this analysis can be performed before you design the part, but as most calculations are an approximation based on assumptions, a test on the final product may show deficiencies in your design. In that case you would have to go back and make small changes to your design. Think about adding more material to reduce the stress or increasing the radius of fillets to reduce stress concentration around corners. 
+
+==== Correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
 
 
-- re-use a part or feature in different designs
-- change the dimensions to fit with other components or different sizes of users
-- change the dimensions to account for tolerances of the manufacturing method
-- change a part after performing structural, thermodynamical or aerodynamical analysis 
-- correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
+
+
 - quickly change the design for aesthetic reasons, explore variations of a design my manipulating a limited set of parameters
 - easily generate repetitive patterns in designs
 - create derivative products
