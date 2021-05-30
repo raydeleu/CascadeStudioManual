@@ -30,9 +30,12 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_d
 - change the dimensions to fit with other components or different sizes of users
 - change the dimensions to account for tolerances of the manufacturing method
 - change a part after performing structural, thermodynamical or aerodynamical analysis 
-- quickly change the design for aesthetic reasons
+- correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
+- quickly change the design for aesthetic reasons, explore variations of a design my manipulating a limited set of parameters
 - easily generate repetitive patterns in designs
 - create derivative products
+
+Many CAD programs offer similar capabilities by employing a socalled design history, allowing the designer to step back through his/her design process to change things. In some cases however the design history is broken when a non-reversible manipulation is performed. Requirements like re-use of components and repetitive patterns are often solved through using a macro or script inside the CAD application. This adds the possibility to write a small piece of code to generate the required results. Alternatively some programs use a graphical approach using nodes. In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. 
 
 
 
@@ -64,3 +67,15 @@ Automate testing and generation by allowing objects to be built from within libr
 
 
 As the program always constructs the end-result by running the complete script, it is possible to change the design features to adapt the design. 
+
+
+
+
+
+http://web-cad.org/
+https://freecadweb.org
+https://github.com/xibyte/jsketcher
+http://web-cad.org/sketcher.html#__sample2D__
+
+
+
