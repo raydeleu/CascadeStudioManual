@@ -54,7 +54,7 @@ With parametric modelling it is possible to explore design variations. For examp
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
 
 ==== Easily generate repetitive patterns in designs
-With parametric modelling it is easy to generate repetitive patterns in a design. Creating
+With parametric modelling it is easy to generate repetitive patterns in a design. Creating a perforated sheet or grid can be accomplished by copying a shape repeatedly and subtracting it from a box-like shape. 
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
 
