@@ -54,7 +54,7 @@ With parametric modelling it is possible to explore design variations. For examp
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
 
 ==== Easily generate repetitive patterns in designs
-With parametric modelling it is easy to generate repetitive patterns in a design. 
+With parametric modelling it is easy to generate repetitive patterns in a design. Creating
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
 
@@ -62,6 +62,7 @@ Not only the number, but also parameters like the size and rotation of the copie
 
 
 
+https://demonstrations.wolfram.com/ASimpleLoftingFunction/
 
 
 
