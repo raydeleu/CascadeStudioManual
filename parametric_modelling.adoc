@@ -4,7 +4,7 @@
 
 CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. Often these parameters have a relation with the purpose of a part or object. For example for a staircase logical parameters would be the number of steps, the height of each step and the rotation of the staircase between each floor. With a parametric model the change of a parameter means that a different 3D model is generated. This way a part can be reused many times in different designs. The image below shows an example of a parametric design for a gear. All gears shown were generated using the same design but with a small change to some design parameters such as the diameter and the number of teeth. 
 
-https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[]
 
 The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
 
