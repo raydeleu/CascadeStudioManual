@@ -26,7 +26,7 @@ Of these four design parameters, only the inner radii are defined in the drawing
 
 To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
 
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent1.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/images/change_design_intent1.png[]
 
 The image also show a proposal for design parameters that probably better fit the requirements for the crank. 
 
