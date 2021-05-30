@@ -54,6 +54,11 @@ With parametric modelling it is possible to explore design variations. For examp
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
 
 ==== Easily generate repetitive patterns in designs
+With parametric modelling it is easy to generate repetitive patterns in a design. 
+
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[gears,500]
+
+Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. 
 
 
 
@@ -62,6 +67,12 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_h
 
 
 ==== create derivative products
+
+
+
+
+
+
 
 Many CAD programs offer similar capabilities by employing a socalled design history, allowing the designer to step back through his/her design process to change things. In some cases however the design history is broken when a non-reversible manipulation is performed. Requirements like re-use of components and repetitive patterns are often solved through using a macro or script inside the CAD application. This adds the possibility to write a small piece of code to generate the required results. Alternatively some programs use a graphical approach using nodes. In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. 
 
