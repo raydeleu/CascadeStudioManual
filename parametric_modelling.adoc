@@ -27,9 +27,10 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_d
 
 
 - re-use a part or feature in different designs
-- change the dimensions to fit with other components
+- change the dimensions to fit with other components or different sizes of users
 - change the dimensions to account for tolerances of the manufacturing method
 - change a part after performing structural, thermodynamical or aerodynamical analysis 
+- quickly change the design for aesthetic reasons
 - easily generate repetitive patterns in designs
 - create derivative products
 
