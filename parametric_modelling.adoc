@@ -24,13 +24,15 @@ For an engineer drafting this part, four dimensions might be really relevant, na
 * the distance between the two axles that the crank is supposed to bind together;
 * the radius of the two axles that are connected using the crank;
 * the distance between the two prongs of the fork, as supposedly something has to fit between it resulting in the design decision to make this a "forked" bracket;
-* the thickness of the material around the axles, as this defines the strength of the bracket; 
+* the thickness of the material around the axles, as this defines the strength of the crank; 
 
 Of these four design parameters, only the inner radii are defined in the drawing. The other parameters have to be derived from the dimensions shown in the drawing. So for example, the distance between the two axles is not defined, but has to be derived from the total length of the product and the two outer radii around the axles. If we increase the distance between the two axles but keep the distance between the two prongs identical, the angle of the forked part would change. In the drawing this angle is fixed at 32.5 degrees. If the designer would add material to the end of the prongs to make them stronger, the distance between the prongs would shrink. 
 
 To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent.png[]
+
+The image also show a proposal for design parameters that probably better fit the requirements for the crank. 
 
 === Why use parametric modelling? 
 
