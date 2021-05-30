@@ -6,10 +6,6 @@ CascadeStudio, like all script or code based computer aided design (SCAD) progra
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[gears,500]
 
-The design variations can even be larger, as demonstrated in this image that shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads). 
-
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
-
 The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
 
 === Design intent
@@ -50,13 +46,22 @@ Small changes in the required dimensions can also result from the manufacturing 
 After you have designed your product, you will probably perform an analysis and test to determine whether the part can withstand its intended use. Some of this analysis can be performed before you design the part, but as most calculations are an approximation based on assumptions, a test on the final product may show deficiencies in your design. In that case you would have to go back and make small changes to your design. Think about adding more material to reduce the stress or increasing the radius of fillets to reduce stress concentration around corners. 
 
 ==== Correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
+Production methods such as 3D printing require a model that is manifold. In technical terms this means that the 3D model should correctly model a shape that can exist in real life. A digital 3D model defines a shape by describing surfaces that enclose this shape. These faces - which themselves have no thickness so only define a boundary between inside and outside of the shape - should all be connected without holes. Furthermore the "normals" of these surfaces should all be consistent, so that it is clear which side is inside and which side is outside of the shape. As issues like non-manifold geometry are relatively common, many software packages that prepare a model for 3D printing contain a funcitonality to correct these errors. However, it is better to avoid these issues already in the design of the part. 
+
+==== Quickly change the design for aesthetic reasons, explore variations of a design my manipulating a limited set of parameters
+With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
+
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
+
+==== Easily generate repetitive patterns in designs
 
 
 
 
-- quickly change the design for aesthetic reasons, explore variations of a design my manipulating a limited set of parameters
-- easily generate repetitive patterns in designs
-- create derivative products
+
+
+
+==== create derivative products
 
 Many CAD programs offer similar capabilities by employing a socalled design history, allowing the designer to step back through his/her design process to change things. In some cases however the design history is broken when a non-reversible manipulation is performed. Requirements like re-use of components and repetitive patterns are often solved through using a macro or script inside the CAD application. This adds the possibility to write a small piece of code to generate the required results. Alternatively some programs use a graphical approach using nodes. In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. 
 
