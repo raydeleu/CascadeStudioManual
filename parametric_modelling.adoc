@@ -48,7 +48,7 @@ After you have designed your product, you will probably perform an analysis and 
 ==== Correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
 Production methods such as 3D printing require a model that is manifold. In technical terms this means that the 3D model should correctly model a shape that can exist in real life. A digital 3D model defines a shape by describing surfaces that enclose this shape. These faces - which themselves have no thickness so only define a boundary between inside and outside of the shape - should all be connected without holes. Furthermore the "normals" of these surfaces should all be consistent, so that it is clear which side is inside and which side is outside of the shape. As issues like non-manifold geometry are relatively common, many software packages that prepare a model for 3D printing contain a funcitonality to correct these errors. However, it is better to avoid these issues already in the design of the part. 
 
-==== Quickly change the design for aesthetic reasons, explore variations of a design my manipulating a limited set of parameters
+==== Quickly change the design for aesthetic reasons, explore variations of a design by manipulating a limited set of parameters
 With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
@@ -59,6 +59,7 @@ With parametric modelling it is easy to generate repetitive patterns in a design
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
 
 Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. 
+
 
 
 
