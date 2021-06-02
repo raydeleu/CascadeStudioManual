@@ -67,6 +67,8 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_
 
 
 === Ways to implement parametric modelling
+Parametric modelling can be achieved using different types of CAD or 3D modelling programs. 
+
 
 Many CAD programs offer similar capabilities by employing a socalled design history, allowing the designer to step back through his/her design process to change things. In some cases however the design history is broken when a non-reversible manipulation is performed. Requirements like re-use of components and repetitive patterns are often solved through using a macro or script inside the CAD application. This adds the possibility to write a small piece of code to generate the required results. Alternatively some programs use a graphical approach using nodes. In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. 
 
