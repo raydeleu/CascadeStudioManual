@@ -558,8 +558,18 @@ Interpolates along an array of wires into a continuous solid shape
 
 === Translate(offset, shapes, keepOriginal)
 
+The Translate function can be used on shapes but also faces and wires to shift the items along the x,y and z axis. The amount of the displacement is defined in an vector [x,y,z]. The boolean "keepOriginal" indicates whether a copy is displaced (keepOriginal = true) or whether the original shape is displaced. The latter, i.e. the original shape is displaced, is the default setting. 
+
+``` javascript
+let nameDisplacedItem = Translate([0,0,30],originalShape,false);
+```
+
+If the shape is not assigned to a new variable name, the orinal variable name can be used to reference the shape for further manipulation. 
 
 === Rotate(axis, degrees, shapes, keepOriginal)
+
+The Rotate function is similar to the Translate function. Instead of a displacement a rotation around an axis is defined. The rotation is defined by specifying the axis of ration first, using a vector notation [x,y,z]. As an example, the x-axis is defined as [1,0,0], the z-axis as [0,0,1]. The second parameter defines the rotation in degrees. The boolean "keepOriginal" works identical to the way described for the Translate function. 
+
 
 === Scale(scale, shapes, keepOriginal)
 
