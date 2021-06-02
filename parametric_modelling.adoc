@@ -60,7 +60,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycom
 
 Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. The following image shows a model of the Gherking Tower in London, 44 stories tall (180 metres) where the shape as well as the triangular structure on the outside are determined by a few mathematical equations that are repeated over and over. 
 
-https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
 
 
 
