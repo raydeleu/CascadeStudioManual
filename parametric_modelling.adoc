@@ -100,7 +100,7 @@ Note that there are also CAD programs that do not have a design history. In such
 
 * 3D modellers that use *modifiers* to change the geometry. The example that springs to mind is Blender (https://www.blender.org/) that allows fairly complex modifications with a socalled modifier stack. Using the modifier stack it is possible to create a non-destructive modelling step. Each modifier contains variables that can be adjusted using values but also named variables or even calculations. However, in case of Blender the result is a polygonal model made up of vertices and edges as opposed to the boundary representation (BRep) employed in the CAD programs listed above. 
 
-
+* Programs that use a scripting approach to perform all modelling steps. These *scripting CAD* (SCAD) programs only use the 3D window for the visualisation of the result of the script or sometimes - as is the case for CascadeStudio - to identify the edges or faces that are referenced in the code. The identification of these edges and faces is the result of the processing of the code and is therefore not always directly accessible to the designer/programmer before calling the functionality in the 3D kernel. 
 
 === Parametric modelling using code
 
