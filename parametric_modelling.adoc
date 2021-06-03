@@ -6,6 +6,7 @@ CascadeStudio, like all script or code based computer aided design (SCAD) progra
 
 .Different sizes of gears generated with a tailor-made function in CascadeStudio
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[gears,500]
+---
 
 The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
 
