@@ -17,7 +17,7 @@ However, it is not sufficient to define certain parameters in a model. It is als
 The following image shows an image by JokoEngineeringHelp (https://youtube.com/c/JokoEngineeringHelp) of a practice part to learn modelling in different CAD programs. Although this crank is completely defined by the dimensions shown in the technical drawing, it does not seem to be designed with parametric modelling in mind. 
 
 ---
-.Exercise part to demonstrate modelling techniques
+._Exercise part to demonstrate modelling techniques_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/forked_bracket_joko.png[forked_bracket,800]
 ---
 
@@ -34,7 +34,7 @@ Of these four design parameters, only the inner radii are defined in the drawing
 To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
 
 ---
-.The design intent becomes clear when changes to design parameters are considered
+._The design intent becomes clear when changes to design parameters are considered_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent2.png[]
 ---
 
@@ -62,7 +62,7 @@ Production methods such as 3D printing require a model that is manifold. In tech
 With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
 
 ---
-.Different vacuum heads all generated from same code with different values for the design parameters
+._Different vacuum heads all generated from same code with different values for the design parameters_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
 ---
 
@@ -70,14 +70,14 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_h
 With parametric modelling it is easy to generate repetitive patterns in a design. Creating a perforated sheet or grid can be accomplished by copying a shape repeatedly and subtracting it from a box-like shape. 
 
 ---
-.Repetitive honeycomb pattern
+._Repetitive honeycomb pattern_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
 ---
 
 Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. The following image shows a model of the Gherking Tower in London, 44 stories tall (180 metres) where the shape as well as the triangular structure on the outside are determined by a few mathematical equations that are repeated over and over. 
 
 ---
-.Model of Gherkin Tower with floors and out panels generated from a parametric model
+._Model of Gherkin Tower with floors and out panels generated from a parametric model_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
 ---
 
