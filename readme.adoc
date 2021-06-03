@@ -14,11 +14,11 @@ CascadeStudio is a software package that allows the user to enter a kind of scri
 
 The approach to model a 3D shape with code (or script) has become popular through the availability of a software package called OpenSCAD (Open Scripted-Computer-Aided-Design). OpenSCAD has been used initially to model simple shapes for 3D modelling. It uses a technique called Constructive Solid Geometry (CSG), which indicates that 3D shapes are created by combining simple geometric shapes such as boxes, spheres, cylinders into more complex shapes. The operations used to combine these shapes are called boolean operations.
 
-.Simple car model created in OpenSCAD
+---
+._Simple car model created in OpenSCAD_
 [#img-car-opencad]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad-car.jpg[]
-
-
+---
 
 This shape is created by entering the following script:
 
@@ -53,11 +53,11 @@ CascadeStudio takes this approach a step further. It still retains the approach 
 
 The advantage of a BRep kernel is that in addition to the simple boolean operations it is possible to define how the surfaces are linked to each other. This allows a more easy creation of angled edges (chamfers) or rounded edges (fillets). 
 
-
-.Example of CascadeStudio shape with fillets
+---
+._Example of CascadeStudio shape with fillets_
 [#img-ccs-fillets]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-car-v2.png[]
-
+---
 
 
 === Where can you find CascadeStudio?
@@ -126,20 +126,26 @@ The approach with the VS Code live server is indeed very simple. Follow these st
 . install VS Code from [https://code.visualstudio.com]
 . Open VSCode and type kbd:[CMD]+ kbd:[P] to open the command palette and enter "ext install ritwickdey.liveserver". 
 +
---
+
+---
+._Opening the command prompt in VS Code_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_command.png[width=500]
---
+---
 
 . Alternatively you can open the extension sidebar which opens the Marketplace. If you enter "live server" a long list of extensions is shown. The server from ritwickdey will occur on top of the list as this is by far the most downloaded version. 
 +
 --
+._Extension panel_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_extensions.png[width=400]
 --
+
 . download the code of CascadeStudio from https://github.com/zalo/CascadeStudio by pressing the green "Code" button. Choose "Download ZIP". After downloading unpack the zip file somewhere in your file system. 
 . In VS Code, go to "File" and choose the command "Add folder to workspace". Choose the folder "CascadeStudio-master" that you probably just created by unpacking the git repository. 
 . Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio.
 +
+
 --
+._Starting the VS Code live server_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_start_liveserver.png[width=400]
 --
 
@@ -154,18 +160,21 @@ To install CascadeStudio as a Web App perform the following steps:
 . In the browser address bar, click on the "+" sign (MS Windows) or on the "download to computer" icon (MacOS). 
 +
 --
+._Installing the web-app in Chrome browser_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_button.png[width=300]
 -- 
 
 . In the dialog "Install App?" choose "Install"
 +
 --
+._ Dialog to install the web app_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_app_dialog.png[]
 -- 
 
 . When the installation is complete the app can be found in the application folder of your web browser. For example, if you are using Chrome browser, it will be available as a Chrome App. 
 +
 --
+._Location of the Chrome web app on MacOS_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/chrome_apps.png[width=300]
 -- 
 
@@ -178,6 +187,7 @@ Although CascadeStudio shows a lot of promise, it needs to be mentioned that the
 
 === Finding errors in the code is difficult
 Another drawback that users should consider is the difficulty of finding errors in the code. The program supplies error warnings, but these are not very informative and sometimes seem to have no relation at all to the code in the editor. 
+
 
 .Errors displayed in the console window
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs_error.png[width=750]
