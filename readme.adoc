@@ -167,7 +167,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_
 . In the dialog "Install App?" choose "Install"
 +
 --
-._ Dialog to install the web app_ 
+._Dialog to install the web app_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/install_app_dialog.png[]
 -- 
 
@@ -189,13 +189,13 @@ Although CascadeStudio shows a lot of promise, it needs to be mentioned that the
 Another drawback that users should consider is the difficulty of finding errors in the code. The program supplies error warnings, but these are not very informative and sometimes seem to have no relation at all to the code in the editor. 
 
 
-.Errors displayed in the console window
+._Errors displayed in the console window_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs_error.png[width=750]
 ''''
 
 Pressing kbd:[F8] in the editor lets the cursor jump to the first error found. Note that the error displayed in the editor is often much more precise and contains more information on the possible cause of the error. Therefore the best advice is to use this method of debugging errors in the code and only use the console to determine if the build was succesful. 
 
-.Errors displayed in the editor pane 
+._Errors displayed in the editor pane_ 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/errors_F8.png[]
 
 ''''
@@ -218,7 +218,7 @@ The causes listed above will be explained later on in the document. Note that th
 === The user interface
 After starting the program the following interface is presented to the user: 
 
-.Interface of CascadeStudio
+._Interface of CascadeStudio_
 [#img-ccs-interface]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/interface.png[]
 
@@ -262,7 +262,7 @@ Translate([0, 0, 50], Difference(sphere, [cylinderX, cylinderY, cylinderZ]));
 Translate([-25, 0, 40], Text3D("Hi!", 36, 0.15, 'Consolas'));
 ----
 
-.Default code
+._Default code_
 [#img-ccs-default]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/first-example.png[]
 
@@ -358,9 +358,8 @@ https://cadquery.readthedocs.io/en/latest/designprinciples.html
 === Sketch
 Some of the modelling approaches involve drawing a 2-dimensional sketch first and than creating a wire or solid from this sketch by extruding, revolving or lofting the 2D shapes into a 3-dimensional shape.
 
-.Using a 2-dimensional sketch as basis to create 3-dimensional shapes
+._Using a 2-dimensional sketch as basis to create 3-dimensional shapes_
 [#img-ccs-sketch]
-[caption= Figure 3: ]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_to_shape.png[1000]
 
 
@@ -460,9 +459,8 @@ let fillet_fillet = new Sketch([0,0])
 Translate([0,15,0],Extrude(fillet_fillet,[0,0,10]))
 ----
 
-.Example of a sketch with ArcTo command
+._Example of a sketch with ArcTo command_
 [#img-ccs-arcto]
-[caption= Figure 3: ]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arcto.png[]
 
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
