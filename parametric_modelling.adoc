@@ -61,8 +61,10 @@ Production methods such as 3D printing require a model that is manifold. In tech
 ==== Quickly change the design for aesthetic reasons, explore variations of a design by manipulating a limited set of parameters
 With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
 
+---
 .Different vacuum heads all generated from same code with different values for the design parameters
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
+---
 
 ==== Easily generate repetitive patterns in designs
 With parametric modelling it is easy to generate repetitive patterns in a design. Creating a perforated sheet or grid can be accomplished by copying a shape repeatedly and subtracting it from a box-like shape. 
