@@ -4,6 +4,7 @@
 
 CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. Often these parameters have a relation with the purpose of a part or object. For example for a staircase logical parameters would be the number of steps, the height of each step and the rotation of the staircase between each floor. With a parametric model the change of a parameter means that a different 3D model is generated. This way a part can be reused many times in different designs. The image below shows an example of a parametric design for a gear. All gears shown were generated using the same design but with a small change to some design parameters such as the diameter and the number of teeth (ref https://cadhub.xyz/u/franknoirot/gear). 
 
+.Different sizes of gears generated with a tailor-made function in CascadeStudio
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[gears,500]
 
 The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
@@ -13,6 +14,7 @@ However, it is not sufficient to define certain parameters in a model. It is als
 
 The following image shows an image by JokoEngineeringHelp (https://youtube.com/c/JokoEngineeringHelp) of a practice part to learn modelling in different CAD programs. Although this crank is completely defined by the dimensions shown in the technical drawing, it does not seem to be designed with parametric modelling in mind. 
 
+.Exercise part to demonstrate modelling techniques
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/forked_bracket_joko.png[forked_bracket,800]
 
 For an engineer drafting this part, four dimensions might be really relevant, namely: 
@@ -26,6 +28,7 @@ Of these four design parameters, only the inner radii are defined in the drawing
 
 To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
 
+.The design intent becomes clear when changes to design parameters are considered
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent2.png[]
 
 The image also show a proposal for design parameters that probably better fit the requirements for the crank. 
@@ -51,15 +54,18 @@ Production methods such as 3D printing require a model that is manifold. In tech
 ==== Quickly change the design for aesthetic reasons, explore variations of a design by manipulating a limited set of parameters
 With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
 
+.Different vacuum heads all generated from same code with different values for the design parameters
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
 
 ==== Easily generate repetitive patterns in designs
 With parametric modelling it is easy to generate repetitive patterns in a design. Creating a perforated sheet or grid can be accomplished by copying a shape repeatedly and subtracting it from a box-like shape. 
 
+.Repetitive honeycomb pattern
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
 
 Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. The following image shows a model of the Gherking Tower in London, 44 stories tall (180 metres) where the shape as well as the triangular structure on the outside are determined by a few mathematical equations that are repeated over and over. 
 
+.Model of Gherkin Tower with floors and out panels generated from a parametric model
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
 
 
