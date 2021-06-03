@@ -90,7 +90,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_
 Parametric modelling can be achieved using different types of CAD or 3D modelling programs. 
 
 
-* CAD programs with graphical user interface, manipulating sketches and parts in a 3D workspace. The majority of users in the industry use this approach as it is a direct descendant from CAD programs that are used for a long time in the industry. Notable software packages that support a design history are Catia (https://discover.3ds.com/),  SolidWorks (https://www.solidworks.com/), NX (https://www.plm.automation.siemens.com/global/en/products/nx/), SolidEdge (https://solidedge.siemens.com)
+* CAD programs with graphical user interface, manipulating sketches and parts in a 3D workspace. The majority of users in the industry use this approach as it is a direct descendant from CAD programs that are used for a long time in the industry. Notable software packages that support a design history are 3DS Catia (https://3ds.com/), 3DS SolidWorks (https://www.solidworks.com/), Siemens NX (https://www.plm.automation.siemens.com/global/en/products/nx/), Siemens SolidEdge (https://solidedge.siemens.com), Autodesk Inventor and Autodesk Fusion360 (https://www.autodesk.com/), PTC Creo and OnShape (https://www.ptc.com/en/technologies/cad), Alibre Design (www.alibre.com),   
 
 
 * CAD programs as above, but with an added macro or scripting layer so that some manipulations or actions can be performed with a script
