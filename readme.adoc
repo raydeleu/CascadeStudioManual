@@ -714,7 +714,9 @@ function Ellipse(radius1, radius2, wire) {
 Extrude(Ellipse(30,15,false),[0,0,20])
 ----
 
-This works like a charm! 
+This works like a charm! Note that in theory an ellipse can also be obtained by scaling a circle in one direction only. However, the Scale function currently only allows a uniform scale change. 
+
+
 
 
 
