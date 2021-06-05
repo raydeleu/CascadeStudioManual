@@ -81,36 +81,40 @@ Not only the number, but also parameters like the size and rotation of the copie
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
 ---
 
+From the description above it may also be clear that parametric design requires additional effort from the designer in creating the initial design. This takes more time and may restrict the possibilities to explore design variations. And especially in case of more organic shapes it is difficult to use a parametric approach. These shapes are often modelled by using an approach that resembles sculpting, for example by manipulating vertices of a polygon model or lattice structure that influence the shape of an underlying mesh. 
 
-
-
-
+Read https://www.engineering.com/story/whats-the-difference-between-parametric-and-direct-modeling for more information on the difference between parametric modelling and direct modelling. It also explains that there are some CAD programs that allow a blend of the two approaches, where quick design changes are reflected in the design history. 
 
 === Ways to implement parametric modelling
 Parametric modelling can be achieved using different types of CAD or 3D modelling programs. 
 
 
-* CAD programs with graphical user interface, manipulating sketches and parts in a 3D workspace. The majority of users in the industry use this approach as it is a direct descendant from CAD programs that are used for a long time in the industry. If these programs offer a socalled *design history* the user can move back through the design steps and change the design. Notable software packages that support a design history are 3DS Catia (https://3ds.com/), 3DS SolidWorks (https://www.solidworks.com/), Siemens NX (https://www.plm.automation.siemens.com/global/en/products/nx/), Siemens SolidEdge (https://solidedge.siemens.com), Autodesk Inventor and Autodesk Fusion360 (https://www.autodesk.com/), PTC Creo and OnShape (https://www.ptc.com/en/technologies/cad), Alibre Design (www.alibre.com), Altair Inspire (www.altair.com), Ashlar-Vellum Cobalt (https://ashlar.com/), SharkCAD (https://www.punchcad.com/). An interesting open source progam that uses this approach is FreeCAD (https://www.freecadweb.org/).   
+* CAD programs with graphical user interface, manipulating sketches and parts in a 3D workspace. The majority of users in the industry use this approach as it is a direct descendant from CAD programs that are used for a long time in the industry. If these programs offer a socalled *design history* the user can move back through the design steps and change the design. Notable software packages that support a design history are 3DS Catia (https://3ds.com/), 3DS SolidWorks (https://www.solidworks.com/), Siemens NX (https://www.plm.automation.siemens.com/global/en/products/nx/), Siemens SolidEdge (https://solidedge.siemens.com), Autodesk Inventor and Autodesk Fusion360 (https://www.autodesk.com/), PTC Creo and OnShape (https://www.ptc.com/en/technologies/cad), Alibre Design (www.alibre.com), Altair Inspire (www.altair.com), Ashlar-Vellum Cobalt (https://ashlar.com/), SharkCAD (https://www.punchcad.com/). An interesting open source progam that uses this approach is FreeCAD (https://www.freecadweb.org/).
++ 
+Some of the programs listed above allow the use of named variables to define the dimensions of parts. In FreeCad this can be done by naming the constraints in a sketch and then using these names in the formula editor for other constraints. Entering these equations in the formula editor is quite laborious as the variables have long names such as `Sketch.Constraints.R1_inner`. A second way to use variables is to use a separate spreadsheet that contains the parameters and their values and then referencing these spreadsheet values in the sketches. While the spreadsheet makes it much easier to list the parameters and design the equations that describe the relation between the parameters. referencing the values also requires long variable names such as `Spreadsheet001.cubedims`.  
 +
 Note that there are also CAD programs that do not have a design history. In such programs it is difficult to remove or change design features that where added earlier. Up to a certain extend the user can compensate this, for example by creating separate files for certain modelling steps, but once a non-reversible action is performed on a model, modifying this feature would involve moving back to the state the model was in just before applying this step and start over from there. 
 
-* CAD programs as above, but with an added *macro or scripting layer* so that some manipulations or actions can be performed with a script. Most of the software packages listed above support some kind of scripting or macro to allow the automation of modelling steps. 
+* CAD programs as above, but with an added *macro or scripting layer* so that some manipulations or actions can be performed with a script. Most of the software packages listed above support some kind of scripting or macro to allow the automation of modelling steps. Popular scripting languages for these tasks are lisp and python. 
 
 * CAD program or 3D modeller that use a *node based approach* to modify or generate pieces of geometry. Examples are the Grasshopper extension for Rhino 3d (https://www.rhino3d.com/) or the geometry nodes in Blender (https://www.blender.org/). In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. You could consider it as coding for people that are more visually oriented. In the case of Grasshopper it is even possible to write a python script to determine the functionality of a generic node. 
 
 image::https://tharit.files.wordpress.com/2010/01/parametric-design-e28098turning-torso_-case-study.jpg?w=710[grasshopper,700]
 https://tharit.wordpress.com/2009/08/24/parametric-design-%E2%80%98turning-torso%E2%80%99-case-study/
 
-
 * 3D modellers that use *modifiers* to change the geometry. The example that springs to mind is Blender (https://www.blender.org/) that allows fairly complex modifications with a socalled modifier stack. Using the modifier stack it is possible to create a non-destructive modelling step. Each modifier contains variables that can be adjusted using values but also named variables or even calculations. However, in case of Blender the result is a polygonal model made up of vertices and edges as opposed to the boundary representation (BRep) employed in the CAD programs listed above. 
 
 * Programs that use a scripting approach to perform all modelling steps. These *scripting CAD* (SCAD) programs only use the 3D window for the visualisation of the result of the script or sometimes - as is the case for CascadeStudio - to identify the edges or faces that are referenced in the code. The identification of these edges and faces is the result of the processing of the code and is therefore not always directly accessible to the designer/programmer before calling the functionality in the 3D kernel. 
 
 === Parametric modelling using code
+Modelling a 3D part using a scripting language or code almost inevitably forces the user to determine the critical design parameters up front. As explained above this in itself is not sufficient to create a good parametric design, but it always allows stepping back through the design history. In fact the 3D model is recreated every time the code is processed. 
+
+Apart from these benefits, using a Scripted CAD approach also has the benefit of a very readable and open file format. 
+
 
 
 taken from https://cadquery.readthedocs.io/en/latest/designprinciples.html
-https://www.engineering.com/story/whats-the-difference-between-parametric-and-direct-modeling
+
 
 
 CAD models have many things in common with software, and would benefit greatly from the use of tools that are standard in the software industry, such as:
