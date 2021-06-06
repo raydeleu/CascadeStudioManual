@@ -541,7 +541,15 @@ Extrudes a wire vertically with a specified height and twist. Note the differenc
 
     RotatedExtrude(wire, height, degrees, false)
 
+---
+._Difference of RotatedExtrude depending on position of wire relative to origin_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_extrude.png[width=500]
+---
 
+---
+._Difference of RotatedExtrude exagerated by using a larger twist_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_extrude2.png[width=500]
+---
 
 
 === Pipe(shape, wirePath, keepInputs)
