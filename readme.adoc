@@ -1,6 +1,7 @@
 = CascadeStudio Manual
 :docdate:
 :experimental: 
+:xrefstyle: short
 :toc: 
 :sectnums: 
 
