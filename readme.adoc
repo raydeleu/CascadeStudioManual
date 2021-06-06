@@ -536,10 +536,13 @@ Extrudes a face along a vector direction
 
     Extrude(face, [20*(1-t), 0, 20]),
 
-=== RotatedExtrude(wire, height, rotation, keepWire)
-Extrudes a wire vertically with a specified height and twist
+=== RotatedExtrude(wire, height, rotation[deg], keepWire?)
+Extrudes a wire vertically with a specified height and twist. Note the difference from the standard extrude, in that this function requires a wire instead of a face. This can be accomplished by using the `.Wire()` method for a sketch instead of the `Face()`. Another thing to point out is that the rotation is performed relative to the [0,0] location of the vertical axis. Moreover, the extrusion is always vertical - so along the z-axis or [0,0,1] - and not along the normal of a wire. The boolean keepwire indicates whether the wire should be kept or may be removed.  
 
-    RotatedExtrude(GetWire(face), 20*t, 45*t),
+    RotatedExtrude(wire, height, degrees, false)
+
+
+
 
 === Pipe(shape, wirePath, keepInputs)
 Sweeps a face along a Wire
