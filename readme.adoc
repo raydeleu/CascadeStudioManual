@@ -466,10 +466,23 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arct
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
 === this.BezierTo(bezierControlPoints)
-Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve.
+Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve. 
 
 === this.BSplineTo(bsplinePoints)
-Constructs a BSpline from the previous point through this set of points.
+Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. Figure <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
+
+
+// [caption="Figure {counter:figure}: ", reftext="Fig. {figure}"]
+// .Example image
+// [#img_01]
+// image::01.png[, 80%,align="center"]
+
+---
+._Comparison of a true ellipse and an approximation by using a Bezier and a BSpline_
+[#bezier]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/bezier.png[width=700]
+---
+
 
 === Polygon(points, wire)
 With the Polygon command it is possible to shorten the definition of a sketch. The Polygon is defined by a number of three dimensional point in space, defined as [x,y,z] coordinates.
