@@ -525,11 +525,7 @@ Creates 3D Text from a TrueType font
 
 
 == Creating shapes from faces or wires
-Most of the following functions work both on faces and on wires. Only lofting seems to require wires. A wire can be retrieved from a face using the "GetWire" function:
-
- GetWire(face)
-
-
+Most of the following functions work both on faces and on wires. Lofting and the RotatedExtrude require wires. A wire can be retrieved from a face using the "GetWire" function (see below). 
 
 === Extrude(face, direction, keepFace)
 Extrudes a face along a vector direction
@@ -568,6 +564,22 @@ Interpolates along an array of wires into a continuous solid shape
 
     Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
 
+
+
+
+=== GetWire(shape, faceIndex, keepOriginal)
+As some of the functions above require a wire, it may be useful to retrieve a wire from a face. This can be achieved with the function GetWire. The first parameter indicates the shape that contains a face, the second parameter contains the index of the required face and the boolean indicates whether the original shape should be kept (true) or deleted (false). The following code snippet shows an example for creating a rectangle by using the bottom face of a box (with face index 4) to retrieve the wire of a rectangle. Note that it is necessary to translate the wire to the correct location before using it as input to another function. 
+ 
+[source, javascript] 
+----
+let width = 25;
+let length = 50;
+let height = 10;
+
+let box1 = Box(width,length,height,true);
+let wire4 = Translate([0,0,height/2],GetWire(box1,4,false))
+RotatedExtrude(wire4,50,90 )
+----
 
 
 == Changing three dimensional shapes
