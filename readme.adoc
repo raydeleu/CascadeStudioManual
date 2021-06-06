@@ -470,7 +470,7 @@ Note that in the example above, there two different approaches to create a 180 d
 Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve. 
 
 === this.BSplineTo(bsplinePoints)
-Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. Figure <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
+Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
 
 
 // [caption="Figure {counter:figure}: ", reftext="Fig. {figure}"]
