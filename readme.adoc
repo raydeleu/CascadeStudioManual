@@ -354,18 +354,15 @@ https://cadquery.readthedocs.io/en/latest/designprinciples.html
 
 
 
-== Commands
 
-== Three dimensional shapes
-The easiest way to model in 3D is to start with basic solid shapes such as a box, sphere or cylinder. CascadeStudio offers 5 basic shapes as shown in <<#shapes>>. 
 
+== Three dimensional solid shapes
+The easiest way to model in 3D is to start with basic solid shapes such as a box, sphere or cylinder. For example,  the car shown in the introduction (see <<#img-car-opencad>>) is build from only 2 boxes and 6 cylinders. CascadeStudio offers 5 basic shapes as shown in <<#shapes>>, namely boxes, spheres, cylinders, cones and 3D text. The next paragraphs will explain how these basic shapes can be defined. The next section will then explain how the shapes can be transformed, moved and rotated to construct more complex 3D shapes.  
 ---
 ._Basic 3D shapes offered by CascadeStudio_
 [#shapes]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/shapes.png[width=600]
 --- 
-
-
 
 === Box(x, y, z, centered)
 The function Box creates a rectangular solid prism with the dimensions x,y,z. The fourth parameter, which is a boolean, indicates whether the box is placed with its center at the position [0,0,0] or with its first corner. 
@@ -489,6 +486,10 @@ for(let y = -80; y < 80; y += 40){
         shapeInd++;
     }
 }
+
+
+== Creating faces or wires
+
 
 
 === Sketch
