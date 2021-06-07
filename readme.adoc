@@ -356,6 +356,141 @@ https://cadquery.readthedocs.io/en/latest/designprinciples.html
 
 == Commands
 
+== Three dimensional shapes
+The easiest way to model in 3D is to start with basic solid shapes such as a box, sphere or cylinder. CascadeStudio offers 5 basic shapes as shown in <<#shapes>>. 
+
+---
+._Basic 3D shapes offered by CascadeStudio_
+[#shapes]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/shapes.png[width=600]
+--- 
+
+
+
+=== Box(x, y, z, centered)
+The function Box creates a rectangular solid prism with the dimensions x,y,z. The fourth parameter, which is a boolean, indicates whether the box is placed with its center at the position [0,0,0] or with its first corner. 
+
+    Box(20, 20, 20*t),
+
+=== Sphere(radius)
+Creates a sphere of specified radius
+
+    Translate([0,0,10*t], Sphere(10*t)),
+
+=== Cylinder(radius, height, centered)
+Creates a Cylinder with a radius and height. The arguments are radius, height, centered?. The latter is a boolean indicating whether the shape is centered on the workplane, making half of the height appear above the workplane and half below it, or whether the cylinder starts at the workplane and extends the full height into the normal direction. Omitting the last parameter defaults to "not centered".
+
+    Cylinder(10, 20*t)
+
+=== Cone(radius1, radius2, height)
+Creates a revolved trapezoid with differing top and bottom radii. The arguments to this function are radius1, radius2 and height.
+
+    Cone(15, 8*t, 15),
+
+=== Text3D
+Creates 3D Text from a TrueType font
+
+    Text3D("Hi!", 36, 0.15*t, "Consolas"),
+
+
+== Changing three dimensional shapes
+
+
+=== Translate(offset, shapes, keepOriginal)
+
+The Translate function can be used on shapes but also faces and wires to shift the items along the x,y and z axis. The amount of the displacement is defined in an vector [x,y,z]. The boolean "keepOriginal" indicates whether a copy is displaced (keepOriginal = true) or whether the original shape is displaced. The latter, i.e. the original shape is displaced, is the default setting. 
+
+[source, javascript]
+----
+let nameDisplacedItem = Translate([0,0,30],originalShape,false);
+----
+
+If the shape is not assigned to a new variable name, the orinal variable name can be used to reference the shape for further manipulation. 
+
+=== Rotate(axis, degrees, shapes, keepOriginal)
+
+The Rotate function is similar to the Translate function. Instead of a displacement a rotation around an axis is defined. The rotation is defined by specifying the axis of ration first, using a vector notation [x,y,z]. As an example, the x-axis is defined as [1,0,0], the z-axis as [0,0,1]. The second parameter defines the rotation in degrees. The boolean "keepOriginal" works identical to the way described for the Translate function. 
+
+[source, javascript]
+----
+Rotate([0,1,0], -90, boxShape, true);
+----
+
+The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. 
+
+
+=== Scale(scale, shapes, keepOriginal)
+The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. 
+
+[source, javascript]
+----
+let smallBox = Scale(0.2, boxShape, true);
+----
+
+
+=== Transform(translation, rotation, scale, shapes)
+There is a more or less experimental function called Transform that combines the three previous functions Translate, Rotate and Scale into a single function. The function can be called using the full code: 
+
+[source, javascript]
+----
+let largeBox = Transform([0, 0, 30], [[1, 00, 0], 30], 2.00, displacedSmallBox); 
+----
+
+Calling the function Transform without the full set of arguments triggers the display of an interactive "gizmo" that allows to change the values of the transformation using click and drag of sliders. Note that CascadeStudio automatically adapts the values shown in the code to the values indicated with the gizmo. However, the level of control with the gizmo is limited as the interaction with the gizmo lacks a direct feedback to the user. Using code - by applying separate instructions for Translate, Rotate and Scale - delivers more repeatable and consistent results. 
+
+=== Offset(shape, offsetDistance, tolerance, keepShape)
+Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. Note that this can be used to create a rounded cube/box from a normal cube/box.
+
+    Offset(Text3D("H", 36, 0.15, "Roboto"), 2.25*t)
+    
+
+=== FilletEdges(shape, radius, edgeList, keepOriginal?)
+Round-off an array of edges on a shape (derived from mouse hovering). Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. The behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
+
+    FilletEdges (Cylinder(10, 20), 4*t, [0,2])
+    
+    
+    
+
+=== ChamferEdges(shape, distance, edgeList, keepOriginal?)
+Apply a 45-degree cut to an array of edges on a shape
+    
+    ChamferEdges(Cylinder(10, 20), 4*t, [0,2])
+
+
+
+=== Difference, Union, Intersection
+CSG boolean  a set of shapes from a target shape
+    
+    Translate([0,0,10], Difference(Sphere(10), [Cylinder(5*t, 30, true)]))
+
+
+=== Union(objectsToJoin, keepObjects, fuzzValue, keepEdges)
+
+
+=== Difference(mainBody, objectsToSubtract, keepObjects, fuzzValue, keepEdges)
+
+
+
+=== Intersection(objectsToIntersect, keepObjects, fuzzValue, keepEdges)
+
+
+
+=== RemoveInternalEdges(shape, keepShape)
+
+
+// Line up the above shapes into a grid pattern for easy display
+let shapeInd = 0;
+for(let y = -80; y < 80; y += 40){
+    for(let x = -80; x < 80; x += 40){
+        if(shapeInd < shapes.length){
+            Translate([x, y, 0], shapes[shapeInd]);
+        }
+        shapeInd++;
+    }
+}
+
+
 === Sketch
 Some of the modelling approaches involve drawing a 2-dimensional sketch first and than creating a wire or solid from this sketch by extruding, revolving or lofting the 2D shapes into a 3-dimensional shape.
 
@@ -510,32 +645,6 @@ The Bspline function draws a spline through the points that are entered as a lis
 
 
 
-== Three dimensional shapes
-
-=== Box(x, y, z, centered)
-The function Box creates a rectangular solid prism with the dimensions x,y,z. The fourth parameter, which is a boolean, indicates whether the box is placed with its center at the position [0,0,0] or with its first corner. 
-
-    Box(20, 20, 20*t),
-
-=== Sphere(radius)
-Creates a sphere of specified radius
-
-    Translate([0,0,10*t], Sphere(10*t)),
-
-=== Cylinder(radius, height, centered)
-Creates a Cylinder with a radius and height. The arguments are radius, height, centered?. The latter is a boolean indicating whether the shape is centered on the workplane, making half of the height appear above the workplane and half below it, or whether the cylinder starts at the workplane and extends the full height into the normal direction. Omitting the last parameter defaults to "not centered".
-
-    Cylinder(10, 20*t)
-
-=== Cone(radius1, radius2, height)
-Creates a revolved trapezoid with differing top and bottom radii. The arguments to this function are radius1, radius2 and height.
-
-    Cone(15, 8*t, 15),
-
-=== Text3D
-Creates 3D Text from a TrueType font
-
-    Text3D("Hi!", 36, 0.15*t, "Consolas"),
 
 
 == Creating shapes from faces or wires
@@ -596,102 +705,7 @@ RotatedExtrude(wire4,50,90 )
 ----
 
 
-== Changing three dimensional shapes
 
-
-=== Translate(offset, shapes, keepOriginal)
-
-The Translate function can be used on shapes but also faces and wires to shift the items along the x,y and z axis. The amount of the displacement is defined in an vector [x,y,z]. The boolean "keepOriginal" indicates whether a copy is displaced (keepOriginal = true) or whether the original shape is displaced. The latter, i.e. the original shape is displaced, is the default setting. 
-
-[source, javascript]
-----
-let nameDisplacedItem = Translate([0,0,30],originalShape,false);
-----
-
-If the shape is not assigned to a new variable name, the orinal variable name can be used to reference the shape for further manipulation. 
-
-=== Rotate(axis, degrees, shapes, keepOriginal)
-
-The Rotate function is similar to the Translate function. Instead of a displacement a rotation around an axis is defined. The rotation is defined by specifying the axis of ration first, using a vector notation [x,y,z]. As an example, the x-axis is defined as [1,0,0], the z-axis as [0,0,1]. The second parameter defines the rotation in degrees. The boolean "keepOriginal" works identical to the way described for the Translate function. 
-
-[source, javascript]
-----
-Rotate([0,1,0], -90, boxShape, true);
-----
-
-The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. 
-
-
-=== Scale(scale, shapes, keepOriginal)
-The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. 
-
-[source, javascript]
-----
-let smallBox = Scale(0.2, boxShape, true);
-----
-
-
-=== Transform(translation, rotation, scale, shapes)
-There is a more or less experimental function called Transform that combines the three previous functions Translate, Rotate and Scale into a single function. The function can be called using the full code: 
-
-[source, javascript]
-----
-let largeBox = Transform([0, 0, 30], [[1, 00, 0], 30], 2.00, displacedSmallBox); 
-----
-
-Calling the function Transform without the full set of arguments triggers the display of an interactive "gizmo" that allows to change the values of the transformation using click and drag of sliders. Note that CascadeStudio automatically adapts the values shown in the code to the values indicated with the gizmo. However, the level of control with the gizmo is limited as the interaction with the gizmo lacks a direct feedback to the user. Using code - by applying separate instructions for Translate, Rotate and Scale - delivers more repeatable and consistent results. 
-
-=== Offset(shape, offsetDistance, tolerance, keepShape)
-Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. Note that this can be used to create a rounded cube/box from a normal cube/box.
-
-    Offset(Text3D("H", 36, 0.15, "Roboto"), 2.25*t)
-    
-
-=== FilletEdges(shape, radius, edgeList, keepOriginal?)
-Round-off an array of edges on a shape (derived from mouse hovering). Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. The behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
-
-    FilletEdges (Cylinder(10, 20), 4*t, [0,2])
-    
-    
-    
-
-=== ChamferEdges(shape, distance, edgeList, keepOriginal?)
-Apply a 45-degree cut to an array of edges on a shape
-    
-    ChamferEdges(Cylinder(10, 20), 4*t, [0,2])
-
-
-
-=== Difference, Union, Intersection
-CSG boolean  a set of shapes from a target shape
-    
-    Translate([0,0,10], Difference(Sphere(10), [Cylinder(5*t, 30, true)]))
-
-
-=== Union(objectsToJoin, keepObjects, fuzzValue, keepEdges)
-
-
-=== Difference(mainBody, objectsToSubtract, keepObjects, fuzzValue, keepEdges)
-
-
-
-=== Intersection(objectsToIntersect, keepObjects, fuzzValue, keepEdges)
-
-
-
-=== RemoveInternalEdges(shape, keepShape)
-
-
-// Line up the above shapes into a grid pattern for easy display
-let shapeInd = 0;
-for(let y = -80; y < 80; y += 40){
-    for(let x = -80; x < 80; x += 40){
-        if(shapeInd < shapes.length){
-            Translate([x, y, 0], shapes[shapeInd]);
-        }
-        shapeInd++;
-    }
-}
 
 == Create new functions
 New functions can be declared according to the Javascript syntax. This starts with the keyword "function", then a function name (often with a capital first character) and then two rounded brackets around a list of parameters. The function performs some action using the parameters as input and can return values, wires, shapes et cetera. In the example below the function Sphere requires a definition of the radius and returns the shape of a sphere around the point [0,0,0].  
