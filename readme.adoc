@@ -345,49 +345,60 @@ Difference(car_rounded,[wheel_well_FL,
                         wheel_well_RR])
 ----
 
-
-
-
-
-https://cadquery.readthedocs.io/en/latest/designprinciples.html
-
-
-
-
+The commands required to model this car will be explained in the next sections. 
 
 
 == Three dimensional solid shapes
 The easiest way to model in 3D is to start with basic solid shapes such as a box, sphere or cylinder. For example,  the car shown in the introduction (see <<#img-car-opencad>>) is build from only 2 boxes and 6 cylinders. CascadeStudio offers 5 basic shapes as shown in <<#shapes>>, namely boxes, spheres, cylinders, cones and 3D text. The next paragraphs will explain how these basic shapes can be defined. The next section will then explain how the shapes can be transformed, moved and rotated to construct more complex 3D shapes.  
+
 ---
 ._Basic 3D shapes offered by CascadeStudio_
 [#shapes]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/shapes.png[width=600]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/shapes.png[shapes,600]
 --- 
 
 === Box(x, y, z, centered)
 The function Box creates a rectangular solid prism with the dimensions x,y,z. The fourth parameter, which is a boolean, indicates whether the box is placed with its center at the position [0,0,0] or with its first corner. 
 
-    Box(20, 20, 20*t),
+[source, javascript]
+----
+    let exampleBox      = Box(20,30,15, false)
+----
 
 === Sphere(radius)
 Creates a sphere of specified radius
 
-    Translate([0,0,10*t], Sphere(10*t)),
+[source, javascript]
+----
+    let exampleSphere   = Sphere(10) 
+----
+
 
 === Cylinder(radius, height, centered)
 Creates a Cylinder with a radius and height. The arguments are radius, height, centered?. The latter is a boolean indicating whether the shape is centered on the workplane, making half of the height appear above the workplane and half below it, or whether the cylinder starts at the workplane and extends the full height into the normal direction. Omitting the last parameter defaults to "not centered".
 
-    Cylinder(10, 20*t)
+[source, javascript]
+----
+    let exampleCylinder = Cylinder(10,20,false)
+----
 
 === Cone(radius1, radius2, height)
 Creates a revolved trapezoid with differing top and bottom radii. The arguments to this function are radius1, radius2 and height.
 
-    Cone(15, 8*t, 15),
-
+   [source, javascript]
+----
+    let exampleCone     = Cone(10,2,20)
+----
+   
 === Text3D
 Creates 3D Text from a TrueType font
 
-    Text3D("Hi!", 36, 0.15*t, "Consolas"),
+
+   [source, javascript]
+----
+    let exampleText     = Text3D("Text", 15, 0.2,'Roboto')
+----
+    
 
 
 == Changing three dimensional shapes
