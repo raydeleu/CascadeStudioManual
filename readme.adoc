@@ -466,6 +466,9 @@ Apply a 45-degree cut to an array of edges on a shape
     ChamferEdges(Cylinder(10, 20), 4*t, [0,2])
 
 
+== Combining 3D solid shapes
+
+
 
 === Difference, Union, Intersection
 CSG boolean  a set of shapes from a target shape
