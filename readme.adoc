@@ -874,16 +874,19 @@ Another interesting choice, especially when you want to work with CascadeStudio,
 And of course you can also start to program using CascadeStudio! Many of the general concepts of programming will be necessary to work with CascadeStudio and if you start with small examples and build from them, you will automatically learn more and more of the programming language. 
 
 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics
+https://www.w3schools.com/js/default.asp
 
 
 
+=== Variables
+Javascript variables may be considered to be containers for data values. A variable can be declared with the keyword `var`, `let`or `const`. The keyword `var`was used before 2015 and is most widely supported. The more modern version is to use `let` for variables with a restricted scope - so for example if they are declared inside a function they are only available within that function - and the keyword `const` to define a variable that will never be reassigned. For example, the conversion factor between feet and meters can be declared as a `const` as this will never change, whereas the length of a car should be defined using `let`.  
 
-
-
-
-
-
-=== Variables 
+[source, javascript]
+---
+let rateHour = 30 ;
+let hoursWeek = 36 ;
+let rateWeek   = rateHour * hoursWeek
+---
 
 
 === Operations
@@ -944,6 +947,34 @@ for (let i=0 ; i<=n ; i++){   }
 
 === Modules
 
+
+
+=== Objects
+Javascript can use objects to define data and methods that can be applied to these data. This can look like: 
+
+[source,javascript]
+---
+let car = {type:"Tesla", power:"Electricity", color: white, length:5.1 };
+---
+
+The result of this assignment is that: 
+
+[source,javascript]
+---
+car.type = Tesla
+car.length = 5.1
+---
+
+We can also assign methods to objects. Methods are functions that describe the behaviour of an object. So for example a method for a car could be start(), charge(), stop(). 
+
+In CascadeStudio we encounter this approach in the definition of sketches. Each sketch is a new object, hence the declaration `new Sketch`. Then we apply methods to the sketch to let the sketch grow. For example, with the methods `.LineTo()` we call the LineTo method of the object. 
+In the definition of a function we can use the `this` keyword for the method to refer to the owner of the method. 
+
+
+
+
+
+---
 
 
 
