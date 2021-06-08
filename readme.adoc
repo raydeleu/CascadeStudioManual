@@ -523,16 +523,21 @@ The definition in CascadeStudio of the boolean functions and its parameters are 
 
 Union(objectsToJoin, keepObjects, fuzzValue, keepEdges)
 
-
+let box1 = Box(g/2,f,1.1*h,true)
+let box2 = Rotate([0,0,1],60,Box(g/2,f,1.1*h,true))
+let box3 = Rotate([0,0,1],120,Box(g/2,f,1.1*h,true))
+let hexagon = Union([box1, box2, box3], false, 0.01, false);
 
 === Difference
 
 Difference(mainBody, objectsToSubtract, keepObjects, fuzzValue, keepEdges)
 
+let cutterHole = Cylinder(d/2,h*3,true)
+let nut = Difference(nutShape, [cutterHole])
 
 === Intersection(objectsToIntersect, keepObjects, fuzzValue, keepEdges)
 
-
+let nutShape = Intersection([nutBodyBase,hexagon],false, 0.01,false)
 
 === RemoveInternalEdges(shape, keepShape)
 
