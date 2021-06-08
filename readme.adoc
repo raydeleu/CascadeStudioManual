@@ -385,24 +385,23 @@ Creates a Cylinder with a radius and height. The arguments are radius, height, c
 === Cone(radius1, radius2, height)
 Creates a revolved trapezoid with differing top and bottom radii. The arguments to this function are radius1, radius2 and height.
 
-   [source, javascript]
+[source, javascript]
 ----
-    let exampleCone     = Cone(10,2,20)
+let exampleCone     = Cone(10,2,20)
 ----
    
 === Text3D
 Creates 3D Text from a TrueType font
 
+[source, javascript]
+----
+let exampleText     = Text3D("Text", 15, 0.2,'Roboto')
+----
 
-   [source, javascript]
-----
-    let exampleText     = Text3D("Text", 15, 0.2,'Roboto')
-----
-    
 
 
 == Changing three dimensional shapes
-
+The commands in this section can be used to change the shapes that were created. These apply to the shapes created using the functions described in the previous section or using the more complex functions that will be discussed in the next sections.  
 
 === Translate(offset, shapes, keepOriginal)
 
@@ -428,7 +427,7 @@ The rotation is clockwise when looking into the positive direction of an axis. S
 
 
 === Scale(scale, shapes, keepOriginal)
-The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. 
+The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. Note that CascadeStudio does not support a non-uniform scaling of objects. This can be achieved using the OpenCascade BRep kernel however and would therefore require the definition of a specialized function. How these functions are created will be discussed in <<Create new functions>>.
 
 [source, javascript]
 ----
@@ -467,6 +466,12 @@ Apply a 45-degree cut to an array of edges on a shape
 
 
 == Combining 3D solid shapes
+
+---
+._Using boolean modifiers to create a nut from basic 3D shapes_ _
+[#shapes]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/nut_flow.png[nut,800]
+--- 
 
 
 
