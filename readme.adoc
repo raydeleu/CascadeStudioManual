@@ -486,9 +486,11 @@ NOT:: The result is always the opposite of the input.
 The boolean operations in 3D modelling act very similar. Instead of inputs having the value true or false, a point in space may be considered to be inside an object or outside. If we then consider two objects we can have the following operations: 
 
 --
-Union:: If a point is part of either object A OR object B, it is part of the resulting object. It is as if the two objects are fused together into a single object. If the operation is performed correctly, the socalled inner boundaries inside the new shape are no longer present and a larger new solid is created. 
-Intersection:: If a point is both part of object A and object B, it is considered to be part of the resulting object. So only the overlapping parts of the two objects remain and form a new shape. 
-Difference:: The Difference function represents a subtraction of object B from object A. For this operator the order of the parameters matters, as the second objects are subtracted from the first object.   
+Union:: If a point is part of either object A OR object B, it is part of the resulting object. It is as if the two objects are fused together into a single object. If the operation is performed correctly, the socalled inner boundaries inside the new shape are no longer present and a larger new solid is created. Some programs call this operation 'Fuse'. 
+
+Intersection:: If a point is both part of object A and object B, it is considered to be part of the resulting object. So only the overlapping parts of the two objects remain and form a new shape. An alternative name for this operation is 'Common'. 
+
+Difference:: The Difference function represents a subtraction of object B from object A. For this operator the order of the parameters matters, as the second objects are subtracted from the first object. An alternative name for this operation is 'Cut'.   
 --
 
 <<#nut>> shows how the shape of a nut can be created by combining an number of boxes, cylinders and cones. 
@@ -499,7 +501,20 @@ Difference:: The Difference function represents a subtraction of object B from o
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/nut_flow.png[nut,800]
 --- 
 
-The definition in CascadeStudio of the boolean functions and its parameters are specified in more detail in the next paragraphs.  
+Although the definition of boolean operations seems very straight forward, the actual calculation of the resulting shape is quite complex. As it is not possible to perform the calculation of the value for each infinitely small point in space, the software has to calculate the boundaries between two objects and define the division line between the two objects. This works best if there is a clear division line between the objects so that in case of small rounding errors in the calculation or the performance of the calculation with a reasonable step size the result of the calculation is still clear. Two conditions to consider are therefore whether an object is *manifold* and whether faces of the objects used for the calculation are *not parallel touching*. 
+
+[WARNING]
+====
+The input shapes for boolean operations should be manifold, i.e. completely closed. If this is not the case, the software can not determine whether a point is space is inside or outside of the object. 
+====
+
+[WARNING]
+====
+If faces of the two objects are coplanar, touching or nearly coincident, the software can have trouble determining the demarcation between the two objects. In that case the calculation might fail or give incorrect results. If possible try to avoid coplanar faces in boolean operations. 
+
+In the example shown in <<#nut>> the cylinder used to cut a hole through the body of the nut is made much longer than the thickness of the nut so that there are no coplanar faces. 
+
+The definition in CascadeStudio of the boolean functions and its parameters are specified in more detail in the ext paragraphs. 
 
 
 
