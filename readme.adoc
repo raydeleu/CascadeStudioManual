@@ -466,19 +466,30 @@ Apply a 45-degree cut to an array of edges on a shape
 
 
 == Combining 3D solid shapes
+A really powerfull way to create new shapes is combining basic shapes using socalled boolean operations. Boolean functions are functions that work on socalled boolean variables that have only two values such as `true` and `false` or 1 and 0. Some of the basic functions are then: 
+
+AND:: If A AND B are both true, the result is true, in all other cases the result is false;
+NAND:: If A AND B are not both true, the result is true, else the result is false; 
+OR: If at least A OR B are true, the result is true, if both are false the result is false;
+XOR:: If either A OR B are true, the result is true, of they are both true or both false, the result is false; 
+NOT:: The result is always the opposite of the input. 
+
+The boolean operations in 3D modelling act very similar. Instead of inputs having the value true or false, a point in space may be considered to be inside an object or outside. If we then consider two objects we can have the following operations: 
+
+Union:: If a point is part of either object A OR object B, it is part of the resulting object. It is as if the two objects are fused together into a single object. If the operation is performed correctly, the socalled inner boundaries inside the new shape are no longer present and a larger new solid is created. 
+Intersection:: If a point is both part of object A and object B, it is considered to be part of the resulting object. So only the overlapping parts of the two objects remain and form a new shape. 
+Difference:: The Difference function represents a subtraction of object B from object A. For this operator the order of the parameters matters, as the second objects are subtracted from the first object.   
+
+<<#shapes>> shows how the shape of a nut can be created by combining an number of boxes, cylinders and cones. 
 
 ---
-._Using boolean modifiers to create a nut from basic 3D shapes_ _
+._Using boolean operations to create a nut from basic 3D shapes_ _
 [#shapes]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/nut_flow.png[nut,800]
 --- 
 
+The definition in CascadeStudio of the boolean functions and its parameters are specified in more detail in the next paragraphs.  
 
-
-=== Difference, Union, Intersection
-CSG boolean  a set of shapes from a target shape
-    
-    Translate([0,0,10], Difference(Sphere(10), [Cylinder(5*t, 30, true)]))
 
 
 === Union(objectsToJoin, keepObjects, fuzzValue, keepEdges)
