@@ -511,6 +511,7 @@ The input shapes for boolean operations should be manifold, i.e. completely clos
 [WARNING]
 ====
 If faces of the two objects are coplanar, touching or nearly coincident, the software can have trouble determining the demarcation between the two objects. In that case the calculation might fail or give incorrect results. If possible try to avoid coplanar faces in boolean operations. 
+====
 
 In the example shown in <<#nut>> the cylinder used to cut a hole through the body of the nut is made much longer than the thickness of the nut so that there are no coplanar faces. 
 
