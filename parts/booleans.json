@@ -1,0 +1,132 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": true,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": false,
+    "showMaximiseIcon": false,
+    "showCloseIcon": false,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "column",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "width": 100,
+      "content": [
+        {
+          "type": "stack",
+          "height": 65.01501501501501,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 0,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "cascadeView",
+              "title": "CAD View",
+              "componentState": {
+                "componentName": "cascadeView",
+                "MeshRes": 0.1,
+                "MeshResRange": [
+                  0.01,
+                  2
+                ],
+                "Cache?": false,
+                "Radius": 30,
+                "RadiusRange": [
+                  20,
+                  40
+                ]
+              },
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        },
+        {
+          "type": "stack",
+          "height": 34.98498498498499,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 1,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "console",
+              "title": "Console",
+              "componentState": {},
+              "height": 20,
+              "isClosable": false,
+              "reorderEnabled": true
+            },
+            {
+              "type": "component",
+              "componentName": "codeEditor",
+              "title": "* booleans.json",
+              "componentState": {
+                "code": [
+                  "// Examples of solid shapes",
+                  "let hingeBlock      = Box(20,50,20, false)",
+                  "let hingePlate      = Box(60,55,5, false)",
+                  "let hingeBody       = Union([hingeBlock, hingePlate], false)",
+                  "",
+                  "// let hingeRounding   = Translate([10,60,20],Rotate([1,0,0],90,Cylinder(10,60,false)))",
+                  "// let hingeBodyRound  = Union([hingeBody, hingeRounding], false) ",
+                  "",
+                  "// let roundedBox      = Translate([-5,10,-5],Offset(Box(55,30,40,false),5))",
+                  "// let finalShape      = Intersection([hingeBodyRound,roundedBox])",
+                  "// let hingeBore       = Translate([10,60,20],Rotate([1,0,0],90,Cylinder(7,70,false)))",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "// let finalShapeHole  = Difference(finalShape, [hingeBore])",
+                  "// FilletEdges(finalShapeHole,5,[17],false)",
+                  ""
+                ]
+              },
+              "width": 50,
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}
