@@ -931,8 +931,8 @@ kbd:[F5]	| Recalculate/Render
 | kbd:[ALT] + kbd:[UP] 	| Move line up
 | kbd:[ALT] + kbd:[DN] 	| Move line down
 | kbd:[CTRL] + kbd:[Space] | Trigger suggestion/info
-| kbd:[CMD] + kbd:[]`]  | Indent
-| kbd:[CMD] + kbd:['[`]  | Outdent
+| kbd:[CMD] + kbd:[]]  | Indent
+| kbd:[CMD] + kbd:[[]  | Outdent
 | kbd:[ALT] + kbd:[DN] 		| 	Move line down
 | kbd:[ALT] + kbd:[DN] 		| 	Move line down
 | kbd:[CMD] + kbd:[/]		| Toggle comment line 
