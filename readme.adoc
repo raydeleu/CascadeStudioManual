@@ -461,23 +461,41 @@ If the gizmo is visible, the following keyboard shortcuts can be used:
 
 [cols="1,1"]
 |===
-| kbd:[T]		| Translate
-| kbd:[R]		| Rotate
-| kbd:[S]		| Scale
-| kbd:[W] or kbd:[L] 	| World or Local origin
+| kbd:[W]		| Translate
+| kbd:[E]		| Rotate
+| kbd:[R]		| Scale
+| kbd:[X] 	| World or Local origin
 |===
 
-(To be verified: the gizmo does not seem to work on older MacOS machines, perhaps dependent on graphics card?)
+[NOTE]
+====
+In the latest version the gizmo no longer seems to work
+====
 
 
 === Offset
-Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. Note that this can be used to create a rounded cube/box from a normal cube/box.
+Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. 
 
 [source, javascript]
 ----
 // Offset(shape, offsetDistance, tolerance, keepShape?)   
 Offset(Text3D("H", 36, 0.15, "Roboto"), 2.25*t)
 ----
+
+As a positive offset of a sharp corner results in a rounded shape, the offset function can be used to create a rounded cube/box from a normal cube/box. This is achieved by first contracting the shape with the required rounding radius - which preserves the original shape - and then applying the positive offset with the same distance. The steps are demonstrated in the function shown below.
+
+[source, javascript]
+----
+function RoundAll(shape,fillet)
+{
+    let shrunk_version = Offset(shape,-fillet)
+    let grown_version = Offset(shrunk_version, fillet)
+    return grown_version
+}
+----
+
+As we will see later, the offset function can also be used to create thin-walled shapes (see <<#Difference>>. 
+
 
 === FilletEdges
 Round-off an array of edges on a shape (derived from mouse hovering). Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. The behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
@@ -571,14 +589,35 @@ Strangely enough it is possible to combine shapes that are not overlapping into 
 
 === Difference
 
-Difference(mainBody, objectsToSubtract, keepObjects, fuzzValue, keepEdges)
-
+[source, javascript]
+----
+// Difference(mainBody, objectsToSubtract, keepObjects, fuzzValue, keepEdges)
 let cutterHole = Cylinder(d/2,h*3,true)
 let nut = Difference(nutShape, [cutterHole])
+----
 
-=== Intersection(objectsToIntersect, keepObjects, fuzzValue, keepEdges)
+The Difference function can be used in combination with the Offset function to create thin-walled versions of solids. This is achieved by applying a negative offset with the value of the wall thickness to an object and then subtracting this new shape from the original shape. Note that unless another 'cut' is made into this shape it is not visible from the outside that the new shape is hollow. 
 
+[source, javascript]
+----
+function ThinWall(shape,thickness)
+{
+    let shape_original = shape;
+    let shrunk = Offset(shape, -thickness);
+    let hollow = Difference(shape_original,[shrunk],false);
+    return hollow;
+}   
+----
+
+
+=== Intersection
+
+[source, javascript]
+----
+// Intersection(objectsToIntersect, keepObjects, fuzzValue, keepEdges)
 let nutShape = Intersection([nutBodyBase,hexagon],false, 0.01,false)
+---- 
+
 
 === RemoveInternalEdges(shape, keepShape)
 
