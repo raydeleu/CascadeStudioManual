@@ -521,21 +521,21 @@ The definition in CascadeStudio of the boolean functions and its parameters are 
 Union allows to combine shapes into a single (solid) shape. The function call looks like this: 
 
 [source, javascript]
-====
+----
 Union([objectsToJoin], keepObjects, fuzzValue, keepEdges)
-====
+----
 
 The first parameter combines all the objects to join into a single list or array, enclosed in square brackets. The second parameter is a boolean (true/false) that indicates if the original objects should be kept or may be removed. The fuzzValue parameter determines the distance that is used by the calculation to determine if a point is part of the object or not. The default value (that is used when the fuzzValue is not defined) is 0.1. Increasing or lowering the fuzzValue might help if the calculation fails due to coplanar surface or other unfavourable geometries. 
 
 The following code snippet shows how three boxes can be combined into a hexagon shape. 
 
 [source, javascript]
-====
+----
 let box1 = Box(g/2,f,1.1*h,true)
 let box2 = Rotate([0,0,1],60,Box(g/2,f,1.1*h,true))
 let box3 = Rotate([0,0,1],120,Box(g/2,f,1.1*h,true))
 let hexagon = Union([box1, box2, box3], false, 0.01, false);
-====
+----
 
 Strangely enough it is possible to combine shapes that are not overlapping into a single shape. In that case it seems as if nothing is changed after performing the operation, but the resulting shape can be used in other boolean operations as a single object. 
 
