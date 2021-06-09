@@ -431,7 +431,7 @@ The rotation is clockwise when looking into the positive direction of an axis. S
 ---
 ._Rotation is always performed with reference to the global origin_
 [#rotate] 
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotate_origin.png
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotate_origin.png[rotation,600]
 ---
 
 === Scale(scale, shapes, keepOriginal)
