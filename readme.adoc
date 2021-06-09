@@ -428,11 +428,11 @@ The Rotate function is similar to the Translate function. Instead of a displacem
 Rotate([0,1,0], -90, boxShape, true);
 ----
 
-The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. The rotation is always performed with reference to the global origin. So if your object is not centered at the global origin, the object will not only be rotated but also displaced (see <<#rotate>>). 
+The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. The rotation is always performed with reference to the global origin. So if your object is not centered at the global origin, the object will not only be rotated but also displaced (see <<#rotate-origin>>). 
 
 ---
 ._Rotation is always performed with reference to the global origin_
-[#rotate] 
+[#rotate-origin] 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotate_origin.png[rotation,600]
 ---
 
