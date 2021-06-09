@@ -457,6 +457,19 @@ let largeBox = Transform([0, 0, 30], [[1, 00, 0], 30], 2.00, displacedSmallBox);
 
 Calling the function Transform without the full set of arguments triggers the display of an interactive "gizmo" that allows to change the values of the transformation using click and drag of sliders. Note that CascadeStudio automatically adapts the values shown in the code to the values indicated with the gizmo. However, the level of control with the gizmo is limited as the interaction with the gizmo lacks a direct feedback to the user. Using code - by applying separate instructions for Translate, Rotate and Scale - delivers more repeatable and consistent results. 
 
+If the gizmo is visible, the following keyboard shortcuts can be used: 
+
+[cols="1,1"]
+|===
+| kbd:[T]		| Translate
+| kbd:[R]		| Rotate
+| kbd:[S]		| Scale
+| kbd:[W]/[L] 		| World or Local origin
+|===
+
+(To be verified: the gizmo does not seem to work on older MacOS machines, perhaps dependent on graphics card?)
+
+
 === Offset
 Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. Note that this can be used to create a rounded cube/box from a normal cube/box.
 
