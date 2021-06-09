@@ -426,8 +426,13 @@ The Rotate function is similar to the Translate function. Instead of a displacem
 Rotate([0,1,0], -90, boxShape, true);
 ----
 
-The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. The rotation is always performed with reference to the global origin. So if your object is not centered at the global origin, the object will not only be rotated but also displaced. 
+The rotation is clockwise when looking into the positive direction of an axis. So for example, the rotation of 90 degrees around the y-axis [0,1,0] will turn your object to the right through the ground plane. The rotation is always performed with reference to the global origin. So if your object is not centered at the global origin, the object will not only be rotated but also displaced (see <<#rotate>>). 
 
+---
+._Rotation is always performed with reference to the global origin_
+[#rotate] 
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotate_origin.png
+---
 
 === Scale(scale, shapes, keepOriginal)
 The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. Note that CascadeStudio does not support a non-uniform scaling of objects. This can be achieved using the OpenCascade BRep kernel however and would therefore require the definition of a specialized function. How these functions are created will be discussed in <<Create new functions>>.
@@ -572,10 +577,11 @@ for(let y = -80; y < 80; y += 40){
 === Sketch
 Some of the modelling approaches involve drawing a 2-dimensional sketch first and than creating a wire or solid from this sketch by extruding, revolving or lofting the 2D shapes into a 3-dimensional shape.
 
+---
 ._Using a 2-dimensional sketch as basis to create 3-dimensional shapes_
 [#img-ccs-sketch]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_to_shape.png[1000]
-
+---
 
 ==== new Sketch
 A new sketch is started with the command
