@@ -464,7 +464,7 @@ If the gizmo is visible, the following keyboard shortcuts can be used:
 | kbd:[T]		| Translate
 | kbd:[R]		| Rotate
 | kbd:[S]		| Scale
-| kbd:[W]/[L] 		| World or Local origin
+| kbd:[W] or [L] 	| World or Local origin
 |===
 
 (To be verified: the gizmo does not seem to work on older MacOS machines, perhaps dependent on graphics card?)
