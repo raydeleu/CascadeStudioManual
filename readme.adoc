@@ -496,19 +496,26 @@ function RoundAll(shape,fillet)
 
 ---
 ._Effect of positive and negative offset on shapes_
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/offset.png[700]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/offset.png[600]
 ---
 
-As we will see later, the offset function can also be used to create thin-walled shapes (see <<#Difference>>. 
+As we will see later, the offset function can also be used to create thin-walled shapes (see <<#Difference>>). 
 
 
 === FilletEdges
-Round-off an array of edges on a shape (derived from mouse hovering). Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. The behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
+The function `FilletEdges` can be used to bevel individual edges on a shape. The first parameter of the function identifies the shape that contains the edges, the second parameter sets the radius of the bevel or fillet. The third parameter contains the array of edges that should be rounded, i.e. a list of edges between square brackets. The edge indices can be found by hovering the mouse over the edge. 
+
+---
+._Finding the edge index by hovering the mouse over the edge_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/edge_index.png[500]
+---
+
+Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. However, this behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
 
 [source, javascript]
 ----
 // FilletEdges(shape, radius, edgeList, keepOriginal?)
-FilletEdges (Cylinder(10, 20), 4*t, [0,2])
+FilletEdges (Cylinder(10, 20), 2, [0,2])
 ----    
     
 === ChamferEdges
