@@ -496,30 +496,33 @@ function RoundAll(shape,fillet)
 
 ---
 ._Effect of positive and negative offset on shapes_
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/offset.png[600]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/offset.png[offset,600]
 ---
 
 As we will see later, the offset function can also be used to create thin-walled shapes (see <<#Difference>>). 
 
 
 === FilletEdges
-The function `FilletEdges` can be used to bevel individual edges on a shape. The first parameter of the function identifies the shape that contains the edges, the second parameter sets the radius of the bevel or fillet. The third parameter contains the array of edges that should be rounded, i.e. a list of edges between square brackets. The edge indices can be found by hovering the mouse over the edge. 
-
----
-._Finding the edge index by hovering the mouse over the edge_
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/edge_index.png[500]
----
-
-Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. However, this behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
+The function `FilletEdges` can be used to bevel individual edges on a shape. 
 
 [source, javascript]
 ----
 // FilletEdges(shape, radius, edgeList, keepOriginal?)
-FilletEdges (Cylinder(10, 20), 2, [0,2])
+FilletEdges (Cylinder(10, 20), 2, [0,2], false)
 ----    
+
+The first parameter of the function identifies the shape that contains the edges, the second parameter sets the radius of the bevel or fillet. The third parameter contains the array of edges that should be rounded, i.e. a list of edges between square brackets. The edge indices can be found by hovering the mouse over the edge. The fourth parameter is a boolean indicating whether the original shape should be retained or deleted.  
+
+---
+._Finding the edge index by hovering the mouse over the edge_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/edge_index.png[edgeindex,500]
+---
+
+Note that it is sufficient to list one of the edges in a loop or chain of edges for filleting. However, this behaviour is not always predictable. It seems that if there are multiple loops of which an edge can be a member, only this single edge is filleted. If there is already another fillet, it seems easier to select just a single edge to fillet a complete loop. Just try an edge and determine the result. Note that you always have to revert back to the original shape if you want to add another edge to the list, as the edge numbering is adapted after the filleting operation. 
+
     
 === ChamferEdges
-Apply a 45-degree cut to an array of edges on a shape
+The function ChamferEdges resembles the function FilletEdges but applies a 45-degree cut to an array of edges on a shape. The parameters are almost identical to that of FilletEdges: the first parameter is the shape, the second parameter the size of the chamfer, the third parameter the list of edges and the fourth parameter the indication whether the original shape should be kept. The default value for the last parameter is false and may therefore be omitted.  
     
 [source, javascript]
 ----    
@@ -527,6 +530,7 @@ Apply a 45-degree cut to an array of edges on a shape
 ChamferEdges(Cylinder(10, 20), 4*t, [0,2])
 ----
 
+The function ChamferEdges can only add a symmetric chamfer. An adapted version to apply an asymmetric chamfer is provided in <<#UnevenChamferEdges>>.  
 
 == Combining 3D solid shapes
 A really powerfull way to create new shapes is combining basic shapes using socalled boolean operations. It is like adding and subtracting shapes in 3D. 
