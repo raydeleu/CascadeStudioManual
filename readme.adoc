@@ -1115,17 +1115,18 @@ https://www.w3schools.com/js/default.asp
 
 
 === Variables
-Javascript variables may be considered to be containers for data values. A variable can be declared with the keyword `var`, `let`or `const`. The keyword `var`was used before 2015 and is most widely supported. The more modern version is to use `let` for variables with a restricted scope - so for example if they are declared inside a function they are only available within that function - and the keyword `const` to define a variable that will never be reassigned. For example, the conversion factor between feet and meters can be declared as a `const` as this will never change, whereas the length of a car should be defined using `let`.  
+Javascript variables may be considered to be containers for data values. A variable can be declared with the keyword `var`, `let` or `const`. The keyword `var` was used before 2015 and is most widely supported. The more modern version is to use `let` for variables with a restricted scope - so for example if they are declared inside a function they are only available within that function - and the keyword `const` to define a variable that will never be reassigned. For example, the conversion factor between feet and meters can be declared as a `const` as this will never change, whereas the length of a car should be defined using `let`.  
 
 [source, javascript]
 ----
 let rateHour = 30 ;
 let hoursWeek = 36 ;
 let rateWeek   = rateHour * hoursWeek
+console.log(rateWeek)
+console.log(typeof rateWeek)
 ----
 
-
-
+Once the variable is declared it can be used without the keyword. Note that opposed to many other programming languages it is not necessary to determine the type of variable up front. The declaration of the type of the variable is performed implicit by assigning a value. The `typeof` function can be used to determine the type of a variable. 
 
 === Operations
 
