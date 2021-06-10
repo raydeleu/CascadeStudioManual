@@ -494,6 +494,11 @@ function RoundAll(shape,fillet)
 }
 ----
 
+---
+._Effect of positive and negative offset on shapes_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/offset.png[700]
+---
+
 As we will see later, the offset function can also be used to create thin-walled shapes (see <<#Difference>>. 
 
 
