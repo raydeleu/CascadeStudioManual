@@ -794,7 +794,6 @@ The Bspline function draws a spline through the points that are entered as a lis
 
 
 
-
 == Creating shapes from faces or wires
 Most of the following functions work both on faces and on wires. Lofting and the RotatedExtrude require wires. A wire can be retrieved from a face using the "GetWire" function (see below). 
 
@@ -890,6 +889,68 @@ In the example below the function Sphere requires a definition of the radius and
   }
 ---- 
 
+
+
+==== UnevenChamferEdges
+
+[source,javascript]
+----
+function UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal) { 
+  let curChamfer = CacheOp(arguments, () => {
+    let mkChamfer = new oc.BRepFilletAPI_MakeChamfer(shape);
+    let foundEdges = 0;
+    ForEachEdge(shape, (index, edge) => {
+      if (edgeList.includes(index)) { mkChamfer.Add(dist1, dist2, edge,face); foundEdges++; }
+    });
+    if (foundEdges == 0) {
+      console.error("Chamfer Edges Not Found!  Make sure you are looking at the object _before_ the Chamfer is applied!");
+      return new oc.TopoDS_Solid(shape);
+    }
+    return new oc.TopoDS_Solid(mkChamfer.Shape());
+  });
+  sceneShapes.push(curChamfer);
+  if (!keepOriginal) { sceneShapes = Remove(sceneShapes, shape); }
+  return curChamfer;
+}
+
+
+box1 = Box(20,20,20)
+UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
+----
+
+
+=== Possible extensions to sketch functions
+The software CadQuery that is also based on the OpenCascade kernel offers more sketch commands than CascadeStudio. 
+
+[cols="1,1"]
+|===
+|CascadeStudio  | CadQuery
+|.LineTo	| .line
+		.lineTo
+		.vLine
+		.vLineTo
+		.hLine
+		.hLineTo
+		.polarLine
+		.PolarLineTo
+		.moveTo
+		.move
+| .ArcTo		| .threePointArc
+		.sagittaArc
+		.radiusArc
+		.tangenArcPoint
+| -             | .mirrorY .mirrorX
+| - 		| .rect
+| .Circle	| .circle
+| - 		| .ellipse .ellipseArc
+| Polyline	| .polyline
+| .End		| .close
+| -		| .rarray
+| - 		| .polarArray
+| -		| .slot2D
+| - 		| .offset2D
+|===		
+
 ==== Ellipse
 In the following example a new function is created by modifying the existing function called Circle to become a function Ellipse. Circle is a standard function provided by Cascade Studio in its library https://github.com/zalo/CascadeStudio/blob/master/js/CADWorker/CascadeStudioStandardLibrary.js. This function looks like this: 
 
@@ -932,34 +993,6 @@ Extrude(Ellipse(30,15,false),[0,0,20])
 ----
 
 This works like a charm! Note that in theory an ellipse can also be obtained by scaling a circle in one direction only. However, the Scale function currently only allows a uniform scale change. 
-
-==== UnevenChamferEdges
-
-[source,javascript]
-----
-function UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal) { 
-  let curChamfer = CacheOp(arguments, () => {
-    let mkChamfer = new oc.BRepFilletAPI_MakeChamfer(shape);
-    let foundEdges = 0;
-    ForEachEdge(shape, (index, edge) => {
-      if (edgeList.includes(index)) { mkChamfer.Add(dist1, dist2, edge,face); foundEdges++; }
-    });
-    if (foundEdges == 0) {
-      console.error("Chamfer Edges Not Found!  Make sure you are looking at the object _before_ the Chamfer is applied!");
-      return new oc.TopoDS_Solid(shape);
-    }
-    return new oc.TopoDS_Solid(mkChamfer.Shape());
-  });
-  sceneShapes.push(curChamfer);
-  if (!keepOriginal) { sceneShapes = Remove(sceneShapes, shape); }
-  return curChamfer;
-}
-
-
-box1 = Box(20,20,20)
-UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
-----
-
 
 
 
