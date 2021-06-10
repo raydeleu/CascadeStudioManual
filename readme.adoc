@@ -856,7 +856,25 @@ RotatedExtrude(wire4,50,90 )
 
 
 == Create new functions
-New functions can be declared according to the Javascript syntax. This starts with the keyword "function", then a function name (often with a capital first character) and then two rounded brackets around a list of parameters. The function performs some action using the parameters as input and can return values, wires, shapes et cetera. In the example below the function Sphere requires a definition of the radius and returns the shape of a sphere around the point [0,0,0].  
+
+=== What are functions? 
+
+New functions can be declared according to the Javascript syntax. This starts with the keyword "function", then a function name (often with a capital first character) and then two rounded brackets around a list of parameters. The function performs some action using the parameters as input and can return values, wires, shapes et cetera. 
+
+
+
+=== Creating new functions using CascadeStudio functionality
+
+
+
+
+
+
+
+=== Create new functions using OpenCascade kernel
+
+==== How to call functionality from OpenCascade kernel
+In the example below the function Sphere requires a definition of the radius and returns the shape of a sphere around the point [0,0,0].  
 
 [source, javascript]
 ----
@@ -872,7 +890,7 @@ New functions can be declared according to the Javascript syntax. This starts wi
   }
 ---- 
 
-
+==== Ellipse
 In the following example a new function is created by modifying the existing function called Circle to become a function Ellipse. Circle is a standard function provided by Cascade Studio in its library https://github.com/zalo/CascadeStudio/blob/master/js/CADWorker/CascadeStudioStandardLibrary.js. This function looks like this: 
 
 [source, javascript]
@@ -915,9 +933,32 @@ Extrude(Ellipse(30,15,false),[0,0,20])
 
 This works like a charm! Note that in theory an ellipse can also be obtained by scaling a circle in one direction only. However, the Scale function currently only allows a uniform scale change. 
 
+==== UnevenChamferEdges
+
+[source,javascript]
+----
+function UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal) { 
+  let curChamfer = CacheOp(arguments, () => {
+    let mkChamfer = new oc.BRepFilletAPI_MakeChamfer(shape);
+    let foundEdges = 0;
+    ForEachEdge(shape, (index, edge) => {
+      if (edgeList.includes(index)) { mkChamfer.Add(dist1, dist2, edge,face); foundEdges++; }
+    });
+    if (foundEdges == 0) {
+      console.error("Chamfer Edges Not Found!  Make sure you are looking at the object _before_ the Chamfer is applied!");
+      return new oc.TopoDS_Solid(shape);
+    }
+    return new oc.TopoDS_Solid(mkChamfer.Shape());
+  });
+  sceneShapes.push(curChamfer);
+  if (!keepOriginal) { sceneShapes = Remove(sceneShapes, shape); }
+  return curChamfer;
+}
 
 
-
+box1 = Box(20,20,20)
+UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
+----
 
 
 
