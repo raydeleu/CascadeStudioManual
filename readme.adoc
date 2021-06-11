@@ -285,6 +285,21 @@ Functions:: CascadeStudio offers some functions to decribe or construct 3D shape
 
 A good starting point can be to apply small changes to the code and to see what happens. The first changes can even be performed using the 3D dialog. The slider labelled "Radius" can be used to adapt the radius of the cylinder that is central to the 3D shape. 
 
+=== How to find your way in 3D space? 
+To understand many of the commands in CascadeStudio it is useful to understand how a location in 3D space are defined. As almost all 3d modelling and CAD programs, CascadeStudio uses three coordinates to indicate a location. The 3-dimensional space is considered to be a large box. Each location in this box can be described by a movement parallel to the width, depth and height of this box. The width is called the x-axis, the depth is called the y-axis and the height is called the z-axis. If we combine the  distance to the origin along each of these axes in an array [x,y,z] these can be considered the coordinates of the location. 
+
+This concept is illustrated in <<#coordinates>>. This image contains a box at the origin of space, a box translated 50 units along the x-axis, a cone translated 50 units along the z-axis and a sphere translated -50 units along the x-axis and 10 units along the z-axis. The image also illustrates how the size of the objects along x, y and z-axes is determined. 
+
+CascadeStudio does not define what the units are. So each unit could represent a millimeter or a kilometer. When the shapes are exported to an STL or STEP file, the scale of the object has to be set in the 3D printing software or the CAD program. 
+
+---
+._How places are indicated with sequences of x, y and z coordinates__
+[#coordinates]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/coordinates.png[nut,800]
+--- 
+
+As we will see later, for 2-dimensional sketches the coordinates can be shortened to only two values, namely [x,y]. Sketches in CascadeStudio are always created on the x-y plane and have to be rotated if shapes created from these sketches have to be oriented differently.  
+
 === Building a simple car
 As a next step, let's try to construct a simple version of the car shape shown in the introduction (see <<img-ccs-fillets>>). To create this car in CascadeStudio you have to start the software, delete all the example code on the left side of the interface and enter the code shown below. Then press kbd:[F5] to interpret the code. The result will be shown on the right side in the 3D window. 
 
