@@ -1,0 +1,66 @@
+== Creating shapes from faces or wires
+Most of the following functions work both on faces and on wires. Lofting and the RotatedExtrude require wires. A wire can be retrieved from a face using the "GetWire" function (see below).
+
+=== Extrude(face, direction, keepFace)
+An extrusion is created by pushing a deformable substance, such as molten metal or clay through a die or orifice with the desired cross-section. The result is a beam with this cross-section. In digital 3D modelling, extrusion is taking a face and extending it in a direction to form a solid shape. Normally the extrusion is performed in the normal direction, meaning perpendicular to the face. CascadeStudio uses a 3D vector [x,y,z] to determine the direction.
+
+
+[source,javascript]
+----
+// Extrude(face, direction, keepFace)
+Extrude(face, [20*(1-t), 0, 20]),
+----
+
+
+=== RotatedExtrude(wire, height, rotation[deg], keepWire?)
+Extrudes a wire vertically with a specified height and twist. Note the difference from the standard extrude, in that this function requires a wire instead of a face. This can be accomplished by using the `.Wire()` method for a sketch instead of the `Face()`. Another thing to point out is that the rotation is performed relative to the [0,0] location of the vertical axis. Moreover, the extrusion is always vertical - so along the z-axis or [0,0,1] - and not along the normal of a wire. The boolean keepwire indicates whether the wire should be kept or may be removed.
+
+    RotatedExtrude(wire, height, degrees, false)
+
+---
+._Difference of RotatedExtrude depending on position of wire relative to origin_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_extrude.png?raw=true[width=500]
+---
+
+---
+._Difference of RotatedExtrude exagerated by using a larger twist_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_extrude2.png?raw=true[width=500]
+---
+
+
+=== Pipe(shape, wirePath, keepInputs)
+Sweeps a face along a Wire
+
+    Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false)),
+
+=== Revolve
+Revolves Edges, Wires, and Faces about the specified Axis
+
+    Rotate([1,0,0], 90, Revolve(Translate([10*t,8*t,0], GetWire(face)), -60, [0, 1, 0])),
+
+
+=== Loft
+A loft is a modelling function that takes a number of planar wire-sections and interpolates between those. The wires act as the ribs of a construction and the lofting function is like stretching a shell around these ribs, just like the planking of a boat. The function Loft builds a solid through the sections defined by an array of 2 or more closed wires.
+
+[source,javascript]
+----
+// Loft(wires, keepWires)
+Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
+----
+
+
+
+=== GetWire(shape, faceIndex, keepOriginal)
+As some of the functions above require a wire, it may be useful to retrieve a wire from a face. This can be achieved with the function GetWire. The first parameter indicates the shape that contains a face, the second parameter contains the index of the required face and the boolean indicates whether the original shape should be kept (true) or deleted (false). The following code snippet shows an example for creating a rectangle by using the bottom face of a box (with face index 4) to retrieve the wire of a rectangle. Note that it is necessary to translate the wire to the correct location before using it as input to another function.
+ 
+[source, javascript]
+----
+let width = 25;
+let length = 50;
+let height = 10;
+
+let box1 = Box(width,length,height,true);
+let wire4 = Translate([0,0,height/2],GetWire(box1,4,false))
+RotatedExtrude(wire4,50,90 )
+----
+
