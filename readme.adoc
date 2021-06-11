@@ -114,7 +114,8 @@ After the design the part is often exported to a 3D printer or CNC machine in a 
 
 If you want to know more on manufacturing techniques, many resources can be found on the internet. At https://www.making.unsw.edu.au/learn/ there are some short tutorials on different manufacturing techniques to produce your own part. 
 
-
+// includes seem not to work on github readme
+// include::https://github.com/raydeleu/CascadeStudioManual/blob/main/parametric_modelling.adoc[]
 
 == Starting the program
 
