@@ -461,7 +461,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotate_o
 ---
 
 === Scale
-The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. Note that CascadeStudio does not support a non-uniform scaling of objects. This can be achieved using the OpenCascade BRep kernel however and would therefore require the definition of a specialized function. How these functions are created will be discussed in <<Create new functions>>.
+The third transformation function is Scale. The first parameter of the function is the uniform scale that is applied to the shape. The second parameter is the shape that is scaled, the third is again a boolean indicator (true/false) that determines if the original shape is retained or deleted. Note that CascadeStudio does not support a non-uniform scaling of objects. The OpenCascade kernel does support more complex transformations, but it might be argued that non-uniform scaling is not a desirable function as it changes the nature of the shapes that were created by the preceding code. Note that many of the applications that are available to construct a real 3D part do support non-uniform scaling. So if this non-uniform scaling is required to compensate for an inaccuracy of the CNC-machine or 3D printer, this can be achieved after the export of the shape to an STL or STEP format. 
 
 [source, javascript]
 ----
@@ -584,7 +584,7 @@ Difference:: The Difference function represents a subtraction of object B from o
 <<#nut>> shows how the shape of a nut can be created by combining an number of boxes, cylinders and cones. 
 
 ---
-._Using boolean operations to create a nut from basic 3D shapes_ _
+._Using boolean operations to create a nut from basic 3D shapes_
 [#nut]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/nut_flow.png[nut,800]
 --- 
@@ -701,7 +701,7 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
 ----
 
 The Sketch function is unique for all functions, as that it needs to be called with the "new" keyword prepended.
-The sketch can be expanded by adding lines, arcs, cirles, splines and fillets
+The sketch can be expanded by adding lines, arcs, cirles, splines and fillets. 
 	
 ==== .LineTo
 
@@ -869,11 +869,14 @@ Revolves Edges, Wires, and Faces about the specified Axis
     Rotate([1,0,0], 90, Revolve(Translate([10*t,8*t,0], GetWire(face)), -60, [0, 1, 0])),
 
 
-=== Loft(wires, keepWires)
-Interpolates along an array of wires into a continuous solid shape
+=== Loft
+A loft is a modelling function that takes a number of planar wire-sections and interpolates between those. The wires act as the ribs of a construction and the lofting function is like stretching a shell around these ribs, just like the planking of a boat. The function Loft builds a solid through the sections defined by an array of 2 or more closed wires.
 
-    Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
-
+[source,javascript]
+----
+// Loft(wires, keepWires)	
+Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
+----
 
 
 
