@@ -1042,21 +1042,44 @@ This works like a charm! Note that in theory an ellipse can also be obtained by 
 == Interface items
 
 === Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
-Creates a simple slider that can be used to adjust parameters of the model
+Creates a simple slider that can be used to adjust parameters of the model. The function specifies defaults, minimum and maximum ranges. 
 
- let t = Slider("Param", 1, 0.4, 1.75);
+[source, javascript]
+----
+// Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
+let currentSliderValue = Slider("Radius", 30 , 20 , 40); // name needs to be unique!
+----
 
-=== Checkbox(name = "Toggle", defaultValue = false)
+The callback of this function triggers whenever the mouse is let go, and realTime will cause the slider to update every frame that there is movement (but it's buggy!). The parameter step controls the amount that the keyboard arrow keys will increment or decrement a value. This parameter defaults to 1/100 (0.01).
+
+=== Checkbox
+This function creates a checkbox in the dialog of the 3D window that can be used to turn features on and off. The function returns a boolean value (true/false) that can be used in an if-statement in your code to determine which part of the code should be executed. 
+
+[source, javascript]
+----
+// Checkbox(name: string, defaultValue: boolean): boolean
+let currentCheckboxValue = Checkbox("Check?", true);
+---- 
 
 
- if (Checkbox("Loft?", true)){ Loft([face1, face2, face3], true); }
+=== Button(name = "Action")
+The Button function can be used to add an extra button to the dialog screen in the 3D window. According to the help in the editor window the function can be used to trigger a specific action: 
 
-Button(name = "Action")
+[source, javascript]
+----
+Button("Yell", ()=>{console.log("Help! I've been clicked!"); });
+----
 
+However, it seems that the button can only be used to start processing the script. The button then acts as a copy of the Evaluate button that is always available in the dialog window. 
 
-=== SaveFile(filename, fileURL)
+=== SaveFile
+The function SaveFile can be used to write the result of a script directly to a file. Normally this function is not needed, as in most cases you first inspect the result of the script in the 3D window and then use the menu to save the file. 
 
-
+[source, javascript]
+----
+// SaveFile(filename, fileURL)
+SaveFile("myInfo.txt", URL.createObjectURL( new Blob(["Hello, Harddrive!"], { type: 'text/plain' }) ));
+----
 
 == Modifying CascadeStudio
 As the code of CascadeStudio is available, it is possible to change items to your personal preferences. In this section some options for changes to the interface will be highlighted. Note that these changes are only possible if you run your own version of Cascade Studio with a live server.   
