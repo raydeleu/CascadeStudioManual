@@ -659,7 +659,8 @@ let nutShape = Intersection([nutBodyBase,hexagon],false, 0.01,false)
 ---- 
 
 
-=== RemoveInternalEdges(shape, keepShape)
+=== RemoveInternalEdges
+The function RemoveInternalEdges can be used to remove internal edges in shapes that were created using boolean functions. 
 
 
 // Line up the above shapes into a grid pattern for easy display
