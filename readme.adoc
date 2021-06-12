@@ -896,6 +896,25 @@ RotatedExtrude(wire4,50,90 )
 ----
 
 
+== Saving and exporting 
+
+=== Saving your model
+
+
+
+
+=== Exporting 3D models
+
+General: the MeshRes in the dialog is linked to the internal variable maxDeviation which is in fact a much better name. The lower this value, the more accurate the model will be represented in the 3D window and the more accurate the export file will be. This comes at a cost however. A more detailed model will take more time to render in the 3D view and result in larger meshes in the exported files.                          
+
+==== STEP export
+
+==== STL export
+
+
+==== OBJ export
+
+
 
 
 == Create new functions
