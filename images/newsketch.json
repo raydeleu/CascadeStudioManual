@@ -1,0 +1,232 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": true,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": false,
+    "showMaximiseIcon": false,
+    "showCloseIcon": false,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "row",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "content": [
+        {
+          "type": "stack",
+          "width": 50,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 0,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "codeEditor",
+              "title": "* newsketch.json",
+              "componentState": {
+                "code": [
+                  "function Dxy(currentPoint,dx,dy)",
+                  "{ ",
+                  "    let newPoint = []; ",
+                  "    newPoint[0]  = currentPoint[0] + dx;",
+                  "    newPoint[1]  = currentPoint[1] + dy; ",
+                  "    return newPoint",
+                  "}",
+                  "",
+                  "function Dx(currentPoint,dx)",
+                  "{ ",
+                  "    let newPoint = []; ",
+                  "    newPoint[0]  = currentPoint[0] + dx;",
+                  "    newPoint[1]  = currentPoint[1] ; ",
+                  "    return newPoint",
+                  "}",
+                  "",
+                  "function Dy(currentPoint,dy)",
+                  "{ ",
+                  "    let newPoint = []; ",
+                  "    newPoint[0]  = currentPoint[0];",
+                  "    newPoint[1]  = currentPoint[1] + dy; ",
+                  "    return newPoint",
+                  "}",
+                  "",
+                  "function Polar(currentPoint,distance,angleDegToX)",
+                  "{ ",
+                  "    let newPoint = []; ",
+                  "    angleRad = angleDegToX * Math.PI/180;",
+                  "    newPoint[0]  = currentPoint[0] + distance * Math.cos(angleRad);",
+                  "    newPoint[1]  = currentPoint[1] + distance * Math.sin(angleRad); ",
+                  "    return newPoint",
+                  "}",
+                  "",
+                  "function RadiusArc(currentPoint,endPoint,radius, clockwise)",
+                  "{",
+                  "    let midPoint = [];",
+                  "    let dx = endPoint[0] - currentPoint[0];",
+                  "    let dy = endPoint[1] - currentPoint[1];",
+                  "    let dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));",
+                  "    let alpha = Math.asin(dy/dist);",
+                  "    let beta  = Math.asin((dist/2)/radius);",
+                  "    let sag = radius - (Math.cos(beta) * radius)",
+                  "    if (clockwise == true)",
+                  "    {",
+                  "    midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;",
+                  "    midPoint[1] = currentPoint[1] + dy/2 + Math.cos(alpha)*sag; ",
+                  "    }",
+                  "    else",
+                  "    {",
+                  "    midPoint[0] = currentPoint[0] + dx/2 + Math.sin(alpha)*sag;",
+                  "    midPoint[1] = currentPoint[1] + dy/2 - Math.cos(alpha)*sag;",
+                  "    }",
+                  "    return midPoint",
+                  "}",
+                  "",
+                  "",
+                  "function SagArc(currentPoint,endPoint,sag,clockwise)",
+                  "{",
+                  "    let midPoint = [];",
+                  "    let dx = endPoint[0] - currentPoint[0];",
+                  "    let dy = endPoint[1] - currentPoint[1];",
+                  "    let dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));",
+                  "    let alpha = Math.asin(dy/dist);",
+                  "    if (clockwise == true)",
+                  "    {",
+                  "    midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;",
+                  "    midPoint[1] = currentPoint[1] + dy/2 + Math.cos(alpha)*sag; ",
+                  "    }",
+                  "    else",
+                  "    {",
+                  "    midPoint[0] = currentPoint[0] + dx/2 + Math.sin(alpha)*sag;",
+                  "    midPoint[1] = currentPoint[1] + dy/2 - Math.cos(alpha)*sag;",
+                  "    }",
+                  "    return midPoint",
+                  "}",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "p0 = [0,0]",
+                  "p1 = Dx(p0, 10); ",
+                  "p2 = SagArc(p1,p3,4,true)",
+                  "p3 = Dy(p1, 10); ",
+                  "p4 = Polar(p3,10,135)",
+                  "p5 = Dx(p4,-10);",
+                  "p7 = Dy(p5,-10)",
+                  "p6 = RadiusArc(p5,p7,7,false)",
+                  "",
+                  "test = new Sketch(p0)",
+                  ".LineTo(p1)",
+                  ".ArcTo(p2,p3)",
+                  ".LineTo(p4)",
+                  ".LineTo(p5)",
+                  ".ArcTo(p6,p7)",
+                  ".End(true).Face()",
+                  "Extrude(test,[0,0,20])",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              "width": 50,
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        },
+        {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "height": 80,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "cascadeView",
+                  "title": "CAD View",
+                  "componentState": {
+                    "componentName": "cascadeView",
+                    "MeshRes": 0.06,
+                    "MeshResRange": [
+                      0.01,
+                      2
+                    ],
+                    "Cache?": false,
+                    "Radius": 30,
+                    "RadiusRange": [
+                      20,
+                      40
+                    ]
+                  },
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            },
+            {
+              "type": "stack",
+              "height": 20,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "console",
+                  "title": "Console",
+                  "componentState": {},
+                  "height": 20,
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}
