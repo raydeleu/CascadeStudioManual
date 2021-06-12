@@ -988,26 +988,26 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 [cols="1,1, 1"]
 |===
 |CascadeStudio  | CadQuery 		| Extensions 
-|.LineTo	| .line			
-		.lineTo
-		.vLine
-		.vLineTo
-		.hLine
-		.hLineTo
-		.polarLine
-		.PolarLineTo
-		.moveTo
-		.move				|
-| .ArcTo	| .threePointArc	 
-		.sagittaArc
-		.radiusArc
-		.tangenArcPoint			|
+|		| .line			| Dxy()
+|.LineTo	|.lineTo 		| .LineTo()
+|		|.vLine			| Dy()
+|		|.vLineTo		| - 
+|		|.hLine			| Dx()
+|		|.hLineTo		| 
+|		|.polarLine		| Polar()
+|		|.PolarLineTo		| -
+|		|.moveTo		|-
+|		|.move			|-	
+| .ArcTo	| .threePointArc	   	| -
+|		|.sagittaArc			| SagArc()
+|		|.radiusArc			| RadiusArc()
+|		|.tangenArcPoint		| 
 | -             | .mirrorY .mirrorX		|
 | - 		| .rect				| Rect(), FilletRect()
-| .Circle	| .circle			|
+| .Circle	| .circle			| -
 | - 		| .ellipse .ellipseArc		| Ellipse()
-| Polygon	| .polyline			| RegularPolygon
-| .End		| .close			|
+| Polygon	| .polyline			| RegularPolygon()
+| .End		| .close			| 
 | -		| .rarray			|
 | - 		| .polarArray			|
 | -		| .slot2D			|
@@ -1113,9 +1113,28 @@ function SagArc(currentPoint,endPoint,sag,clockwise)
 }
 ----
 
+The following code shows an example how the functions defined in the previous sections can be used to construct a complex shape without calculating all absolute coordinates required to produce the sketch. 
 
+[source, javascript]
+----
+p0 = [0,0]
+p1 = Dx(p0, 10); 
+p2 = SagArc(p1,p3,4,true)
+p3 = Dy(p1, 10); 
+p4 = Polar(p3,10,135)
+p5 = Dx(p4,-10);
+p7 = Dy(p5,-10)
+p6 = RadiusArc(p5,p7,7,false)
 
-
+test = new Sketch(p0)
+.LineTo(p1)
+.ArcTo(p2,p3)
+.LineTo(p4)
+.LineTo(p5)
+.ArcTo(p6,p7)
+.End(true).Face()
+Extrude(test,[0,0,20])
+----
 
 
 ==== Rect
