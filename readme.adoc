@@ -1006,7 +1006,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 | - 		| .rect				| Rect(), FilletRect()
 | .Circle	| .circle			|
 | - 		| .ellipse .ellipseArc		| Ellipse()
-| Polygon	| .polyline			|
+| Polygon	| .polyline			| RegularPolygon
 | .End		| .close			|
 | -		| .rarray			|
 | - 		| .polarArray			|
@@ -1132,6 +1132,27 @@ Extrude(Ellipse(30,15,false),[0,0,20])
 This works like a charm! Note that in theory an ellipse can also be obtained by scaling a circle in one direction only. However, the Scale function currently only allows a uniform scale change. 
 
 
+==== RegularPolygon
+The function RegularPolygon can be used to draw a regular polygon. The first parameter indicates the radius of the polygon (i.e. the radius of the inscribed circle that would pass through each of the corners of the polygon), the second parameter indicates the number of corners. The shape is always centered around the origin. 
+
+[source, javascript]
+----
+function RegularPolygonPoints(radius, numPoints) {
+    const points = []
+    for (let theta = 0; theta < 2*Math.PI; theta += 2*Math.PI / numPoints) 
+    {
+        points.push([Math.cos(theta) * radius, Math.sin(theta) * radius, 0])
+    }
+    return points
+}
+
+function RegularPolygon(radius, numPoints)
+{
+    return Polygon(RegularPolygonPoints(radius, numPoints))
+}
+----
+
+Note that this code is directly derived from https://cadhub.xyz/u/franknoirot/Incribed-Polygon. 
 
 == Interface items
 
