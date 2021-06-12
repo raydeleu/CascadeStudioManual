@@ -1015,6 +1015,93 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 |===		
 
 
+==== Dx, Dy, Dxy
+The functions Dx, Dy and Dxy can be used to determine the coordinates of the next point from the difference in the x-coordinate (horizontal distance if looking at the x-y plane from the top), the difference in the y-coordinate (vertical distance) and the difference in both x and y coordinate. The concept of these functions is to determine the absolute coordinates of the points along the sketch using relative distances from one point to the next. The absolute coordinates can then be used together with the standard sketch functions provided by CascadeStudio. 
+
+[source, javascript]
+----
+function Dxy(currentPoint,dx,dy)
+{ 
+    let newPoint = []; 
+    newPoint[0]  = currentPoint[0] + dx;
+    newPoint[1]  = currentPoint[1] + dy; 
+    return newPoint
+}
+
+function Dx(currentPoint,dx)
+{ 
+    let newPoint = []; 
+    newPoint[0]  = currentPoint[0] + dx;
+    newPoint[1]  = currentPoint[1] ; 
+    return newPoint
+}
+
+function Dy(currentPoint,dy)
+{ 
+    let newPoint = []; 
+    newPoint[0]  = currentPoint[0];
+    newPoint[1]  = currentPoint[1] + dy; 
+    return newPoint
+}
+----
+
+==== RadiusArc
+
+[source, javascript]
+----
+function RadiusArc(currentPoint,endPoint,radius, clockwise)
+{
+    let midPoint = [];
+    let dx = endPoint[0] - currentPoint[0];
+    let dy = endPoint[1] - currentPoint[1];
+    let dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+    let alpha = Math.asin(dy/dist);
+    let beta  = Math.asin((dist/2)/radius);
+    let sag = radius - (Math.cos(beta) * radius)
+    if (clockwise == true)
+    {
+    midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;
+    midPoint[1] = currentPoint[1] + dy/2 + Math.cos(alpha)*sag; 
+    }
+    else
+    {
+    midPoint[0] = currentPoint[0] + dx/2 + Math.sin(alpha)*sag;
+    midPoint[1] = currentPoint[1] + dy/2 - Math.cos(alpha)*sag;
+    }
+    return midPoint
+}
+----
+
+
+==== SagArc
+
+[source, javascript]
+----
+function SagArc(currentPoint,endPoint,sag,clockwise)
+{
+    let midPoint = [];
+    let dx = endPoint[0] - currentPoint[0];
+    let dy = endPoint[1] - currentPoint[1];
+    let dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+    let alpha = Math.asin(dy/dist);
+    if (clockwise == true)
+    {
+    midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;
+    midPoint[1] = currentPoint[1] + dy/2 + Math.cos(alpha)*sag; 
+    }
+    else
+    {
+    midPoint[0] = currentPoint[0] + dx/2 + Math.sin(alpha)*sag;
+    midPoint[1] = currentPoint[1] + dy/2 - Math.cos(alpha)*sag;
+    }
+    return midPoint
+}
+----
+
+
+
+
+
 
 ==== Rect
 The function Rect draws a rectangular face with straight edges. The parameters are width (x) and depth (y0. The third parameter is a boolean that indicates whether the shape should be centered. The default is that the shape is centered. 
