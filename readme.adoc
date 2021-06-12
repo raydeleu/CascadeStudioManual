@@ -988,7 +988,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 [cols="1,1, 1"]
 |===
 |CascadeStudio  | CadQuery 		| Extensions 
-|.LineTo	| .line			|
+|.LineTo	| .line			
 		.lineTo
 		.vLine
 		.vLineTo
@@ -997,11 +997,11 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 		.polarLine
 		.PolarLineTo
 		.moveTo
-		.move
-| .ArcTo		| .threePointArc	| 
+		.move				|
+| .ArcTo	| .threePointArc	 
 		.sagittaArc
 		.radiusArc
-		.tangenArcPoint
+		.tangenArcPoint			|
 | -             | .mirrorY .mirrorX		|
 | - 		| .rect				| Rect(), FilletRect()
 | .Circle	| .circle			|
