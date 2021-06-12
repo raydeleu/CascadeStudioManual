@@ -1015,7 +1015,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 |===		
 
 
-==== Dx, Dy, Dxy
+==== Dx, Dy, Dxy, Polar
 The functions Dx, Dy and Dxy can be used to determine the coordinates of the next point from the difference in the x-coordinate (horizontal distance if looking at the x-y plane from the top), the difference in the y-coordinate (vertical distance) and the difference in both x and y coordinate. The concept of these functions is to determine the absolute coordinates of the points along the sketch using relative distances from one point to the next. The absolute coordinates can then be used together with the standard sketch functions provided by CascadeStudio. 
 
 [source, javascript]
@@ -1044,6 +1044,21 @@ function Dy(currentPoint,dy)
     return newPoint
 }
 ----
+
+The function Polar calculates the position of a point based on the distance and the angle to the previous point. The angle is specified as degrees from the x-axis, measured counter-clockwise. 
+
+[source, javascript]
+----
+function Polar(currentPoint,distance,angleDegToX)
+{ 
+    let newPoint = []; 
+    angleRad = angleDegToX * Math.PI/180;
+    newPoint[0]  = currentPoint[0] + distance * Math.cos(angleRad);
+    newPoint[1]  = currentPoint[1] + distance * Math.sin(angleRad); 
+    return newPoint
+}
+----
+
 
 ==== RadiusArc
 
