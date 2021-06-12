@@ -1119,11 +1119,11 @@ The following code shows an example how the functions defined in the previous se
 ----
 p0 = [0,0]
 p1 = Dx(p0, 10); 
+p3 = Dy(p1, 10); // note that p3 has to be calculated first 
 p2 = SagArc(p1,p3,4,true)
-p3 = Dy(p1, 10); 
 p4 = Polar(p3,10,135)
 p5 = Dx(p4,-10);
-p7 = Dy(p5,-10)
+p7 = Dy(p5,-10); // note that p7 has to be calculated first
 p6 = RadiusArc(p5,p7,7,false)
 
 test = new Sketch(p0)
