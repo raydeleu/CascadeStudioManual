@@ -1014,6 +1014,80 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 | - 		| .offset2D
 |===		
 
+
+
+==== Rect
+The function Rect draws a rectangular face with straight edges. The parameters are width (x) and depth (y0. The third parameter is a boolean that indicates whether the shape should be centered. The default is that the shape is centered. 
+
+[source, javascript]
+----
+function Rect(x,y,center) {
+                    let p0;
+                    let p1;
+                    let p2;
+                    let p3;
+                    if (center == false) 
+                    {
+                        p0 = [0,0];
+                        p1 = [x,0];
+                        p2 = [x,y];
+                        p3 = [0,y];
+                    }
+                    else
+                    {
+                        p0 = [-0.5*x,-0.5*y];
+                        p1 = [0.5*x, -0.5*y];
+                        p2 = [0.5*x,  0.5*y];
+                        p3 = [-0.5*x, 0.5*y];
+                    }        
+                    return new Sketch(p0)
+                   .LineTo(p1)
+                   .LineTo(p2)
+                   .LineTo(p3)
+                   .End(true)
+                   .Face();
+                 }
+----
+
+
+==== FilletRect 
+The function FilletRect draws a rectangle with fillets in each corner. The parameters are width, depth, fillet radius and a boolean indicating whether the shape should be centered around the origin or be started at the origin. The default is that the shape is centered. 
+
+[source, javascript]
+----
+function FilletRect(x,y,f,center) {
+                    let p0;
+                    let p1;
+                    let p2;
+                    let p3;
+                    if (center == false) 
+                    {
+                        p0 = [0,0];
+                        p1 = [x,0];
+                        p2 = [x,y];
+                        p3 = [0,y];
+                    }
+                    else
+                    {
+                        p0 = [-0.5*x,-0.5*y];
+                        p1 = [0.5*x, -0.5*y];
+                        p2 = [0.5*x,  0.5*y];
+                        p3 = [-0.5*x, 0.5*y];
+                    }        
+                    return new Sketch(p0)
+                   .LineTo(p1).Fillet(f)
+                   .LineTo(p2).Fillet(f)
+                   .LineTo(p3).Fillet(f)
+                   .End(true).Fillet(f)
+                   .Face();
+                 }
+----
+
+
+
+
+
+
 ==== Ellipse
 In the following example a new function is created by modifying the existing function called Circle to become a function Ellipse. Circle is a standard function provided by Cascade Studio in its library https://github.com/zalo/CascadeStudio/blob/master/js/CADWorker/CascadeStudioStandardLibrary.js. This function looks like this: 
 
