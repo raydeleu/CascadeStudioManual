@@ -1156,6 +1156,15 @@ function MirrorY(currentPoint, xvalue)
 ----
 
 ==== Example usage of sketching extensions
+If you want to use the new functions as defined above you can enter them at the beginning of your code for each new part. It is also possible to make a separate file that only contains the definition of the new functions, place this in a directory where the CascadeStudio code is placed and import this file with the following command: 
+
+[source, javascript]
+----
+importScripts('../nsketch.js') 
+----
+
+In the example the file is located in the directory `js` that is located directly below the directory that contains the `index.html` that is used to start CascadeStudio with your own live server. 
+
 
 The following code shows an example how the functions defined in the previous sections can be used to construct a complex shape without calculating all absolute coordinates required to produce the sketch. 
 
