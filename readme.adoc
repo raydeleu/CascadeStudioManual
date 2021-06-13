@@ -803,10 +803,13 @@ Constructs an order-N Bezier Curve where the first N-1 points are control points
 // this.BezierTo(bezierControlPoints)
 ----
 
-=== this.BSplineTo(bsplinePoints)
+=== this.BSplineTo
 Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
 
-
+[source, javascript]
+----
+// this.BSplineTo(bsplinePoints)
+----
 
 // [caption="Figure {counter:figure}: ", reftext="Fig. {figure}"]
 // .Example image
@@ -910,11 +913,12 @@ Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
 
 
 
-=== GetWire(shape, faceIndex, keepOriginal)
+=== GetWire
 As some of the functions above require a wire, it may be useful to retrieve a wire from a face. This can be achieved with the function GetWire. The first parameter indicates the shape that contains a face, the second parameter contains the index of the required face and the boolean indicates whether the original shape should be kept (true) or deleted (false). The following code snippet shows an example for creating a rectangle by using the bottom face of a box (with face index 4) to retrieve the wire of a rectangle. Note that it is necessary to translate the wire to the correct location before using it as input to another function. 
  
 [source, javascript] 
 ----
+// GetWire(shape, faceIndex, keepOriginal)
 let width = 25;
 let length = 50;
 let height = 10;
@@ -1361,7 +1365,7 @@ Note that this code is directly derived from https://cadhub.xyz/u/franknoirot/In
 
 == Interface items
 
-=== Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
+=== Slider
 Creates a simple slider that can be used to adjust parameters of the model. The function specifies defaults, minimum and maximum ranges. 
 
 [source, javascript]
@@ -1382,11 +1386,12 @@ let currentCheckboxValue = Checkbox("Check?", true);
 ---- 
 
 
-=== Button(name = "Action")
+=== Button
 The Button function can be used to add an extra button to the dialog screen in the 3D window. According to the help in the editor window the function can be used to trigger a specific action: 
 
 [source, javascript]
 ----
+// Button(name = "Action")
 Button("Yell", ()=>{console.log("Help! I've been clicked!"); });
 ----
 
