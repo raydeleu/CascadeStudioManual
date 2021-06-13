@@ -1126,6 +1126,7 @@ function RadiusArc(currentPoint,endPoint,radius, clockwise)
     let alpha = Math.asin(dy/dist);
     let beta  = Math.asin((dist/2)/radius);
     let sag = radius - (Math.cos(beta) * radius)
+    if (dx<0){clockwise = !clockwise}
     if (clockwise == true)
     {
     midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;
@@ -1152,6 +1153,7 @@ function SagArc(currentPoint,endPoint,sag,clockwise)
     let dy = endPoint[1] - currentPoint[1];
     let dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
     let alpha = Math.asin(dy/dist);
+    if (dx<0){clockwise = !clockwise}
     if (clockwise == true)
     {
     midPoint[0] = currentPoint[0] + dx/2 - Math.sin(alpha)*sag;
