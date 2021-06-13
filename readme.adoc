@@ -987,22 +987,22 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 
 [cols="1,1, 1"]
 |===
-|CascadeStudio  | CadQuery 		| Extensions 
-|		| .line			| Dxy()
-|.LineTo	|.lineTo 		| .LineTo()
-|		|.vLine			| Dy()
-|		|.vLineTo		| - 
-|		|.hLine			| Dx()
-|		|.hLineTo		| 
-|		|.polarLine		| Polar()
-|		|.PolarLineTo		| -
-|		|.moveTo		|-
-|		|.move			|-	
+|CascadeStudio  | CadQuery 			| Extensions 
+|		| .line				| Dxy()
+|.LineTo	|.lineTo 			| .LineTo()
+|		|.vLine				| Dy()
+|		|.vLineTo			| - 
+|		|.hLine				| Dx()
+|		|.hLineTo			| 
+|		|.polarLine			| Polar(), PolarX(), PolarY()
+|		|.PolarLineTo			| -
+|		|.moveTo			| -
+|		|.move				| -	
 | .ArcTo	| .threePointArc	   	| -
 |		|.sagittaArc			| SagArc()
 |		|.radiusArc			| RadiusArc()
 |		|.tangenArcPoint		| 
-| -             | .mirrorY .mirrorX		|
+| -             | .mirrorY .mirrorX		| MirrorY(), MirrorX()
 | - 		| .rect				| Rect(), FilletRect()
 | .Circle	| .circle			| -
 | - 		| .ellipse .ellipseArc		| Ellipse()
@@ -1015,7 +1015,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 |===		
 
 
-==== Dx, Dy, Dxy, Polar
+==== Dx, Dy, Dxy
 The functions Dx, Dy and Dxy can be used to determine the coordinates of the next point from the difference in the x-coordinate (horizontal distance if looking at the x-y plane from the top), the difference in the y-coordinate (vertical distance) and the difference in both x and y coordinate. The concept of these functions is to determine the absolute coordinates of the points along the sketch using relative distances from one point to the next. The absolute coordinates can then be used together with the standard sketch functions provided by CascadeStudio. 
 
 [source, javascript]
@@ -1045,7 +1045,9 @@ function Dy(currentPoint,dy)
 }
 ----
 
-The function Polar calculates the position of a point based on the distance and the angle to the previous point. The angle is specified as degrees from the x-axis, measured counter-clockwise. 
+==== Polar, PolarX, PolarY
+
+The function Polar calculates the position of a point based on the distance and the angle to the previous point. The angle is specified as degrees from the x-axis, measured counter-clockwise. The parameters are the point that is used as reference to calculate the new point, the distance between the current and the new point and the angle in degrees. In the function PolarX the distance represents the difference in the x-coordinate (so the horizontal distance), in the function PolarY the distance represents the difference in the y-coordinate (so the vertical distance). 
 
 [source, javascript]
 ----
@@ -1055,6 +1057,24 @@ function Polar(currentPoint,distance,angleDegToX)
     angleRad = angleDegToX * Math.PI/180;
     newPoint[0]  = currentPoint[0] + distance * Math.cos(angleRad);
     newPoint[1]  = currentPoint[1] + distance * Math.sin(angleRad); 
+    return newPoint
+}
+
+function PolarX(currentPoint,xdistance,angleDegToX)
+{ 
+    let newPoint = []; 
+    let angleRad = angleDegToX * Math.PI/180;
+    newPoint[0]  = currentPoint[0] + xdistance;
+    newPoint[1]  = currentPoint[1] + xdistance * Math.tan(angleRad); 
+    return newPoint
+}
+
+function PolarY(currentPoint,ydistance,angleDegToX)
+{ 
+    let newPoint = []; 
+    let angleRad = angleDegToX * Math.PI/180;
+    newPoint[0]  = currentPoint[0] + ydistance/Math.tan(angleRad);
+    newPoint[1]  = currentPoint[1] + ydistance; 
     return newPoint
 }
 ----
@@ -1113,20 +1133,47 @@ function SagArc(currentPoint,endPoint,sag,clockwise)
 }
 ----
 
+==== MirrorX, MirrorY
+The functions MirrorX and MirrorY calculate the position of a point that is mirrored from a reference point in either the x-axis or the y-axis. The function has two parameters, namely the point that is mirrored and the position of the horizontal or vertical line that is used as the mirror-plane. So for example, in MirrorX the second parameter represents the y-coordinate of the displaced y-axis that is used as the mirror-line. If the second parameter is set a 0, respectively the the x-axis or the y-axis are used as the mirror-line. 
+
+[source, javascript]
+----
+function MirrorX(currentPoint, yvalue)
+    {
+        let mirrorPoint = [];    
+        mirrorPoint[0] = currentPoint[0];
+        mirrorPoint[1] = yvalue - (currentPoint[1]-yvalue);
+        return mirrorPoint
+    }
+
+function MirrorY(currentPoint, xvalue)
+    {
+        let mirrorPoint = [];    
+        mirrorPoint[0] = xvalue - (currentPoint[0]-xvalue);
+        mirrorPoint[1] = currentPoint[1];
+        return mirrorPoint
+    }
+----
+
+==== Example usage of sketching extensions
+
 The following code shows an example how the functions defined in the previous sections can be used to construct a complex shape without calculating all absolute coordinates required to produce the sketch. 
 
 [source, javascript]
 ----
-p0 = [0,0]
-p1 = Dx(p0, 10); 
-p3 = Dy(p1, 10); // note that p3 has to be calculated first 
-p2 = SagArc(p1,p3,4,true)
-p4 = Polar(p3,10,135)
-p5 = Dx(p4,-10);
-p7 = Dy(p5,-10); // note that p7 has to be calculated first
-p6 = RadiusArc(p5,p7,7,false)
+let p0 = [0,0]
+let p1 = Dx(p0, 10); 
+let p3 = Dy(p1, 10); 
+let p2 = SagArc(p1,p3,4,true)
+let p4 = Polar(p3,10,135)
+let p5 = Dx(p4,-10);
+let p7 = Dy(p5,-10)
+let p6 = RadiusArc(p5,p7,7,false)
+let p8 = MirrorY(p6,0)
+console.log(p6)
+console.log(p8)
 
-test = new Sketch(p0)
+let test = new Sketch(p0)
 .LineTo(p1)
 .ArcTo(p2,p3)
 .LineTo(p4)
@@ -1135,7 +1182,6 @@ test = new Sketch(p0)
 .End(true).Face()
 Extrude(test,[0,0,20])
 ----
-
 
 ==== Rect
 The function Rect draws a rectangular face with straight edges. The parameters are width (x) and depth (y0. The third parameter is a boolean that indicates whether the shape should be centered. The default is that the shape is centered. 
