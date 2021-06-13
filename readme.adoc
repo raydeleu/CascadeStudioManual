@@ -717,41 +717,46 @@ The sketch can be expanded by adding lines, arcs, cirles, splines and fillets.
  mysketch.LineTo([xvalue2,yvalue2]).Fillet(filletradius)
 ----
 
-==== this.End(closed, reversed)
-
- mysketch.LineTo([xvalue2,yvalue2]).End(true)
-
-The command .End finishes the sketch. If the boolean is true, the sketch will be closed to the first point of the sketch. This relieves the user from drawing the last line back to the starting point.
-
-==== this.Face(reversed?)
-The command .Face() makes a face out of the closed contour.
-
- mysketch.LineTo([xvalue2,yvalue2]).End(true).Face()
-
-If the boolean is set to true, the face is reversed. In the viewport the face can only be seen from the reverse side.
+==== this.End
+The command .End finishes the sketch. Two booleans can be added as parameter. If the first boolean is true, the sketch will be closed to the first point of the sketch. This relieves the user from drawing the last line back to the starting point. The second parameter determines whether the direction of the sketch is reversed (true) or not (false). The direction of the sketch determines the direction of the normal and therefore the direction of the face. Note that the face is only visible when looking against the normal of the face. 
 
 [source, javascript]
 ----
- let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
+// this.End(closed, reversed)
+mysketch.LineTo([xvalue2,yvalue2]).End(true)
+----
+
+==== this.Face
+The command .Face() makes a face out of the closed contour. The boolean optional parameter indicates whether the face is reversed (true) or not (false). The default value is false. 
+
+[source, javascript]
+----
+// this.Face(reversed?)
+let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                LineTo([ 10*t,-8*t]).Fillet(2*t).
                LineTo([  0*t, 8*t]).Fillet(2*t).
                End(true).Face(true);
 ----
 
-==== this.Wire(reversed?)
+==== this.Wire
 The command .Wire() creates a wire (a set of connected points in 2D space). Wires can be used to Loft a solid or to extrude a shell.
- 
- mysketch.LineTo([xvalue2,yvalue2]).End(true).Wire()
- 
+
+[source, javascript]
+----
+// this.Wire(reversed?)
+mysketch.LineTo([xvalue2,yvalue2]).End(true).Wire()
+----
+
 Just as with a face, a boolean "true" can be added to Wire to reverse the direction of the wire.
 
 
-=== this.ArcTo(pointOnArc, arcEnd)
+=== this.ArcTo
 With ArcTo it is possible to define an from the last point to the end point and adding a point on the arc.
 
 [source, javascript]
 ----
 // sketch with arc 
+// this.ArcTo(pointOnArc, arcEnd)
 let arc_test = new Sketch([0,0])
 .LineTo([10,0])
 .ArcTo([15,5],[10,10])
@@ -790,11 +795,17 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arct
 
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
-=== this.BezierTo(bezierControlPoints)
+=== this.BezierTo
 Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve. 
+
+[source, javascript]
+----
+// this.BezierTo(bezierControlPoints)
+----
 
 === this.BSplineTo(bsplinePoints)
 Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
+
 
 
 // [caption="Figure {counter:figure}: ", reftext="Fig. {figure}"]
@@ -809,44 +820,57 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/bezier.p
 ---
 
 
-=== Polygon(points, wire)
+=== Polygon
 With the Polygon command it is possible to shorten the definition of a sketch. The Polygon is defined by a number of three dimensional point in space, defined as [x,y,z] coordinates.
 
 [source, javascript]
 ----
- Polygon([[-25, -15, 0], [25, -15, 0], [0, 35, 0]], true)
+// Polygon(points, wire?)
+Polygon([[-25, -15, 0], [25, -15, 0], [0, 35, 0]], true)
 ---- 
 
 The boolean indicates whether the Polygon describes a Wire (true) or a Face (false).
 
-=== Circle(radius, wire)
+=== Circle
 The circle command can be used to draw a 2-dimensional circle with a specified radius. The arguments to this function are radius, wire?. The wire? parameter indicates whether the circle should be shown and handled as a face or as a wire.
 
+[source, javascript]
+----
+// Circle(radius, wire)
+----
 
 
-=== BSpline(inPoints, closed)
+=== BSpline
 The Bspline function draws a spline through the points that are entered as a list. The arguments are a list of points, followed by a boolean the indicates whether the wire should be closed (true) or open (other).As can be seen in the example below, the BSpline can also be used as a rail to construct a pipe by sweeping a face along this rail. The Pipe command will be explained below.
 
-  Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false))
-
-
-
-
-
+[source, javascript]
+----
+// BSpline(inPoints, closed)
+Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false))
+---- 
 
 
 == Creating shapes from faces or wires
 Most of the following functions work both on faces and on wires. Lofting and the RotatedExtrude require wires. A wire can be retrieved from a face using the "GetWire" function (see below). 
 
-=== Extrude(face, direction, keepFace)
+=== Extrude
 Extrudes a face along a vector direction
 
-    Extrude(face, [20*(1-t), 0, 20]),
+[source, javascript]
+----
+// Extrude(face, direction, keepFace)
+Extrude(face, [20*(1-t), 0, 20]),
+----
 
-=== RotatedExtrude(wire, height, rotation[deg], keepWire?)
+
+=== RotatedExtrude
 Extrudes a wire vertically with a specified height and twist. Note the difference from the standard extrude, in that this function requires a wire instead of a face. This can be accomplished by using the `.Wire()` method for a sketch instead of the `Face()`. Another thing to point out is that the rotation is performed relative to the [0,0] location of the vertical axis. Moreover, the extrusion is always vertical - so along the z-axis or [0,0,1] - and not along the normal of a wire. The boolean keepwire indicates whether the wire should be kept or may be removed.  
 
-    RotatedExtrude(wire, height, degrees, false)
+[source, javascript]
+---- 
+RotatedExtrude(wire, height, rotation[deg], keepWire?)
+RotatedExtrude(wire, height, degrees, false)
+---- 
 
 ---
 ._Difference of RotatedExtrude depending on position of wire relative to origin_
@@ -859,10 +883,15 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_
 ---
 
 
-=== Pipe(shape, wirePath, keepInputs)
+=== Pipe
 Sweeps a face along a Wire
 
-    Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false)),
+[source, javascript]
+---- 
+// Pipe(shape, wirePath, keepInputs)
+Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false)),
+---- 
+
 
 === Revolve
 Revolves Edges, Wires, and Faces about the specified Axis
