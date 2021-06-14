@@ -654,6 +654,7 @@ function ThinWall(shape,thickness)
 
 
 === Intersection
+The function Intersection combines different shapes and retains those parts that are intersecting between these shapes. The function is therefore also referred to as the 'Common' function. The shapes that are intersected are listed in the first parameter to the function, enclosed in square brackets. The second parameter is a boolean that indicates if the original shapes should remain in the scene. The default value for this parameter is false. The third value is the fuzzy factor described earlier for the other boolean functions. The last parameter is a boolean indicating whether the edges of the original shapes should be retained. 
 
 [source, javascript]
 ----
@@ -661,22 +662,14 @@ function ThinWall(shape,thickness)
 let nutShape = Intersection([nutBodyBase,hexagon],false, 0.01,false)
 ---- 
 
-
 === RemoveInternalEdges
-The function RemoveInternalEdges can be used to remove internal edges in shapes that were created using boolean functions. 
+The function RemoveInternalEdges can be used to remove internal edges in shapes that were created using boolean functions. Normally this function is not required as the boolean functions described above already remove the internal edges. The first parameter is the shape that should be cleaned, the second parameter indicates whether the original shape should be retained in the scene. 
 
-
-// Line up the above shapes into a grid pattern for easy display
-let shapeInd = 0;
-for(let y = -80; y < 80; y += 40){
-    for(let x = -80; x < 80; x += 40){
-        if(shapeInd < shapes.length){
-            Translate([x, y, 0], shapes[shapeInd]);
-        }
-        shapeInd++;
-    }
-}
-
+[source, javascript]
+----
+// RemoveInternalEdges(shape, keepShape?)
+let cleanPart = RemoveInternalEdges(part)
+----
 
 == Creating faces or wires
 
