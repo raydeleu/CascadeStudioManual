@@ -151,7 +151,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vscode_e
 
 . download the code of CascadeStudio from https://github.com/zalo/CascadeStudio by pressing the green "Code" button. Choose "Download ZIP". After downloading unpack the zip file somewhere in your file system. 
 . In VS Code, go to "File" and choose the command "Add folder to workspace". Choose the folder "CascadeStudio-master" that you probably just created by unpacking the git repository. 
-. Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio.
+. Right-click on the file "index.html" and choose "Open with Live Server". In my case my standard browser opened the page "http://127.0.0.1:5500/index.html" and showed the interface to CascadeStudio. Be sure to add the parent directory to the file index.html as a workspace. If you add a parent folder as a workspace it is still possible to navigate to index.html, but the program will not function correctly. Most notably the help messages that should appear when you hover your mouse over a function do not work and it looks as if a lot of errors are found in the editor window (indicated by the red color in the right margin of the editor). 
 +
 
 --
@@ -628,6 +628,9 @@ let hexagon = Union([box1, box2, box3], false, 0.01, false);
 Strangely enough it is possible to combine shapes that are not overlapping into a single shape. In that case it seems as if nothing is changed after performing the operation, but the resulting shape can be used in other boolean operations as a single object. 
 
 === Difference
+The Difference function can be used to subtract parts of a shape. The first parameter contains the body that functions as the main body to subtract parts from. The second parameter contains a list of all the shapes that should be subtracted from the main body. Parts in space that are covered by both the main body as the subtracting parts are removed from the main body. In other words, the subtracting shapes can be used as a kind of punch. The third parameter can be set to 'true if the subtracting parts should be kept in the scene. Normally this is not the case (as else the result of the Difference function is not visible), so the default value of this parameter is 'false'. 
+The fourth parameter contains the 'fuzzy value' that governs the tolerance of the boolean calculation. Normally this value can be left at the default value, but if your boolean function fails it is an option to adjust this value to attempt if the issue can be solved. Finally, the fifth parameter indicates whether the edges that were present before punching the holes should be kept. Normally you would want these extra edges to be removed. 
+
 
 [source, javascript]
 ----
