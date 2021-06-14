@@ -750,7 +750,7 @@ mysketch.LineTo([xvalue2,yvalue2]).End(true).Wire()
 Just as with a face, a boolean "true" can be added to Wire to reverse the direction of the wire.
 
 
-=== this.ArcTo
+==== this.ArcTo
 With ArcTo it is possible to define an from the last point to the end point and adding a point on the arc.
 
 [source, javascript]
@@ -795,7 +795,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arct
 
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
-=== this.BezierTo
+==== this.BezierTo
 Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve. 
 
 [source, javascript]
@@ -803,7 +803,7 @@ Constructs an order-N Bezier Curve where the first N-1 points are control points
 // this.BezierTo(bezierControlPoints)
 ----
 
-=== this.BSplineTo
+==== this.BSplineTo
 Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
 
 [source, javascript]
