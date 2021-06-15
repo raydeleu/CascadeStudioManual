@@ -1129,7 +1129,7 @@ function PolarY(currentPoint,ydistance,angleDegToX)
 
 
 ==== RadiusArc
-The function RadiusArc can be used to calculate a third point to feed to the function .ArcTo, using the definition of the starting point, the end point and the radius of the curve between these two points. 
+The function RadiusArc can be used to calculate a third point to feed to the function .ArcTo, using the definition of the starting point, the end point and the radius of the curve between these two points. The last parameter is a boolean indicating whether the curve should be followed clockwise or anti-clockwise from starting point to endpoint. If the curve should be followed clockwise from  starting point to endpoint the boolean should be set to `true`, otherwise it should be set to `false`. 
 
 ---
 ._Definition of RadiusArc_
@@ -1165,6 +1165,13 @@ function RadiusArc(currentPoint,endPoint,radius, clockwise)
 
 
 ==== SagArc
+The function SagArc is an adapted version to define the curvature of an arc between two points. The idea is to connect these two points with a straight line and then define the maximum distance between the intended curve and the straight line, the socalled 'sag'. The parameters of the function are the starting point, the end point, the maximum distance between the curve and the straight line and finally the direction of the curvature. If the curve should be followed clockwise from  starting point to endpoint the boolean should be set to `true`, otherwise it should be set to `false`. 
+
+---
+._Definition of RadiusArc_
+[#sagarc]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sagarc.png[dxy,500]
+---
 
 [source, javascript]
 ----
