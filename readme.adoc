@@ -201,7 +201,6 @@ Although CascadeStudio shows a lot of promise, it needs to be mentioned that the
 === Finding errors in the code is difficult
 Another drawback that users should consider is the difficulty of finding errors in the code. The program supplies error warnings, but these are not very informative and sometimes seem to have no relation at all to the code in the editor. 
 
-
 ._Errors displayed in the console window_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs_error.png[width=750]
 ''''
@@ -716,7 +715,7 @@ The sketch can be expanded by adding lines, arcs, cirles, splines and fillets.
  mysketch.LineTo([xvalue2,yvalue2]).Fillet(filletradius)
 ----
 
-==== this.End
+==== .End
 The command .End finishes the sketch. Two booleans can be added as parameter. If the first boolean is true, the sketch will be closed to the first point of the sketch. This relieves the user from drawing the last line back to the starting point. The second parameter determines whether the direction of the sketch is reversed (true) or not (false). The direction of the sketch determines the direction of the normal and therefore the direction of the face. Note that the face is only visible when looking against the normal of the face. 
 
 [source, javascript]
@@ -725,7 +724,7 @@ The command .End finishes the sketch. Two booleans can be added as parameter. If
 mysketch.LineTo([xvalue2,yvalue2]).End(true)
 ----
 
-==== this.Face
+==== .Face
 The command .Face() makes a face out of the closed contour. The boolean optional parameter indicates whether the face is reversed (true) or not (false). The default value is false. 
 
 [source, javascript]
@@ -737,7 +736,7 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                End(true).Face(true);
 ----
 
-==== this.Wire
+==== .Wire
 The command .Wire() creates a wire (a set of connected points in 2D space). Wires can be used to Loft a solid or to extrude a shell.
 
 [source, javascript]
@@ -749,7 +748,7 @@ mysketch.LineTo([xvalue2,yvalue2]).End(true).Wire()
 Just as with a face, a boolean "true" can be added to Wire to reverse the direction of the wire.
 
 
-==== this.ArcTo
+==== .ArcTo
 With ArcTo it is possible to define an from the last point to the end point and adding a point on the arc.
 
 [source, javascript]
@@ -794,7 +793,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arct
 
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
-==== this.BezierTo
+==== .BezierTo
 Constructs an order-N Bezier Curve where the first N-1 points are control points and the last point is the endpoint of the curve. 
 
 [source, javascript]
@@ -802,7 +801,7 @@ Constructs an order-N Bezier Curve where the first N-1 points are control points
 // this.BezierTo(bezierControlPoints)
 ----
 
-==== this.BSplineTo
+==== .BSplineTo
 Constructs a BSpline (Basic Spline) from the previous point through this set of points. The behaviour of a Bspline can be a bit more unpredictable than the behaviour of a Bezier curve. <<#bezier>> shows how an ellipse can be approximated using a Bezier curve. The location of the control points is marked with the cylinders. Note that if we use the same control points for a BSpline, the curve becomes quite different, possibly because the BSpline tries to pass through the control points.     
 
 [source, javascript]
@@ -1177,7 +1176,8 @@ function RadiusArc(currentPoint,endPoint,radius, clockwise)
 
 
 ==== SagArc
-The function SagArc is an adapted version to define the curvature of an arc between two points. The idea is to connect these two points with a straight line and then define the maximum distance between the intended curve and the straight line, the socalled 'sag'. The parameters of the function are the starting point, the end point, the maximum distance between the curve and the straight line and finally the direction of the curvature. If the curve should be followed clockwise from  starting point to endpoint the boolean should be set to `true`, otherwise it should be set to `false`. 
+The function SagArc is an adapted version to define the curvature of an arc between two points. The idea is to connect these two points with a straight line and then define the maximum distance between the intended curve and the straight line, the socalled 'sag'. Sag is short for sagitta which is defined as the distance from the center of an arc to the center of its base (see https://en.wikipedia.org/wiki/Sagitta_(geometry)). 
+The parameters of the function are the starting point, the end point, the maximum distance between the curve and the straight line and finally the direction of the curvature. If the curve should be followed clockwise from  starting point to endpoint the boolean should be set to `true`, otherwise it should be set to `false`. 
 
 ---
 ._Definition of SagArc_
