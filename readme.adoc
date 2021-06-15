@@ -1168,7 +1168,7 @@ function RadiusArc(currentPoint,endPoint,radius, clockwise)
 The function SagArc is an adapted version to define the curvature of an arc between two points. The idea is to connect these two points with a straight line and then define the maximum distance between the intended curve and the straight line, the socalled 'sag'. The parameters of the function are the starting point, the end point, the maximum distance between the curve and the straight line and finally the direction of the curvature. If the curve should be followed clockwise from  starting point to endpoint the boolean should be set to `true`, otherwise it should be set to `false`. 
 
 ---
-._Definition of RadiusArc_
+._Definition of SagArc_
 [#sagarc]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sagarc.png[dxy,500]
 ---
