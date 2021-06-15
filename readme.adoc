@@ -896,9 +896,21 @@ Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false)),
 
 
 === Revolve
-Revolves Edges, Wires, and Faces about the specified Axis
+Revolves the shape listed as the first parameter the number of "degrees" listed in the second parameter about "axis" (a 3-component array) listed as the third parameter. These parameters may be followed by two boolean values, the first of which indicates whether the revolved shape should be kept in the scene and the second indicates whether the function should create a copy. Edges form faces, Wires form shells, Faces form solids. 
 
-    Rotate([1,0,0], 90, Revolve(Translate([10*t,8*t,0], GetWire(face)), -60, [0, 1, 0])),
+[source, javascript]
+---- 
+// Revolve(shape, degrees, [axis], keepShape?, copy?)
+Rotate([1,0,0], 90, Revolve(Translate([10*t,8*t,0], GetWire(face)), -60, [0, 1, 0])),
+----
+
+<<#revolve>> shows some interesting properties of the revolve function. The inner shape is created from a wire, the outer shape is created from a face. Both are cut-open using the boolean Difference function with a large box. It is clearly visible that the inner shape is a shell that is infinitely thin. Differently from faces the shell is visible from both sides. The outer shape is a solid. Note also that although the function specifies that the revolve should only be 90 degrees, both form a complete circle. 
+
+---
+._Different results of the revolve function_ 
+[#revolve]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/revolve2.png[revolve,500]
+---
 
 
 === Loft
