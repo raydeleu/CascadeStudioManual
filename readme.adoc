@@ -860,7 +860,9 @@ Extrudes a face along a vector direction
 [source, javascript]
 ----
 // Extrude(face, direction, keepFace)
-Extrude(face, [20*(1-t), 0, 20]),
+Extrude(box1.Wire(),[0,0,30])
+Translate([50,0,0],Extrude(box1.Face(),[0,0,50]))
+Translate([100,0,0],Extrude(box1.Face(),[0,-50,50]))
 ----
 
 
@@ -895,22 +897,31 @@ Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false)),
 
 
 === Revolve
-Revolves the shape listed as the first parameter the number of "degrees" listed in the second parameter about "axis" (a 3-component array) listed as the third parameter. These parameters may be followed by two boolean values, the first of which indicates whether the revolved shape should be kept in the scene and the second indicates whether the function should create a copy. Edges form faces, Wires form shells, Faces form solids. 
+Revolves the shape listed as the first parameter the number of "degrees" listed in the second parameter about "axis" (a 3-component array) listed as the third parameter. These parameters may be followed by two boolean values, the first of which indicates whether the revolved shape should be kept in the scene and the second indicates whether the function should create a copy. Edges form faces, wires form shells, faces form solids. 
 
 [source, javascript]
 ---- 
 // Revolve(shape, degrees, [axis], keepShape?, copy?)
-Rotate([1,0,0], 90, Revolve(Translate([10*t,8*t,0], GetWire(face)), -60, [0, 1, 0])),
+let revolve1 = Translate([-100,0,0],Revolve(box1.Face(),160,[1,0,0],false,false));
+let revolve2 = Translate([-50,0,0],Revolve(box1.Wire(),120,[1,0,0],false,false));
+let revolve3 = Revolve(box1.Face(),90,[1,0,0],false,false);
 ----
 
-<<#revolveimg>> shows some interesting properties of the revolve function. The inner shape is created from a wire, the outer shape is created from a face. Both are cut-open using the boolean Difference function with a large box. It is clearly visible that the inner shape is a shell that is infinitely thin. Differently from faces the shell is visible from both sides. The outer shape is a solid. Note also that although the function specifies that the revolve should only be 90 degrees, both form a complete circle. 
+<<#revolveimg>> shows some interesting properties of the revolve function. An important behaviour is that omitting the last two booleans seems to force a revolve over 360 degrees instead of the degrees indicated in the second parameter. After adding the booleans, the revolve function yields the expected results. Note that revolving a wire results in a shell, revolving a face results in a solid. Be careful that the revolve is not self-intersecting. In that case the revolve often produces no or incorrect results. Even a 180 degree revolve of an rectangle that is centered around the axis of rotation does not work. 
 
 ---
 ._Different results of the revolve function_ 
 [#revolveimg]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/revolve2.png[revolve,800]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/revolve5.png[revolve,800]
 ---
 
+Furthermore it should be noted that the revolve function expects a shape as input. In the code example above this is solved by adding the function .Face() to the sketch box1, resulting in the local creation of a shape. <<#revolve_shape>> illustrates how repeating the sketch name in all subsequent calls prevents a type change of the sketch variable. This is solved in the example by moving the Face() function into the function call.    
+
+---
+._Revolving requires a shape as input, which in some cases requires that the shape is built within the function call_  
+[#revolve_shape]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/revolve_shapes.png[revolveshape,600]
+---
 
 === Loft
 A loft is a modelling function that takes a number of planar wire-sections and interpolates between those. The wires act as the ribs of a construction and the lofting function is like stretching a shell around these ribs, just like the planking of a boat. The function Loft builds a solid through the sections defined by an array of 2 or more closed wires.
