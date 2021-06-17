@@ -38,7 +38,8 @@ To determine which dimensions are the design parameters, it helps to think in ad
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent2.png[]
 ---
 
-The image also show a proposal for design parameters that probably better fit the requirements for the crank. 
+The image also show a proposal for design parameters that probably better fit the requirements for the crank. Note that to make a parametric model work, the relation between the design parameters and the derived parameters should be considered in detail. Sometimes it is hard to judge upfront how a change in a parameter will work out. In that case it is wise to test changes to the parameters early in the design process as to avoid any disappointments after a lot of work. 
+
 
 === Why use parametric modelling? 
 Some of the reasons to use parametric modelling were already mentioned above. The list below shows a summary of the most important reasons for using parametric modelling: 
@@ -115,42 +116,12 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/turning_
 --- 
 
 
-
-
-
 === Parametric modelling using code
-Modelling a 3D part using a scripting language or code almost inevitably forces the user to determine the critical design parameters up front. As explained above this in itself is not sufficient to create a good parametric design, but it always allows stepping back through the design history. In fact the 3D model is recreated every time the code is processed. 
+Modelling a 3D part using a scripting language or code almost inevitably forces the user to determine the critical design parameters up front. As explained above this in itself is not sufficient to create a good parametric design, but at least it always allows stepping back through the design history. In fact the 3D model is recreated every time the code is processed. 
 
-Apart from these benefits, using a Scripted CAD approach also has the benefit of a very readable and open file format. 
+Apart from these benefits, using a Scripted CAD (SCAD) approach also has the benefit of a very readable and open file format. The files, being simple (ascii) code files can be stored in a version control system and can be easily worked on in parallel using branching and merging actions. Also sharing objects or even libraries containing new functionality is relatively easy. Even if the program that is used by designers is different, the code can be easily adapted to other scad systems as most of the modelling functions between SCAD tools are similar. And finally the code approach allows to automate testing and creating libraries of parts. 
 
-
-
-taken from https://cadquery.readthedocs.io/en/latest/designprinciples.html
-
-
-
-CAD models have many things in common with software, and would benefit greatly from the use of tools that are standard in the software industry, such as:
-
-Easily re-using features between objects
-
-Storing objects using version control systems
-
-Computing the differences between objects by using source control tools
-
-Share objects on the Internet
-
-Automate testing and generation by allowing objects to be built from within libraries
-
-
-
-
-
-
-
-
-As the program always constructs the end-result by running the complete script, it is possible to change the design features to adapt the design. 
-
-
+(See also https://cadquery.readthedocs.io/en/latest/designprinciples.html) 
 
 
 
