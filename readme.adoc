@@ -749,7 +749,7 @@ Just as with a face, a boolean "true" can be added to Wire to reverse the direct
 
 
 ==== .ArcTo
-With ArcTo it is possible to define an from the last point to the end point and adding a point on the arc.
+With ArcTo it is possible to define an arc from the last point to the end point and adding a point on the arc.
 
 [source, javascript]
 ----
