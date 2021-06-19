@@ -704,11 +704,19 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
 ----
 
 The Sketch function is unique for all functions, as that it needs to be called with the "new" keyword prepended.
-The sketch can be expanded by adding lines, arcs, cirles, splines and fillets. 
+The sketch can be expanded by adding lines, arcs, cirles, splines and fillets. As we will see later, the sketch can be considered an object. Adding elements to this object is performed by socalled "methods". The methods can be appended to the object using a dot as a separator. As shown in the code example above, many methods can be appended in a single declaration of the sketch. In fact, in this example the sketch can be defined as a single line. In the example it was split over multiple lines for readability. 
 
+If the definition of the sketch is more complicated, for example because part of the definition of the sketch is defined in a for-loop or if-statement (see <<#loops>>) the name of the sketch should be placed in front of the method. This is illustrated in <<#sketchiteration>>.
+
+---
+._Definition of a sketch with an iteration, using the name of the sketch to append the sketching methods_
+[#sketchiteration]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_iteration.png[800]
+---
 
 	
 ==== .LineTo
+The .LineTo method adds another line to the sketch object. It starts from the position of the last point that was added to the sketch object and draws a straight line to the point defined in the parameter to this method.   
 
 [source, javascript]
 ----
@@ -1747,7 +1755,7 @@ Greater/less than or equals: a >= b, a <= b.
 Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment.
 Not equals. In maths the notation is ≠, but in JavaScript it’s written as a != b.
 
-=== Conditions and loops
+=== Conditions and loops [#loops]
 
 if (condition) {   } else {  } 
 
