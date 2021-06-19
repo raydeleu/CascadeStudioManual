@@ -687,7 +687,11 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/sketch_t
 ---
 
 ==== new Sketch
-A new sketch is started with the command
+A new sketch is started with the command `new Sketch`. The default sketch commands in CascadeStudio all use two-dimensional (2D) points defined as absolute coordinates `point = [xvalue,yvalue]`. Sketches are therefore always created on the xy-plane, i.e. the imaginary ground plane of the 3D world. If you want to create shapes in other dimensions based on the sketch, you either do this by creating the shape with its ground plane on the xy-plane or by rotating the sketch after its creation. 
+
+In <<#extensions>> some adapted versions of the sketch commands will be shown that allow to define the sketch using relative coordinates. Although the result is the same, this relieves the user to perform tedious calculations with dimensions found in 2D drawings. 
+
+The new sketch command only requires a single parameter, namely the 2D coordinates of the starting point of the sketch. 
 
 [source, javascript]
 ----
@@ -701,6 +705,8 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
 
 The Sketch function is unique for all functions, as that it needs to be called with the "new" keyword prepended.
 The sketch can be expanded by adding lines, arcs, cirles, splines and fillets. 
+
+
 	
 ==== .LineTo
 
@@ -1036,7 +1042,8 @@ UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
 ----
 
 
-=== Possible extensions to sketch functions
+=== Possible extensions to sketch functions 
+[#extensions] 
 The software CadQuery (https://github.com/CadQuery/cadquery) that is also based on the OpenCascade kernel offers more sketch commands than CascadeStudio. Some of these functions can be built from the existing CascadeStudio functions, some others would require more work by adapting the calls to the OpenCascade library. The following list of functions of CadQuery was taken from https://cadquery.readthedocs.io/en/latest/apireference.html. 
 
 [cols="1,1, 1"]
