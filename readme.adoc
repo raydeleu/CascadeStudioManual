@@ -1135,8 +1135,9 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. 
 
 ---
+._Plan view of a house with a non-rectangular first floor_ 
 [#houseplan]
-https://github.com/raydeleu/CascadeStudioManual/blob/main/images/house_drawing.png[600]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/house_drawing.png[600]
 ---
 
 And as will be explained in <<#parametric>>, modelling an object with code is especially useful for parametric modelling, where a model is defined based on a limited number of parameters from which all other dimensions are derived. 
