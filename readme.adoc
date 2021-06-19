@@ -997,6 +997,15 @@ The OBJ format can contain both information on polygons and curves. It can there
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mesh-res.png
 ---
 
+==== Comparison of formats
+
+[cols="1,1,1"]
+|===
+|*Format* 	| *MeshRes 0.1*  	| *MeshRes 0.84 *  
+|STEP		| 162 kB		| 162 kB 
+|STL		| 936 kB		| 278 kB
+|OBJ		| 788			| 285 kB 
+|===
 
 
 
