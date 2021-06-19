@@ -996,7 +996,7 @@ STL or Stereo Lithography format describes the model with a mesh of triangle-sha
 ---
 ._Effect of increasing the meshres (maxDeviation) value_ 
 [#meshresolution]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mesh-res.png
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mesh-res.png[500]
 ---
 
 ==== OBJ export
@@ -1016,7 +1016,7 @@ In the following table the file sizes of the different export formats are compar
 
 [cols="1,1,1"]
 |===
-|*Format* 	| *MeshRes 0.1*  	| *MeshRes 0.84 *  
+|*Format* 	| *MeshRes 0.1*  	| *MeshRes 0.84*  
 |JSON		|   11 kB		| 11 kB
 |JS		|   5 kB		| 5 kB
 |STEP		| 162 kB		| 162 kB 
