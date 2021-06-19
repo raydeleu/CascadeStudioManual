@@ -401,6 +401,10 @@ Creates a sphere of specified radius
 let exampleSphere   = Sphere(10) 
 ----
 
+---
+._A centered sphere is only half visible from above as the lower half resides below the imaginary floor_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/first_sphere.png[500]
+---
 
 === Cylinder
 Creates a Cylinder with a radius and height. The arguments are radius, height, centered?. The latter is a boolean indicating whether the shape is centered on the workplane, making half of the height appear above the workplane and half below it, or whether the cylinder starts at the workplane and extends the full height into the normal direction. Omitting the last parameter defaults to "not centered".
@@ -1128,6 +1132,18 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 | - 		| .offset2D			|
 |===		
 
+Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. 
+
+---
+[#houseplan]
+https://github.com/raydeleu/CascadeStudioManual/blob/main/images/house_drawing.png[600]
+---
+
+And as will be explained in <<#parametric>>, modelling an object with code is especially useful for parametric modelling, where a model is defined based on a limited number of parameters from which all other dimensions are derived. 
+
+
+
+
 
 ==== Dx, Dy, Dxy
 The functions Dx, Dy and Dxy can be used to determine the coordinates of the next point from the difference in the x-coordinate (horizontal distance if looking at the x-y plane from the top), the difference in the y-coordinate (vertical distance) and the difference in both x and y coordinate. The concept of these functions is to determine the absolute coordinates of the points along the sketch using relative distances from one point to the next. The absolute coordinates can then be used together with the standard sketch functions provided by CascadeStudio. 
@@ -1618,7 +1634,9 @@ kbd:[F5]	| Recalculate/Render
 |===
 
 
+[#parametric]
 == Parametric modelling
+
 
 === What is parametric modelling? 
 
