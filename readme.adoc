@@ -978,9 +978,14 @@ RotatedExtrude(wire4,50,90 )
 == Saving and exporting 
 
 === Saving your model
+The default way of storing your work is by using the menu item "save project". This saves your current work in a JSON format (JavaScript Object Notation). The JSON file that is created not only contains the code but also all current program settings. Loading the project from this JSON file, using the menu item "load project" therefore restores the model but also the window layout, the viewing position and the status and settings in the dialog window. 
 
+[WARNING]
+====
+If the tab of the editor-window contains another name than `untitled`, pressing "save project" does not offer the possibility to change the filename. So if you have named your file earlier or just loaded an existing project file (JSON format) this file will be automatically overwritten with the new content in the editor window and the current settings of CascadeStudio. 
+==== 
 
-
+An alternative way to store the model is by copying the javascript code in the editor window to a separate javascript file. This file then only contains the model and offers a very compact way to store your work and re-use it at a later time. To load an existing model from its javascript file you have to open this file in another editor, select all lines, copy them and paste them into CascadeStudio. Using this approach the filename of the file in the CascadeStudio editor will still be `untitled`, thereby avoiding that you overwrite your old model by accident using the "save project" menu item.  
 
 === Exporting 3D models
 The 3D models created with CascadeStudio can be exported in 3 different formats, namely the STEP format, the STL format and the OBJ format. 
