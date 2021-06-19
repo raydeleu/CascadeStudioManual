@@ -946,6 +946,13 @@ A loft is a modelling function that takes a number of planar wire-sections and i
 Loft([GetWire(face), Translate([0,0,20], Circle(8, true))]),
 ----
 
+The example in <<loft_example>> shows that the OpenCascade kernel is able to generate a smooth transition between dissimilar cross sections. 
+
+---
+._Example of a loft through three faces_
+[#loft_example]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/loft3.png[700]
+---
 
 
 === GetWire
@@ -972,8 +979,18 @@ RotatedExtrude(wire4,50,90 )
 
 
 === Exporting 3D models
+The 3D models created with CascadeStudio can be exported in 3 different formats, namely the STEP format, the STL format and the OBJ format. 
+
+
 
 General: the MeshRes in the dialog is linked to the internal variable maxDeviation which is in fact a much better name. The lower this value, the more accurate the model will be represented in the 3D window and the more accurate the export file will be. This comes at a cost however. A more detailed model will take more time to render in the 3D view and result in larger meshes in the exported files.                          
+
+---
+._Effect of increasing the meshres (maxDeviation) value_ 
+[#meshresolution]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mesh-res.png
+---
+
 
 ==== STEP export
 
