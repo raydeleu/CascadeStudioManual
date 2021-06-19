@@ -985,11 +985,13 @@ The 3D models created with CascadeStudio can be exported in 3 different formats,
 ==== STEP export
 STEP stands for "Standard for the Exchange of Product Data" and is a format defined in ISO 10303. It can describe a shape in terms of curves and faces. Additionally it can contain information on material, tolerances and colour of the object. The STEP format is the most appropriate format to transfer the model to other 3D design software as this file most accurately describes the shape. 
 
+---
+._STEP file exported from CascadeStudio imported in Moi3D (http://moi3d.com/)_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/step_import_moi3d.png[600]
+---
+
 ==== STL export
 STL or Stereo Lithography format describes the model with a mesh of triangle-shaped polygons. It is therefore an approximation of the 3D shape and may be considered a "lossy" format: data is lost in the conversion towards STL and the original format cannot be recovered from this format. The STL format is often used to transfer a 3D model to a 3D printer or CNC machine. The accuracy of the STL file can be influenced with the MeshRes slider in the dialog. MeshRes in the dialog is linked to the internal variable maxDeviation which is in fact a much better name. The variable determines the maximum distance between the approximated triangular surface from the surface determined from the mathematical curves. The lower this value, the more accurate the model will be represented in the 3D window and the more accurate the export file will be. This comes at a cost however. A more detailed model will take more time to render in the 3D view and result in larger meshes in the exported files.                          
-
-==== OBJ export
-The OBJ format can contain both information on polygons and curves. It can therefore combine features of both the STEP format and the STL format. The OBJ format is a very generic format and can be imported by most 3D programs that are used for visualisation, animation and games. As is the case for the STL format, the accuracy of the OBJ file is determined by the MeshRes slider in the dialog in the 3D window. 
 
 ---
 ._Effect of increasing the meshres (maxDeviation) value_ 
@@ -997,15 +999,32 @@ The OBJ format can contain both information on polygons and curves. It can there
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mesh-res.png
 ---
 
+==== OBJ export
+The OBJ format can contain both information on polygons and curves. It can therefore combine features of both the STEP format and the STL format. The OBJ format is a very generic format and can be imported by most 3D programs that are used for visualisation, animation and games. As is the case for the STL format, the accuracy of the OBJ file is determined by the MeshRes slider in the dialog in the 3D window. 
+
+<<#objstl_export>> shows the difference between the OBJ and STL export from CascadeStudio. The OBJ file not only contains the polygons but also a set of edges. These edges look like the curves or edges that are also visible in the STEP export (see above) but are impacted by the setting of MeshRes.  
+
+---
+._OBJ and STL format exported from CascadeStudio imported into Blender3D (https://www.blender.org/)_ 
+[#objstl_export]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/OBJ_STL_export.png[800]
+---
+
+
 ==== Comparison of formats
+In the following table the file sizes of the different export formats are compared to the default JSON format used by CascadeStudio. If only the script in the editor window is saved as a javascript file the difference in file sizes becomes even larger. The STL format results in the largest file size, almost 200 times larger than the javascript file. 
 
 [cols="1,1,1"]
 |===
 |*Format* 	| *MeshRes 0.1*  	| *MeshRes 0.84 *  
+|JSON		|   11 kB		| 11 kB
+|JS		|   5 kB		| 5 kB
 |STEP		| 162 kB		| 162 kB 
 |STL		| 936 kB		| 278 kB
-|OBJ		| 788			| 285 kB 
+|OBJ		| 788 kB		| 285 kB 
 |===
+
+
 
 
 
