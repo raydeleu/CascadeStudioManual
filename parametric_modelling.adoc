@@ -125,13 +125,3 @@ Apart from these benefits, using a Scripted CAD (SCAD) approach also has the ben
 
 
 
-http://web-cad.org/
-https://freecadweb.org
-https://github.com/xibyte/jsketcher
-http://web-cad.org/sketcher.html#__sample2D__
-https://wiki.shapeoko.com/index.php/Programming
-
-
-
-
-
