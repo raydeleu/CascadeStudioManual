@@ -1463,6 +1463,11 @@ Note that this code is directly derived from https://cadhub.xyz/u/franknoirot/In
 === Slider
 Creates a simple slider that can be used to adjust parameters of the model. The function specifies defaults, minimum and maximum ranges. 
 
+---
+._Slider in the dialog window_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/slider.png[400]
+---
+
 [source, javascript]
 ----
 // Slider(name = "Val", defaultValue = 0.5, min = 0.0, max = 1.0, realTime=false, step, precision)
@@ -1480,6 +1485,11 @@ This function creates a checkbox in the dialog of the 3D window that can be used
 let currentCheckboxValue = Checkbox("Check?", true);
 ---- 
 
+---
+._Checkbox in the dialog window_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/checkbox.png[400]
+---
+
 
 === Button
 The Button function can be used to add an extra button to the dialog screen in the 3D window. According to the help in the editor window the function can be used to trigger a specific action: 
@@ -1489,6 +1499,12 @@ The Button function can be used to add an extra button to the dialog screen in t
 // Button(name = "Action")
 Button("Yell", ()=>{console.log("Help! I've been clicked!"); });
 ----
+
+---
+._Button in the dialog window_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/button.png[400]
+---
+
 
 However, it seems that the button can only be used to start processing the script. The button then acts as a copy of the Evaluate button that is always available in the dialog window. 
 
