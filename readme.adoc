@@ -16,7 +16,7 @@ endif::[]
 == Introduction
 
 === Purpose
-This document is intended to create a short introduction and manual for the software CascadeStudio, created by Johnathon Selstad (@zalo).
+This document is intended to create a short introduction and manual for the software CascadeStudio, created by Johnathon Selstad (@zalo, see https://github.com/zalo/CascadeStudio).
 
 === What is CascadeStudio?
 CascadeStudio is a software package that allows the user to enter a kind of script to create a 3D model. This model can then be exported in several formats,  allowing the user to create nice images (renders) or to send the shape to a 3D printer.
@@ -869,7 +869,7 @@ Pipe(face, BSpline([[0,0,0],[0,0,10],[13,-10,30]], false))
 Most of the following functions work both on faces and on wires. Lofting and the RotatedExtrude require wires. A wire can be retrieved from a face using the "GetWire" function (see below). 
 
 === Extrude
-Extrudes a face along a vector direction
+Extrudes a face along a vector direction. An extrusion is created by pushing a deformable substance, such as molten metal or clay through a die or orifice with the desired cross-section. The result is a beam with this cross-section. In digital 3D modelling, extrusion is taking a face and extending it in a direction to form a solid shape. Normally the extrusion is performed in the normal direction, meaning perpendicular to the face. CascadeStudio uses a 3D vector [x,y,z] to determine the direction.
 
 [source, javascript]
 ----
