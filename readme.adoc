@@ -1541,6 +1541,136 @@ kbd:[F5]	| Recalculate/Render
 | kbd:[SHIFT] + kbd:[ALT] + kbd:[DN] | Copy line down
 |===
 
+
+== Parametric modelling
+
+=== What is parametric modelling? 
+
+CascadeStudio, like all script or code based computer aided design (SCAD) programs, is ideally suited for parametric modelling. Parametric modelling is an approach to modelling where the main design features are entered as parameters. Often these parameters have a relation with the purpose of a part or object. For example for a staircase logical parameters would be the number of steps, the height of each step and the rotation of the staircase between each floor. With a parametric model the change of a parameter means that a different 3D model is generated. This way a part can be reused many times in different designs. The image below shows an example of a parametric design for a gear. All gears shown were generated using the same design but with a small change to some design parameters such as the diameter and the number of teeth (ref https://cadhub.xyz/u/franknoirot/gear). 
+
+---
+._Different sizes of gears generated with a tailor-made function in CascadeStudio_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gears.png[gears,500]
+---
+
+The fact that design features are parameters also makes the design adaptable. This could be needed because strength calculations of a part require to add more material in certain areas, or because other parts in an assembly are changed. 
+
+=== Design intent
+However, it is not sufficient to define certain parameters in a model. It is also important to define the relationship between certain dimensions in a model. This relationship is also known as the design intent. The design intent defines how dimensions or features in an object change when one of the parameters in the object is changed. This is best explained with an example. 
+
+The following image shows an image by JokoEngineeringHelp (https://youtube.com/c/JokoEngineeringHelp) of a practice part to learn modelling in different CAD programs. Although this crank is completely defined by the dimensions shown in the technical drawing, it does not seem to be designed with parametric modelling in mind. 
+
+---
+._Exercise part to demonstrate modelling techniques_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/forked_bracket_joko.png[forked_bracket,800]
+---
+
+
+For an engineer drafting this part, four dimensions might be really relevant, namely: 
+
+* the distance between the two axles that the crank is supposed to bind together;
+* the radius of the two axles that are connected using the crank;
+* the distance between the two prongs of the fork, as supposedly something has to fit between it resulting in the design decision to make this a "forked" bracket;
+* the thickness of the material around the axles, as this defines the strength of the crank; 
+
+Of these four design parameters, only the inner radii are defined in the drawing. The other parameters have to be derived from the dimensions shown in the drawing. So for example, the distance between the two axles is not defined, but has to be derived from the total length of the product and the two outer radii around the axles. If we increase the distance between the two axles but keep the distance between the two prongs identical, the angle of the forked part would change. In the drawing this angle is fixed at 32.5 degrees. If the designer would add material to the end of the prongs to make them stronger, the distance between the prongs would shrink. 
+
+To determine which dimensions are the design parameters, it helps to think in advance what you would like to change if any of the design parameters changes. If another dimension has to change together with the changed parameter, the difference between these two dimensions is probably a design parameter as well. The following image illustrates a change in the distance between the two axles and the increase of the diameter of the smaller axle. 
+
+---
+._The design intent becomes clear when changes to design parameters are considered_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/change_design_intent2.png[]
+---
+
+The image also show a proposal for design parameters that probably better fit the requirements for the crank. Note that to make a parametric model work, the relation between the design parameters and the derived parameters should be considered in detail. Sometimes it is hard to judge upfront how a change in a parameter will work out. In that case it is wise to test changes to the parameters early in the design process as to avoid any disappointments after a lot of work. 
+
+
+=== Why use parametric modelling? 
+Some of the reasons to use parametric modelling were already mentioned above. The list below shows a summary of the most important reasons for using parametric modelling: 
+
+==== Re-use a part or feature in different designs
+For parts that are used very often you can use standard parts in a kind of library, but also use a generalized design with parameters. For example, if you want to use screws and bolts you can prepare a copy for each length of the thread of a screw, but using a parametric design that allows the user to enter the required specific length of the thread avoids the creation of a large library of parts. 
+
+==== Change the dimensions to fit with other components or different sizes of users
+Parts that have to fit together with existing other parts or parts designed by different people may have to follow design decisions leading to the change of this part. For example, if you just designed a clamp to hold a cable in place and you would have to use a slightly different diameter of cable, it would be much more practical to change your existing design than starting over with a completely new design. 
+
+==== Change the dimensions to account for tolerances of the manufacturing method
+Small changes in the required dimensions can also result from the manufacturing method that is not always known up front. Say you were producing a part in small numbers, youn would probably use a very flexible production method with low set-up costs, such as 3D printing. When your product is sold in higher numbers, you would change the production method to injection molding, with high costs to set-up your tools but very low cost per item. This change however could result in other tolerances or small changes to the shape of the product. 
+
+==== Change a part after performing structural, thermodynamical or aerodynamical analysis 
+After you have designed your product, you will probably perform an analysis and test to determine whether the part can withstand its intended use. Some of this analysis can be performed before you design the part, but as most calculations are an approximation based on assumptions, a test on the final product may show deficiencies in your design. In that case you would have to go back and make small changes to your design. Think about adding more material to reduce the stress or increasing the radius of fillets to reduce stress concentration around corners. 
+
+==== Correct errors made early in the design history such as a non-manifold shape, unconnected faces, forgotten constraints on tangency or smoothness 
+Production methods such as 3D printing require a model that is manifold. In technical terms this means that the 3D model should correctly model a shape that can exist in real life. A digital 3D model defines a shape by describing surfaces that enclose this shape. These faces - which themselves have no thickness so only define a boundary between inside and outside of the shape - should all be connected without holes. Furthermore the "normals" of these surfaces should all be consistent, so that it is clear which side is inside and which side is outside of the shape. As issues like non-manifold geometry are relatively common, many software packages that prepare a model for 3D printing contain a funcitonality to correct these errors. However, it is better to avoid these issues already in the design of the part. 
+
+==== Quickly change the design for aesthetic reasons, explore variations of a design by manipulating a limited set of parameters
+With parametric modelling it is possible to explore design variations. For example, you can allow your customer to adapt some parameters to find the shape that appeals him most. These can be simple parameters but also relative complex parameters as demonstrated in the image below. The image shows different shapes of vacuum heads, all generated using the same script. The interface at the right allows to change the values of the design parameters using sliders (ref. https://cadhub.xyz/u/irevdev/Vacuum-heads).  
+
+---
+._Different vacuum heads all generated from same code with different values for the design parameters_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/vacuum_heads.png[vacuum-heads,800]
+---
+
+==== Easily generate repetitive patterns in designs
+With parametric modelling it is easy to generate repetitive patterns in a design. Creating a perforated sheet or grid can be accomplished by copying a shape repeatedly and subtracting it from a box-like shape. 
+
+---
+._Repetitive honeycomb pattern_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/honeycomb.png[honeycomb,500]
+---
+
+Not only the number, but also parameters like the size and rotation of the copies of a part can be modified. If these are modified using mathematical equations very interesting patterns can be build. The following image shows a model of the Gherkin Tower (30st Mary Axe) in London, 44 stories tall (180 metres) where the shape as well as the triangular structure on the outside are determined by a few mathematical equations that are repeated over and over. 
+
+---
+._Model of Gherkin Tower with floors and outer triangular structure generated from a parametric model_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gherkin_shape.png[gherkin,500] 
+---
+
+From the description above it may also be clear that parametric design requires additional effort from the designer in creating the initial design. This takes more time and may restrict the possibilities to explore design variations. And especially in case of more organic shapes it is difficult to use a parametric approach. These shapes are often modelled by using an approach that resembles sculpting, for example by manipulating vertices of a polygon model or lattice structure that influence the shape of an underlying mesh. 
+
+Read https://www.engineering.com/story/whats-the-difference-between-parametric-and-direct-modeling for more information on the difference between parametric modelling and direct modelling. It also explains that there are some CAD programs that allow a blend of the two approaches, where quick design changes are reflected in the design history. 
+
+=== Ways to implement parametric modelling
+Parametric modelling can be achieved using different types of CAD or 3D modelling programs. 
+
+* CAD programs with graphical user interface, manipulating sketches and parts in a 3D workspace. The majority of users in the industry use this approach as it is a direct descendant from CAD programs that are used for a long time in the industry. If these programs offer a socalled *design history* the user can move back through the design steps and change the design. Notable software packages that support a design history are 3DS Catia (https://3ds.com/), 3DS SolidWorks (https://www.solidworks.com/), Siemens NX (https://www.plm.automation.siemens.com/global/en/products/nx/), Siemens SolidEdge (https://solidedge.siemens.com), Autodesk Inventor and Autodesk Fusion360 (https://www.autodesk.com/), PTC Creo and OnShape (https://www.ptc.com/en/technologies/cad), Alibre Design (www.alibre.com), Altair Inspire (www.altair.com), Ashlar-Vellum Cobalt (https://ashlar.com/), SharkCAD (https://www.punchcad.com/). An interesting open source progam that uses this approach is FreeCAD (https://www.freecadweb.org/).
++ 
+Some of the programs listed above allow the use of named variables to define the dimensions of parts. In FreeCad this can be done by naming the constraints in a sketch and then using these names in the formula editor for other constraints. Entering these equations in the formula editor is quite laborious as the variables have long names such as `Sketch.Constraints.R1_inner`. A second way to use variables is to use a separate spreadsheet that contains the parameters and their values and then referencing these spreadsheet values in the sketches. While the spreadsheet makes it much easier to list the parameters and design the equations that describe the relation between the parameters. referencing the values also requires long variable names such as `Spreadsheet001.cubedims`.  
++
+Note that there are also CAD programs that do not have a design history. In such programs it is difficult to remove or change design features that where added earlier. Up to a certain extend the user can compensate this, for example by creating separate files for certain modelling steps, but once a non-reversible action is performed on a model, modifying this feature would involve moving back to the state the model was in just before applying this step and start over from there. 
+
+* CAD programs as above, but with an added *macro or scripting layer* so that some manipulations or actions can be performed with a script. Most of the software packages listed above support some kind of scripting or macro to allow the automation of modelling steps. Popular scripting languages for these tasks are lisp and python. 
+
+* CAD program or 3D modeller that use a *node based approach* to modify or generate pieces of geometry. Examples are the Grasshopper extension for Rhino 3d (https://www.rhino3d.com/) or the geometry nodes in Blender (https://www.blender.org/). In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. You could consider it as coding for people that are more visually oriented. In the case of Grasshopper it is even possible to write a python script to determine the functionality of a generic node. 
+
+---
+._Model of the Turning Torso building in Malmö, designed by Santiago Calatrava_
+image::https://tharit.files.wordpress.com/2010/01/parametric-design-e28098turning-torso_-case-study.jpg?w=710[grasshopper,700]
+https://tharit.wordpress.com/2009/08/24/parametric-design-%E2%80%98turning-torso%E2%80%99-case-study/
+--- 
+
+* 3D modellers that use *modifiers* to change the geometry. The example that springs to mind is Blender (https://www.blender.org/) that allows fairly complex modifications with a socalled modifier stack. Using the modifier stack it is possible to create a non-destructive modelling step. Each modifier contains variables that can be adjusted using values but also named variables or even calculations. However, in case of Blender the result is a polygonal model made up of vertices and edges as opposed to the boundary representation (BRep) employed in the CAD programs listed above. 
+
+* Programs that use a scripting approach to perform all modelling steps. These *scripting CAD* (SCAD) programs only use the 3D window for the visualisation of the result of the script or sometimes - as is the case for CascadeStudio - to identify the edges or faces that are referenced in the code. The identification of these edges and faces is the result of the processing of the code and is therefore not always directly accessible to the designer/programmer before calling the functionality in the 3D kernel. 
+
+
+---
+._Turning Torso in Malmö modelled in CascadeStudio_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/turning_torso_complete.png[torso2,500]
+--- 
+
+
+=== Parametric modelling using code
+Modelling a 3D part using a scripting language or code almost inevitably forces the user to determine the critical design parameters up front. As explained above this in itself is not sufficient to create a good parametric design, but at least it always allows stepping back through the design history. In fact the 3D model is recreated every time the code is processed. 
+
+Apart from these benefits, using a Scripted CAD (SCAD) approach also has the benefit of a very readable and open file format. The files, being simple (ascii) code files can be stored in a version control system and can be easily worked on in parallel using branching and merging actions. Also sharing objects or even libraries containing new functionality is relatively easy. Even if the program that is used by designers is different, the code can be easily adapted to other scad systems as most of the modelling functions between SCAD tools are similar. And finally the code approach allows to automate testing and creating libraries of parts. 
+
+(See also https://cadquery.readthedocs.io/en/latest/designprinciples.html) 
+
+
+
+
+
 == Comparison to similar tools
 
 
