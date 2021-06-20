@@ -759,7 +759,7 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
 ---
 ._Effect of a reversed face_ 
 [#reversed]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/face_reverse.png[500]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/face_reverse.png[400]
 ---
 
 ==== .Wire
