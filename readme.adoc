@@ -926,7 +926,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/pipe1.pn
 ---
 ._Pipe swept along a Sketch.Wire()_
 [#pipewire]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/pipe3.png[width=600]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/pipe4.png[width=600]
 ---
 
 
