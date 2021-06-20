@@ -974,6 +974,39 @@ The example in <<loft_example>> shows that the OpenCascade kernel is able to gen
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/loft3.png[700]
 ---
 
+The Loft function can also be used for more complex shapes. The code example below, copied from a file provided by Kurt Hutten at https://cadhub.xyz, shows how to create a helix by rotating and translating the shape of the cross section. Adapting the values of the helix may break the code, so be aware that some experimentation may be needed. In the example of <<#helix>>, increasing the pitch to 14 or higher triggers an error in the loft function. 
+
+---
+._Helix created with the hackHelix function based on the Loft function_
+[#helix]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/helix.png[700]
+---
+
+[source,javascript
+----
+function hackHelix(shape, 
+{diameter = 10, 
+pitch = 1.5, 
+rotations = 5, 
+divisions =360} = {}) 
+{
+// hacky because the correct way to make a thread would be to extrude a 2d shape along a helix
+// which I think is supported by opencascade, but maybe not opencascade.js and therefore CascadeStudio
+const degIncrement = 360/divisions
+const heightIncrement = pitch/divisions
+const circumferance = diameter*Math.PI
+const rad2Deg = num => num*180/Math.PI
+const pitchAngle = rad2Deg(Math.atan(pitch/circumferance))
+
+const loftWires = Array.from({length: divisions*rotations+1}).map(
+        (_, index) => Rotate([0,0,-1], index*degIncrement,
+                    Translate([0,diameter/2,index*heightIncrement],
+                    Rotate([0,1,0], 90,
+                    Rotate([0,-1,0], pitchAngle, shape)))))
+    return Loft(loftWires)
+}
+----
+
 
 === GetWire
 As some of the functions above require a wire, it may be useful to retrieve a wire from a face. This can be achieved with the function GetWire. The first parameter indicates the shape that contains a face, the second parameter contains the index of the required face and the boolean indicates whether the original shape should be kept (true) or deleted (false). The following code snippet shows an example for creating a rectangle by using the bottom face of a box (with face index 4) to retrieve the wire of a rectangle. Note that it is necessary to translate the wire to the correct location before using it as input to another function. 
