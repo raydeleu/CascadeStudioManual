@@ -998,8 +998,10 @@ pitch = 1.5,
 rotations = 5, 
 divisions =360} = {}) 
 {
-// hacky because the correct way to make a thread would be to extrude a 2d shape along a helix
-// which I think is supported by opencascade, but maybe not opencascade.js and therefore CascadeStudio
+// OpenCascade does not contain a standard helix function but requires the programmer to project
+// a straight line on the surface of a cylinder. 
+// see https://dev.opencascade.org/doc/overview/html/occt__tutorial.html#sec4
+// This is a completely different and easier approach using the loft function
 const degIncrement = 360/divisions
 const heightIncrement = pitch/divisions
 const circumferance = diameter*Math.PI
