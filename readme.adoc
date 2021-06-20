@@ -1846,6 +1846,19 @@ https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Java
 https://www.w3schools.com/js/default.asp
 
 
+=== Comments 
+Comments in the code are used to add clarifications or to block execution of a particular part of the code. There are two types of comments, namely line comments identified with `//` and block (multiline) comments that are enclosed in `/*` and `*/`. 
+
+[source, javascript]
+----
+// This is a single line comment
+let speed_ms  = 20 ; // speed in meters per second
+let speed_kmh = speed_ms * 60 * 60 / 1000;  
+
+/* The code above can be
+  used to calculate the speed in km/hr from 
+  a speed in meters per second */ 
+----  
 
 === Variables
 Javascript variables may be considered to be containers for data values. A variable can be declared with the keyword `var`, `let` or `const`. The keyword `var` was used before 2015 and is most widely supported. The more modern version is to use `let` for variables with a restricted scope - so for example if they are declared inside a function they are only available within that function - and the keyword `const` to define a variable that will never be reassigned. For example, the conversion factor between feet and meters can be declared as a `const` as this will never change, whereas the length of a car should be defined using `let`.  
@@ -1908,6 +1921,7 @@ Comparisons use the same notation as other programming languages:
 | Greater/less than or equals 	|	`a >= b, a <= b `
 | Equals			| 	 `a == b ` 
 | Not equal 			| 	`a != b	`
+| quality without type conversion| 	'a === b'
 |===
 
 Note that the equality is tested with a==b, a single equal sign is used for an assignment of a value to a variable. 
@@ -1943,23 +1957,44 @@ for (let h = 1; h <= 720; h++)
 ----
 
 ==== Conditional statements
+The basic shape of the conditional statement is: 
 
-
-
-if (condition) {   } else {  } 
-
-
+[source, javascript]
 ----
-=== equality without type conversion
-== equal
-> < => <=
-|| OR
-&& AND
-! NOT (result = !value)
+if (condition) {
+  	statements when condition is true;
+} else {
+  	statement when condition is not true;
+}
 ----
 
+It is also possible to test different conditions using the `else if (condition)` until the final `else` statement. 
+Conditions can be combined using OR, AND and NOT combinations. These are written as: 
 
-=== Comments 
+[cols = "1,1"]
+|===
+| OR  	|  `||` 
+| AND	|  `&&`
+| NOT 	|  !   (result = !value)
+|=== 
+
+Another type of conditional statement is the `switch` statement: 
+
+[source, javascript]
+----
+switch (expression) {
+  case label_1:
+    statements_1
+    [break;]
+  case label_2:
+    statements_2
+    [break;]
+    …
+  default:
+    statements_def
+    [break;]
+}
+---- 
 
 
 === Functions
