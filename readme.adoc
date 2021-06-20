@@ -754,6 +754,14 @@ let face = new Sketch([-10*t,-8*t]).Fillet(2*t).
                End(true).Face(true);
 ----
 
+<<#reversed>> shows how you can identify a reversed face. The left face has its normal in the positive z-direction, the right face is reversed. Note that this face is not visible, there is only a kind of shadow. If you would view this scene from below, you would only see the right face whereas the left face would be invisible. 
+
+---
+._Effect of a reversed face_ 
+[#reversed]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/face_reverse.png[500]
+---
+
 ==== .Wire
 The command .Wire() creates a wire (a set of connected points in 2D space). Wires can be used to Loft a solid or to extrude a shell.
 
