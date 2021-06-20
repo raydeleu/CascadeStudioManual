@@ -905,7 +905,6 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_
 
 
 === Pipe
-=== Pipe
 Sweeps a face along a Wire. The first parameter identifies the face, the second parameter identifies the wire that the face is swept along. The third parameter is a boolean that controls whether the input faces are kept in the scene or deleted. 
 
 [source, javascript]
