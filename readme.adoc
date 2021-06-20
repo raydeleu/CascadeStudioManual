@@ -1904,22 +1904,50 @@ Comparisons use the same notation as other programming languages:
 
 [cols = "1,1"]
 |===
-Greater/less than		|	 a > b, a < b.
-Greater/less than or equals 	|	a >= b, a <= b.
-Equals				| 	 a == b  
-Not equal 			| 	a != b	
+| Greater/less than		|	`a > b, a < b  `
+| Greater/less than or equals 	|	`a >= b, a <= b `
+| Equals			| 	 `a == b ` 
+| Not equal 			| 	`a != b	`
 |===
 
 Note that the equality is tested with a==b, a single equal sign is used for an assignment of a value to a variable. 
 
 [#loops]
-=== Conditions and loops 
+=== Loops and conditional statements
+
+==== Loops
+Javascript supports different types of loops and iterations. \
+
+[cols = "1,1"]
+|===
+| for statement			| iteration over a range of numbers
+| for...in statement		| iteration over all elements in an list or array
+| for...of statement		| iteration over value elements only
+| do...while statement		| iteration until a condition becomes false
+| while statement		| iteration as long as a condition is true
+|===
+
+Javascript allows very complex loop statements using additional features such as labeled statements, a `break` statement to break out of a loop or labeled loop, and a  `continue` statement to continue a labeled loop. Most of these features will not be needed in CascadeStudio as the input should be very predictable. In almost all cases the for loop will be sufficient. 
+
+The for loop is used like this: 
+
+[source, javascript]
+----
+// for (let i=0 ; i<=n ; i++){   }
+// if you want another increment use something like i+= 4 instead of i++ 
+
+for (let h = 1; h <= 720; h++)
+{
+    calculatedGherkin.LineTo( [ equationGherkin(h/4) , h/4])
+}
+----
+
+==== Conditional statements
 
 
 
 if (condition) {   } else {  } 
 
-for (let i=0 ; i<=n ; i++){   }
 
 ----
 === equality without type conversion
