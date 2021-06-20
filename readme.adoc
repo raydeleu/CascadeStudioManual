@@ -982,7 +982,7 @@ The Loft function can also be used for more complex shapes. The code example bel
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/helix.png[700]
 ---
 
-[source,javascript
+[source,javascript]
 ----
 function hackHelix(shape, 
 {diameter = 10, 
