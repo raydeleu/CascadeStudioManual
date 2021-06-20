@@ -807,7 +807,7 @@ Translate([0,15,0],Extrude(fillet_fillet,[0,0,10]))
 
 ._Example of a sketch with ArcTo command_
 [#img-ccs-arcto]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/ccs-arcto.png[]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fillets_and_arc.png[]
 
 Note that in the example above, there two different approaches to create a 180 degree arc. The first one uses the function ArcTo, the second one uses two fillets. This results in an additional edge in the middle of the arc, but the cross section of these shapes is identical. Another thing to note is that a fillet at the end of an arc or another fillet does not work. If you want to achieve this you would have to construct an arc up to the point where the fillets start, and add a straight corner after that which can be filleted. 
 
