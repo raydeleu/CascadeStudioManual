@@ -1136,6 +1136,7 @@ In the example below the function Sphere requires a definition of the radius and
 
 
 ==== UnevenChamferEdges
+The function ChamferEdges that is included in CascadeStudio always adds a symmetrical (or 45 degrees) chamfer to an edge. However, the original OpenCascade function oc.BRepFilletAPI_MakeChamfer(shape) also allows a chamfer with a different angle. One way to define this angle is to add two distances and a face-id to the function call. The face identifies the side for which distance 1 should be applied, the other distance will be applied to the face that forms the edge with the identified face. The complete function is shown in the following code-block: 
 
 [source,javascript]
 ----
@@ -1157,14 +1158,13 @@ function UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal) {
   return curChamfer;
 }
 
-
 box1 = Box(20,20,20)
 UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
 ----
 
 
-=== Possible extensions to sketch functions 
-[#extensions] 
+[#extensions]
+=== Extensions to sketch functions 
 The software CadQuery (https://github.com/CadQuery/cadquery) that is also based on the OpenCascade kernel offers more sketch commands than CascadeStudio. Some of these functions can be built from the existing CascadeStudio functions, some others would require more work by adapting the calls to the OpenCascade library. The following list of functions of CadQuery was taken from https://cadquery.readthedocs.io/en/latest/apireference.html. 
 
 [cols="1,1, 1"]
@@ -1196,7 +1196,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 | - 		| .offset2D			|
 |===		
 
-Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. 
+Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. Using the additional sketch functions it is possible to determine the absolute coordinates (with reference to the origing [0,0,0]) from the relative position of a point. 
 
 ---
 ._Plan view of a house with a non-rectangular first floor_ 
@@ -1204,11 +1204,7 @@ Having more sketch functions can speed up the translation of drawings into code.
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/house_drawing.png[600]
 ---
 
-And as will be explained in <<#parametric>>, modelling an object with code is especially useful for parametric modelling, where a model is defined based on a limited number of parameters from which all other dimensions are derived. 
-
-
-
-
+And as will be explained in <<#parametric>>, modelling an object with code is especially useful for parametric modelling, where a model is defined based on a limited number of parameters from which all other dimensions are derived. Also in that case it is more practical to define the position of a point with reference to another point instead of the global origin. 
 
 ==== Dx, Dy, Dxy
 The functions Dx, Dy and Dxy can be used to determine the coordinates of the next point from the difference in the x-coordinate (horizontal distance if looking at the x-y plane from the top), the difference in the y-coordinate (vertical distance) and the difference in both x and y coordinate. The concept of these functions is to determine the absolute coordinates of the points along the sketch using relative distances from one point to the next. The absolute coordinates can then be used together with the standard sketch functions provided by CascadeStudio. 
@@ -1866,41 +1862,60 @@ console.log(typeof rateWeek)
 Once the variable is declared it can be used without the keyword. Note that opposed to many other programming languages it is not necessary to determine the type of variable up front. The declaration of the type of the variable is performed implicit by assigning a value. The `typeof` function can be used to determine the type of a variable. 
 
 === Operations
+The following basic math operations are supported:
 
-The following math operations are supported:
+[cols= "1,1,1"]
+|===
+|*Operator*     | *Symbol* 	| *Order*  
+|Addition 	| + 		|  3
+|Subtraction 	| - 		|  3
+|Multiplication | *		|  2
+|Division 	| / 		|  2	
+|Remainder 	| %		|  2
+|Exponentiation | **		|  1
+|===
 
-Addition +,
-Subtraction -,
-Multiplication *,
-Division /,
-Remainder %,
-Exponentiation **
+Javascript uses the standard precedence for these operators (see order in table above). When in doubt use brackets to influence which parts of the equations should be evaluated first. 
 
-precedence standard
+More complicated mathematical operators can be called by using the Math library. This library contains many functions such as sqrt(), pow(), exp(), log(), sin(), cos(), tan(), asin(), acos(), atan(), abs(), floor(), ceil() and many more. The functions are called using the library name first and then appending the function call, so for example `Math.sqrt()`. It also contains constants such as pi (Math.PI) and Euler's number e (Math.E). 
 
-Modify-in-place
-We often need to apply an operator to a variable and store the new result in that same variable.
+Like the c programming language Javascript recognizes the "modify in place" notation for operations where an operator is applied to a variable and the result is stored in the original variable. So for example 
 
-For example:
-
+[source, javascript]
+----
 let n = 2;
 n = n + 5;
 n = n * 2;
-This notation can be shortened using the operators += and *=:
+i = i+1
+----
 
+can also be written as: 
+
+[source, javascript]
+----
 let n = 2;
-n += 5; // now n = 7 (same as n = n + 5)
-n *= 2; // now n = 14 (same as n = n * 2)
+n += 5; 	// now n = 7 (same as n = n + 5)
+n *= 2; 	// now n = 14 (same as n = n * 2)
+alert( n ); 	// 14
+i++
+----
 
-alert( n ); // 14
+Comparisons use the same notation as other programming languages: 
 
-Greater/less than: a > b, a < b.
-Greater/less than or equals: a >= b, a <= b.
-Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment.
-Not equals. In maths the notation is ≠, but in JavaScript it’s written as a != b.
+[cols = "1,1"]
+|===
+Greater/less than		|	 a > b, a < b.
+Greater/less than or equals 	|	a >= b, a <= b.
+Equals				| 	 a == b  
+Not equal 			| 	a != b	
+|===
+
+Note that the equality is tested with a==b, a single equal sign is used for an assignment of a value to a variable. 
 
 [#loops]
 === Conditions and loops 
+
+
 
 if (condition) {   } else {  } 
 
