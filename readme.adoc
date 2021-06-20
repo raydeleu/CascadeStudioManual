@@ -1930,7 +1930,7 @@ Note that the equality is tested with a==b, a single equal sign is used for an a
 === Loops and conditional statements
 
 ==== Loops
-Javascript supports different types of loops and iterations. \
+Javascript supports different types of loops and iterations. 
 
 [cols = "1,1"]
 |===
@@ -1969,14 +1969,7 @@ if (condition) {
 ----
 
 It is also possible to test different conditions using the `else if (condition)` until the final `else` statement. 
-Conditions can be combined using OR, AND and NOT combinations. These are written as: 
-
-[cols = "1,1"]
-|===
-| OR  	|  `||` 
-| AND	|  `&&`
-| NOT 	|  !   (result = !value)
-|=== 
+Conditions can be combined using OR, AND and NOT combinations. These are written as `||` (OR), `&&` (AND) and `!` (NOT, result = !value). 
 
 Another type of conditional statement is the `switch` statement: 
 
@@ -1996,8 +1989,12 @@ switch (expression) {
 }
 ---- 
 
+The switch statement is more useful to react on user input. For CascadeStudio this statement will not be used often as the interaction with the user is limited. 
 
 === Functions
+
+
+
 
 
 === Modules
