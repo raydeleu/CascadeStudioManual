@@ -1102,6 +1102,27 @@ In the following table the file sizes of the different export formats are compar
 Three types of files can be imported into CascadeStudio, namely STEP, IGES and STL. For all formats the operation is started using the menu item "Import STEP/IGES/STL". When all went well, the new object appears in the scene, but in the console log the program reminds the user to push the object to the scene with the command `sceneShapes.push(externalShapes['filename'])`. The imported file will be included in the JSON file describing the scene, resulting in a considerably larger JSON file after saving the scene. To remove the imported file from the scene use the menu command "Clear imported files". 
 
 ==== STEP import
+If you want to import a model from another CAD program, the STEP format is the best option. Importing a STEP file from FreeCAD or SolidEdge works flawlessly (see <<#stepimport>>. 
+
+---
+._Object imported from SolidEdge by inporting a STEP file_ 
+[#stepimport]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_step_se.png[500]
+---
+
+It is even possible to perform editing actions with the imported objects, such as performing boolean operations or adding fillets, although in some cases more complicated actions such as adding fillets may fail. 
+
+---
+._Boolean cut performed on an imported STEP file_ 
+[#stepimportcut]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fork_half.png[500]
+---
+
+---
+._Failed FilletEdge on an imported STEP file_ 
+[#stepimportfail]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fork_failed_filletedges.png[500]
+---
 
 
 
