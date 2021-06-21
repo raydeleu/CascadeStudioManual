@@ -1199,7 +1199,22 @@ In the example below the function Sphere requires a definition of the radius and
 
 
 ==== UnevenChamferEdges
-The function ChamferEdges that is included in CascadeStudio always adds a symmetrical (or 45 degrees) chamfer to an edge. However, the original OpenCascade function oc.BRepFilletAPI_MakeChamfer(shape) also allows a chamfer with a different angle. One way to define this angle is to add two distances and a face-id to the function call. The face identifies the side for which distance 1 should be applied, the other distance will be applied to the face that forms the edge with the identified face. The complete function is shown in the following code-block: 
+The function ChamferEdges that is included in CascadeStudio always adds a symmetrical (or 45 degrees) chamfer to an edge. However, the original OpenCascade function oc.BRepFilletAPI_MakeChamfer(shape) also allows a chamfer with a different angle. One way to define this angle is to add two distances and a face-id to the function call. The face identifies the side for which distance 2 should be applied, the other distance will be applied to the face that forms the edge with the identified face. The function call is: 
+
+[source, javascript]
+----
+UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal)
+----
+
+In the following figure the chamfer distances are 1 and 3, where 3 is applied to the top face with face index 5. 
+
+---
+._Unevenchamfer applied to the top face of a simple box_ 
+[#unevenchamferfig]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/unevenchamfer.png[500]
+---
+
+The complete function is shown in the following code-block: 
 
 [source,javascript]
 ----
@@ -1224,6 +1239,8 @@ function UnevenChamferEdges(shape, dist1, dist2, edgeList, face, keepOriginal) {
 box1 = Box(20,20,20)
 UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
 ----
+
+
 
 
 [#extensions]
