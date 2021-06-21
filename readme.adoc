@@ -490,7 +490,7 @@ Calling the function Transform without the full set of arguments triggers the di
 ---
 ._Experimental gizmo_
 [#gizmo] 
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gizmo.png[rotation,600]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gizmo.png[rotation,900]
 ---
 
 If the gizmo is visible, the following keyboard shortcuts can be used: 
