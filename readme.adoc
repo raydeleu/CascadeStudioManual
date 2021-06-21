@@ -1157,7 +1157,7 @@ The following image shows the STL export settings in SolidEdge. It is important 
 ---
 ._Export settings to produce an STL file with SolidEdge that can be used by CascadeStudio._ 
 [#stlimport]
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_stl.png[500]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/se_export_stl.png[500]
 ---
 
 
