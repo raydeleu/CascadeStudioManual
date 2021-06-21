@@ -1101,11 +1101,13 @@ In the following table the file sizes of the different export formats are compar
 === Importing 3D models
 Three types of files can be imported into CascadeStudio, namely STEP, IGES and STL. For all formats the operation is started using the menu item "Import STEP/IGES/STL". When all went well, the new object appears in the scene, but in the console log the program reminds the user to push the object to the scene with the command `sceneShapes.push(externalShapes['filename'])`. The imported file will be included in the JSON file describing the scene, resulting in a considerably larger JSON file after saving the scene. To remove the imported file from the scene use the menu command "Clear imported files". 
 
+Many of the advantages of a code based approach to modelling are lost when working with imported files. The imported files only describe the shape with its default dimesions. It is possible to translate, rotate and scale the object, but it is no longer possible to change its dimensions. An application could be if you try to model an object that should fit together with the imported object. Using the visual model it is easier to determine if the parts can be assembled and if necessary move with respect to each other without a conflict. 
+
 ==== STEP import
-If you want to import a model from another CAD program, the STEP format is the best option. Importing a STEP file from FreeCAD or SolidEdge works flawlessly (see <<#stepimport>>. 
+If you want to import a model from another CAD program, the STEP format is the best option. Importing a STEP file from FreeCAD or SolidEdge works flawlessly (see <<#stepimport>>). 
 
 ---
-._Object imported from SolidEdge by inporting a STEP file_ 
+._Object imported from SolidEdge by importing a STEP file_ 
 [#stepimport]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_step_se.png[500]
 ---
@@ -1124,16 +1126,39 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fork_hal
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fork_failed_filletedges.png[500]
 ---
 
+==== IGES import
+Like the STEP format, the IGES format contains a proper mathematical description of an object. The import of the IGES or IGS file looks very similar to the import of the STEP file. However, as can be seen in <<#igesimport>> the edges of the imported object are not visible and can not be selected. 
 
+---
+._Object imported from SolidEdge by importing an IGES file_ 
+[#igesimport]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_igs_se.png[500]
+---
 
-Todo: explain the steps to import a STEP, IGS or STL file. 
+The following image shows the settings used to export the IGES file from SolidEdge.
 
+---
+._SolidEdge settings to export an IGES file_ 
+[#igesexportse]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/se_export_iges.png[500]
+---
 
+==== STL import
+When your program does not allow to export an object in the STEP or IGES format it is possible to use the STL format. As stated earlier, STL is a "lossy" format as it requires the conversion of the mathematical definition of the boundary representation (BREP) to a model consisting of polygons. The polygons are clearly visible after importing an STL file into CascadeStudio.  
 
+---
+._Object imported from SolidEdge by importing an STL file_ 
+[#stlimport]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_stl.png[500]
+---
 
+The following image shows the STL export settings in SolidEdge. It is important to select the ASCII format instead of the binary format as CascadeStudio can not read the binary format. The dialog also shows the settings to determine the accuracy of the polygonal model. It allows to set the conversion tolerance (comparable to the MaxDeviation used in CascadeStudio) and the surface plane angle.  
 
-
-
+---
+._Export settings to produce an STL file with SolidEdge that can be used by CascadeStudio._ 
+[#stlimport]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/import_stl.png[500]
+---
 
 
 == Create new functions
