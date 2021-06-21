@@ -487,6 +487,12 @@ let largeBox = Transform([0, 0, 30], [[1, 00, 0], 30], 2.00, displacedSmallBox);
 
 Calling the function Transform without the full set of arguments triggers the display of an interactive "gizmo" that allows to change the values of the transformation using click and drag of sliders. Note that CascadeStudio automatically adapts the values shown in the code to the values indicated with the gizmo. However, the level of control with the gizmo is limited as the interaction with the gizmo lacks a direct feedback to the user. Using code - by applying separate instructions for Translate, Rotate and Scale - delivers more repeatable and consistent results. 
 
+---
+._Experimental gizmo_
+[#gizmo] 
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/gizmo.png[rotation,600]
+---
+
 If the gizmo is visible, the following keyboard shortcuts can be used: 
 
 [cols="1,1"]
@@ -1093,6 +1099,11 @@ In the following table the file sizes of the different export formats are compar
 |===
 
 === Importing 3D models
+Three types of files can be imported into CascadeStudio, namely STEP, IGES and STL. For all formats the operation is started using the menu item "Import STEP/IGES/STL". When all went well, the new object appears in the scene, but in the console log the program reminds the user to push the object to the scene with the command `sceneShapes.push(externalShapes['filename'])`. The imported file will be included in the JSON file describing the scene, resulting in a considerably larger JSON file after saving the scene. To remove the imported file from the scene use the menu command "Clear imported files". 
+
+==== STEP import
+
+
 
 Todo: explain the steps to import a STEP, IGS or STL file. 
 
