@@ -392,6 +392,8 @@ The function Box creates a rectangular solid prism with the dimensions x,y,z. Th
 let exampleBox      = Box(20,30,15, false)
 ----
 
+Note that Box accepts negative dimensions, resulting in expanding the box into the negative direction of each axis. 
+
 === Sphere
 Creates a sphere of specified radius
 
@@ -423,9 +425,11 @@ Creates a revolved trapezoid with differing top and bottom radii. The arguments 
 // Cone(radius1, radius2, height)
 let exampleCone     = Cone(10,2,20)
 ----
-   
+
+Unlike the Box() function, the Cone() function does not accept a negative dimension in the z-direction. This dimension, called height, always needs to be positive.  
+
 === Text3D
-Creates 3D Text from a TrueType font. The first parameter is the text string in parentheses, the second parameter defines the size of the characters. The third parameter then defines the extrusion depth of the characters, so how 'thick' the characters are. The last parameter in single parentheses defines the font of the characters. 
+Creates 3D Text from a TrueType font. The first parameter is the text string in parentheses, the second parameter defines the size of the characters. The third parameter then defines the extrusion depth of the characters, so how 'thick' the characters are. The last parameter in single parentheses defines the font of the characters. Only the fonts present in the 'CascadeStudio-Master/fonts' directory can be selected. In the standard setup these are Consola, Consolas, Papyrus and Roboto. 
 
 [source, javascript]
 ----
