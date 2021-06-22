@@ -431,7 +431,7 @@ let exampleCone     = Cone(10,2,20)
 Just as for the Cylinder() function, radius and height always need to be positive. 
 
 === Text3D
-Creates 3D Text from a TrueType font. The first parameter is the text string in parentheses, the second parameter defines the size of the characters. The third parameter then defines the extrusion depth of the characters, so how 'thick' the characters are. The last parameter in single parentheses defines the font of the characters. Only the fonts present in the 'CascadeStudio-Master/fonts' directory can be selected. In the standard setup these are Consola, Consolas, Papyrus and Roboto. 
+Creates 3D Text from a TrueType font. The first parameter is the text string in parentheses, the second parameter defines the size of the characters. The third parameter then defines the extrusion depth of the characters, so how 'thick' the characters are. The last parameter in single parentheses defines the font of the characters. Only the fonts present in the 'CascadeStudio-Master/fonts' directory can be selected. In the standard setup these are Consolas, Papyrus and Roboto. (These fonts are preloaded by the CascadeStudioMainWorker.js script, so it may be expected that only these three work). 
 
 [source, javascript]
 ----
