@@ -417,6 +417,8 @@ Creates a Cylinder with a radius and height. The arguments are radius, height, c
 let exampleCylinder = Cylinder(10,20,false)
 ----
 
+Unlike the Box() function, the Cylinder() function does not accept a negative dimension in the z-direction. This dimension, called height, always needs to be positive.
+
 === Cone
 Creates a revolved trapezoid with differing top and bottom radii. The arguments to this function are radius1, radius2 and height.
 
@@ -426,7 +428,7 @@ Creates a revolved trapezoid with differing top and bottom radii. The arguments 
 let exampleCone     = Cone(10,2,20)
 ----
 
-Unlike the Box() function, the Cone() function does not accept a negative dimension in the z-direction. This dimension, called height, always needs to be positive.  
+Just as for the Cylinder() function, radius and height always need to be positive. 
 
 === Text3D
 Creates 3D Text from a TrueType font. The first parameter is the text string in parentheses, the second parameter defines the size of the characters. The third parameter then defines the extrusion depth of the characters, so how 'thick' the characters are. The last parameter in single parentheses defines the font of the characters. Only the fonts present in the 'CascadeStudio-Master/fonts' directory can be selected. In the standard setup these are Consola, Consolas, Papyrus and Roboto. 
@@ -1958,6 +1960,32 @@ console.log(typeof rateWeek)
 
 Once the variable is declared it can be used without the keyword. Note that opposed to many other programming languages it is not necessary to determine the type of variable up front. The declaration of the type of the variable is performed implicit by assigning a value. The `typeof` function can be used to determine the type of a variable. 
 
+=== Arrays
+An array is a special type of variable that consists of a list of values that can be identified by a name and an index value. 
+
+[source, javascript]
+----
+let fruit = [];
+fruit[0] = "Cherry"
+fruit[1] = "Apple"
+fruit[3] = "Banana"
+
+// or use the short form 
+
+const fruit = new Array("Cherry", "Apple", "Banana");
+----
+
+The content of the variable can be anything, so also another array. The following array defines points that can be used in CascadeStudio. Each point is a small array containing the x,y,z coordinate of each point. 
+
+[source, javascript]
+----
+const points = [];
+points[0]= [0,0,0];
+points[1]= [0,5,0];
+points[2]= [5,5,0];
+----
+
+
 === Operations
 The following basic math operations are supported:
 
@@ -2076,9 +2104,19 @@ switch (expression) {
 The switch statement is more useful to react on user input. For CascadeStudio this statement will not be used often as the interaction with the user is limited. 
 
 === Functions
+A function is a way to perform some operations on inputs and return the result. This is most useful when the operations are complex so that the function can abstract these operations and reduce the effort to write code. 
 
+[source, javascript]
+====
+function FahrenheitToCelsius(degFahrenheit) {
+  return (5/9) * (degFahrenheit-32);
+}
 
-
+let degF = 68.0; 
+let degC = FahrenheitToCelsius(degF); 
+// or shorter
+let conversionText = "The temperature is " + FahrenheitToCelsius(77) + " Celsius";
+====
 
 
 === Modules
