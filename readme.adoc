@@ -2123,11 +2123,7 @@ Variables that are declared inside a function are only visible inside the functi
 === Modules
 A module is a way to divide your code into large chunks that can be reused. The concept is comparable to that of a library that can be loaded into your code and keeps your scripts small and comprehensive. The concept of modules is relatively new in javascript and became necessary after the size and complexity of the scripts grew. Not all browser implementations of javascript support the same functionality. 
 
-The default way to use modules is to declare these in your HTML file. Functions that are defined in modules have to be imported into your main script to be able to use these. At the same time the function has to be exported from the module.
-
-For use in CascadeStudio 
-
-The following piece of code can be found in the CascadeStudioStandardLibrary.js that defines all the main drawing functions of CascadeStudio. 
+The default way to use modules is to declare these in your HTML file. Functions that are defined in modules have to be imported into your main script to be able to use these. At the same time the function has to be exported from the module. A somewhat simpler way to work with modules in CascadeStudio is to attach your own code to an existing library or module. The following piece of code can be found in the CascadeStudioStandardLibrary.js that defines all the main drawing functions of CascadeStudio. 
 
 [source, javascript]
 ----
@@ -2144,11 +2140,8 @@ importScripts('./CascadeStudioStandardUtils.js');
 importScripts('./myNewFunctions.js');
 ----
 
-This only works if you have direct access to the directory where these librares are stored and if you run your own instance of CascadeStudio, for example using the VS Code Live Server. 
-
-
-
-
+This only works if you have direct access to the directory where these librares are stored and if you run your own instance of CascadeStudio, for example using the VS Code Live Server. But there is not need to add export and import statements to your functions. 
+If you want to use the online version of CascadeStudio it is not possible to load modules as the modules are supposed to be at the server of CascadeStudio. Even for the web app that runs locally the code still refers to `https://zalo.github.io/CascadeStudio/js/CADWorker/` as the home directory to store additional modules.   
 
 === Objects
 Javascript can use objects to define data and methods that can be applied to these data. This can look like: 
