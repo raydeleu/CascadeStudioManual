@@ -1,0 +1,161 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": true,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": false,
+    "showMaximiseIcon": false,
+    "showCloseIcon": false,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "row",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "content": [
+        {
+          "type": "stack",
+          "width": 50,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 0,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "codeEditor",
+              "title": "* hairdryer.json",
+              "componentState": {
+                "code": [
+                  "let fanhousing = Cylinder(30,30)",
+                  "fanhousing = FilletEdges(fanhousing,10,[0,2],false);",
+                  "let cutout = Translate([0,0,25],Cylinder(20,30));",
+                  "fanhousing = Difference(fanhousing,[cutout],false);",
+                  "let fanhousing_inner = Offset(fanhousing,-1,0.01,true);",
+                  "",
+                  "let lid = Translate([0,0,27],Cylinder(19,3))",
+                  "lid = FilletEdges(lid,2,[0]);",
+                  "",
+                  "",
+                  "",
+                  "let outlet = Translate([0,0,5], Box(30,60,20) )",
+                  "outlet = FilletEdges(outlet,5,[1,3,5,7]);",
+                  "let outlet_inner = Offset(outlet, -1, 0.01, true)",
+                  "outlet_in = Translate([0,3,0],outlet_inner)",
+                  "",
+                  "let handle = Translate([0,-30,5],Box(-75,20,20))",
+                  "handle = FilletEdges(handle,5,[11,10,9,8,]);",
+                  "let handle_inner = Offset(handle,-1,0.01,true)",
+                  "",
+                  "let dryer_solid = Union([fanhousing,outlet,handle],false);",
+                  "dryer_solid = RemoveInternalEdges(dryer_solid);",
+                  "dryer_solid = FilletEdges(dryer_solid,5,[12]);",
+                  "dryer_solid = FilletEdges(dryer_solid,2,[4]);",
+                  "dryer_solid = FilletEdges(dryer_solid,2,[50]);",
+                  "",
+                  "dryer_inner = Union([fanhousing_inner,outlet_in,handle_inner])",
+                  "dryer_hollow = Difference(dryer_solid,[dryer_inner])",
+                  "dryer_hollow = FilletEdges(dryer_hollow,1,[35]);",
+                  ""
+                ]
+              },
+              "width": 50,
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        },
+        {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "height": 80,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "cascadeView",
+                  "title": "CAD View",
+                  "componentState": {
+                    "componentName": "cascadeView",
+                    "MeshRes": 0.1,
+                    "MeshResRange": [
+                      0.01,
+                      2
+                    ],
+                    "Cache?": true,
+                    "Radius": 30,
+                    "RadiusRange": [
+                      20,
+                      40
+                    ]
+                  },
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            },
+            {
+              "type": "stack",
+              "height": 20,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "console",
+                  "title": "Console",
+                  "componentState": {},
+                  "height": 20,
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}
