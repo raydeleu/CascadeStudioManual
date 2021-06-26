@@ -746,6 +746,22 @@ The .Fillet method can be used to fillet a corner in a sketch. The method requir
  mysketch.LineTo([xvalue2,yvalue2]).Fillet(filletradius)
 ----
 
+The following example shows how fillets can be used at different points of your sketch. 
+
+---
+._Applying fillets at different points in your sketch_
+[#fillet_corners]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fillets.png[800]
+---
+
+The example also shows that fillets after an ArcTo (see below) are not always possible. It seems to depend on the direction of the line after the arc. The following figure shows a quick workaround by adding straight lines that enclose the required fillet. Note that in the example the shape of the arc is distorted slightly as the added lines are parallel to the x-axis. If the accuracy is important, you could consider calculating the position of the intersection between the arc and the fillets using geometric equations. 
+
+---
+._Work-around to add fillets to the end of arcs_
+[#fillet_arcs]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/fillets_wa.png[800]
+---
+
 
 
 
