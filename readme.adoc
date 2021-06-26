@@ -928,7 +928,7 @@ The circle command can be used to draw a 2-dimensional circle with a specified r
 
 
 === BSpline
-The Bspline function draws a spline through the points that are entered as a list. The arguments are a list of points, followed by a boolean the indicates whether the wire should be closed (true) or open (other).As can be seen in the example below, the BSpline can also be used as a rail to construct a pipe by sweeping a face along this rail. The Pipe command will be explained below.
+The Bspline function draws a spline through the points that are entered as a list. The arguments are a list of points, followed by a boolean the indicates whether the wire should be closed (true) or open (other).As can be seen in the example below, the BSpline can also be used as a rail to construct a pipe by sweeping a face along this rail. The Pipe command will be explained below (see <<#Pipe>>). 
 
 [source, javascript]
 ----
@@ -950,6 +950,16 @@ Extrude(box1.Wire(),[0,0,30])
 Translate([50,0,0],Extrude(box1.Face(),[0,0,50]))
 Translate([100,0,0],Extrude(box1.Face(),[0,-50,50]))
 ----
+
+The source code example above yields the results shown in <<#extrusion_examples>>. The extrusion of a wire yields a surface, the extrusion of a face yields a solid. The last sample shows the effect of an extrusion when the extrusion vector is not perpendicular to the face used for the extrusion. 
+
+---
+._Extrusion of a wire, a face and a face along a tilted line_
+[#extrusion_examples]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/extrude5.png[width=500]
+---
+
+The boolean `keepFace?` can be added if the face should not be removed from the scene. 
 
 
 === RotatedExtrude
