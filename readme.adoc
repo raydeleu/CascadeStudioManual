@@ -2147,7 +2147,7 @@ for (let h = 1; h <= 720; h++)
 Javascript also offers a `.map` method to quickly iterate over all elements of an array. The parameter of the `.map` is the name of a function that is to be applied to each item of the array. The following example also shows a shorthand version to define a function in a single line (see also <<#function_section>>). 
 
 [source,javascript]
------
+----
 let numbers = [4, 9, 16, 25];
 let Square = item => item**2
 let x = numbers.map(Math.sqrt)
