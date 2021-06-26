@@ -889,6 +889,23 @@ Constructs a BSpline (Basic Spline) from the previous point through this set of 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/bezier.png[width=700]
 ---
 
+Another interesting example is shown in <<#sine_curve>>. The points indicated with the markers are used as input to .BSplineTo and .BezierTo. The .BSplineTo curve (in black) runs through all markers, whereas the Bezier curve (white) is attracted by the control points but does not necessarily run through the control points. The more control points are used, the closer the Bezier curve moves towards the control points. 
+
+---
+._Approximation of a sine curve by using a Bezier and a BSpline_
+[#sine_curve]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/spline1.png[width=500]
+---
+
+---
+._Approximation of a sine curve by using a Bezier and a BSpline with more control points_
+[#sine_curve]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/spline20.png[width=500]
+---
+
+
+
+
 
 === Polygon
 With the Polygon command it is possible to shorten the definition of a sketch. The Polygon is defined by a number of three dimensional point in space, defined as [x,y,z] coordinates.
