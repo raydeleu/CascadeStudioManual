@@ -1963,9 +1963,8 @@ Note that there are also CAD programs that do not have a design history. In such
 * CAD program or 3D modeller that use a *node based approach* to modify or generate pieces of geometry. Examples are the Grasshopper extension for Rhino 3d (https://www.rhino3d.com/) or the geometry nodes in Blender (https://www.blender.org/). In fact this is identical to writing code, but allows the user to construct the code using components that can be connected visually. You could consider it as coding for people that are more visually oriented. In the case of Grasshopper it is even possible to write a python script to determine the functionality of a generic node. 
 
 ---
-._Model of the Turning Torso building in Malmö, designed by Santiago Calatrava_
+._Model of the Turning Torso building in Malmö, designed by Santiago Calatrava (https://tharit.wordpress.com/2009/08/24/parametric-design-%E2%80%98turning-torso%E2%80%99-case-study/)_
 image::https://tharit.files.wordpress.com/2010/01/parametric-design-e28098turning-torso_-case-study.jpg?w=710[grasshopper,700]
-https://tharit.wordpress.com/2009/08/24/parametric-design-%E2%80%98turning-torso%E2%80%99-case-study/
 --- 
 
 * 3D modellers that use *modifiers* to change the geometry. The example that springs to mind is Blender (https://www.blender.org/) that allows fairly complex modifications with a socalled modifier stack. Using the modifier stack it is possible to create a non-destructive modelling step. Each modifier contains variables that can be adjusted using values but also named variables or even calculations. However, in case of Blender the result is a polygonal model made up of vertices and edges as opposed to the boundary representation (BRep) employed in the CAD programs listed above. 
