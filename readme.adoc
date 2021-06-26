@@ -739,11 +739,15 @@ The .LineTo method adds another line to the sketch object. It starts from the po
  mysketch.LineTo([xvalue2,yvalue2])
 ----
 ==== .Fillet
+The .Fillet method can be used to fillet a corner in a sketch. The method requires only a single parameter, namely the radius of the fillet. The location of the corner that is rounded is considered to be the current location. When you are creating a sketch by adding points this can be considered as following the contour of your sketch with a pen. The fillet is applied to the current position of this virtual pen. 
 
 [source, javascript]
 ----
  mysketch.LineTo([xvalue2,yvalue2]).Fillet(filletradius)
 ----
+
+
+
 
 ==== .End
 The command .End finishes the sketch. Two booleans can be added as parameter. If the first boolean is true, the sketch will be closed to the first point of the sketch. This relieves the user from drawing the last line back to the starting point. The second parameter determines whether the direction of the sketch is reversed (true) or not (false). The direction of the sketch determines the direction of the normal and therefore the direction of the face. Note that the face is only visible when looking against the normal of the face. 
