@@ -928,7 +928,7 @@ The circle command can be used to draw a 2-dimensional circle with a specified r
 
 
 === BSpline
-The Bspline function draws a spline through the points that are entered as a list. The arguments are a list of points, followed by a boolean the indicates whether the wire should be closed (true) or open (other).As can be seen in the example below, the BSpline can also be used as a rail to construct a pipe by sweeping a face along this rail. The Pipe command will be explained below (see <<#Pipe>>). 
+The Bspline function draws a spline through the points that are entered as a list. The arguments are a list of points, followed by a boolean the indicates whether the wire should be closed (true) or open (other).As can be seen in the example below, the BSpline can also be used as a rail to construct a pipe by sweeping a face along this rail. The Pipe command will be explained below (see <<#Pipe_section>>). 
 
 [source, javascript]
 ----
@@ -981,7 +981,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/rotated_extrude2.png[width=500]
 ---
 
-
+[#Pipe_section]
 === Pipe
 Sweeps a face along a Wire. The first parameter identifies the face, the second parameter identifies the wire that the face is swept along. The third parameter is a boolean that controls whether the input faces are kept in the scene or deleted. 
 
