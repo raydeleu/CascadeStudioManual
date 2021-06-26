@@ -2144,6 +2144,19 @@ for (let h = 1; h <= 720; h++)
 }
 ----
 
+Javascript also offers a `.map` method to quickly iterate over all elements of an array. The parameter of the `.map` is the name of a function that is to be applied to each item of the array. The following example also shows a shorthand version to define a function in a single line (see also <<#function_section>>). 
+
+[source,javascript]
+-----
+let numbers = [4, 9, 16, 25];
+let Square = item => item**2
+let x = numbers.map(Math.sqrt)
+let z = numbers.map(Square)
+console.log(x)  // [2,3,4,5]
+console.log(z)  // [16,81,256,625]
+---- 
+
+
 ==== Conditional statements
 The basic shape of the conditional statement is: 
 
@@ -2179,6 +2192,7 @@ switch (expression) {
 
 The switch statement is more useful to react on user input. For CascadeStudio this statement will not be used often as the interaction with the user is limited. 
 
+[#function_section]
 === Functions
 A function is a way to perform some operations on inputs and return the result. This is most useful when the operations are complex so that the function can abstract these operations and reduce the effort to write code. 
 
@@ -2195,6 +2209,20 @@ let conversionText = "The temperature is " + FahrenheitToCelsius(77) + " Celsius
 ----
 
 Variables that are declared inside a function are only visible inside the function. Therefore the function can be regarded as a kind of magic box, where you feed in some variables and some behaviour or values are received as output. The calculation that proceeds inside the function need not be visible to the user. 
+
+A shorthand version to declare a function is the socalled arrow function expression. 
+
+[source, javascript]
+----
+let Square = item => item**2
+let F2C = f => (5/9) * (f-32)  // shorthand for function FahrenheitToCelsius
+
+let Strange = (x, y) => {
+   let delta = 1;
+   return delta + x*y;
+}
+----
+
 
 === Modules
 A module is a way to divide your code into large chunks that can be reused. The concept is comparable to that of a library that can be loaded into your code and keeps your scripts small and comprehensive. The concept of modules is relatively new in javascript and became necessary after the size and complexity of the scripts grew. Not all browser implementations of javascript support the same functionality. 
