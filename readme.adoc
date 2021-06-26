@@ -1952,10 +1952,6 @@ Some of the programs listed above allow the use of named variables to define the
 ._Using named constraints in FreeCad_
 [#named_variables]
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/names_variables_freecad_2.png[]
----
-
----
-._Entering named contraints in the sketch of FreeCad_
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/named_constraints.png[]
 ---
 
