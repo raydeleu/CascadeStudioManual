@@ -1954,6 +1954,11 @@ Some of the programs listed above allow the use of named variables to define the
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/names_variables_freecad_2.png[]
 ---
 
+---
+._Entering named contraints in the sketch of FreeCad_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/named_constraints.png[]
+---
+
 +
 Note that there are also CAD programs that do not have a design history. In such programs it is difficult to remove or change design features that where added earlier. Up to a certain extend the user can compensate this, for example by creating separate files for certain modelling steps, but once a non-reversible action is performed on a model, modifying this feature would involve moving back to the state the model was in just before applying this step and start over from there. 
 
