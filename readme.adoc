@@ -918,6 +918,15 @@ Polygon([[-25, -15, 0], [25, -15, 0], [0, 35, 0]], true)
 
 The boolean indicates whether the Polygon describes a Wire (true) or a Face (false).
 
+---
+._A polygon can be defined on another plane than the xy-plane_
+[#polygon]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/polygon.png[width=500]
+---
+
+
+
+
 === Circle
 The circle command can be used to draw a 2-dimensional circle with a specified radius. The arguments to this function are radius, wire?. The wire? parameter indicates whether the circle should be shown and handled as a face or as a wire.
 
