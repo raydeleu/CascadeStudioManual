@@ -2156,6 +2156,12 @@ console.log(x)  // [2,3,4,5]
 console.log(z)  // [16,81,256,625]
 ---- 
 
+The `.map` method looks very similar to the `.forEach` method. The difference however is that the `.forEach` method changes the array and performs a function once for every element of an array, even of this element has no value. 
+
+[source,javascript]
+----
+numbers.forEach(myFunction);
+----
 
 ==== Conditional statements
 The basic shape of the conditional statement is: 
