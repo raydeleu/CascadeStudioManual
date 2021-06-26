@@ -1929,6 +1929,17 @@ From the description above it may also be clear that parametric design requires 
 
 Read https://www.engineering.com/story/whats-the-difference-between-parametric-and-direct-modeling for more information on the difference between parametric modelling and direct modelling. It also explains that there are some CAD programs that allow a blend of the two approaches, where quick design changes are reflected in the design history. 
 
+=== Where does parametric modelling fit in the design process? 
+The design process for a part normally runs through different phases. It starts with the ideation, the phase in which the designer starts with some rough design how the solution could look. For a part that needs prior evaluation to judge the esthetics, the next phase is typically the visualisation phase. In this phase a more detailed design is produced, often finished with nice 3D renders of the product. When the design is approved to go into constructive design, a 3-view drawing of a 3D model is created. The 3D model can again be used to create nice renders. Another application of a 3D model is to run a structural analysis to determine if the part can handle the loads it will encounter during its use. If necessary the design is iterated to create a stronger or lighter version. The final model can be used to proceed to manufacturing, for example on a CNC machine or 3D printer.  
+
+<<#tools>> shows how the different tools used in the design process fit on the phases described above. Parametric modelling fits in right in the middle, to support different variations of a design. For the first phases simple polygonal modellers are often more practical to produce nice 3D renders quickly. As soon as it is clear that a part will move into production, using CAD software that offer better tools to produce accurate drawings is preferred.  
+
+---
+._Types of tools in each phase of the design process_
+[#tools]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/diagram.png[gherkin,800] 
+---
+
 === Ways to implement parametric modelling
 Parametric modelling can be achieved using different types of CAD or 3D modelling programs. 
 
