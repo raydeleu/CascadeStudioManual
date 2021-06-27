@@ -1,2 +1,55 @@
-This chapter describes an example to produce a cover for the IKEA Micke desk. 
+= This chapter describes an example to produce a cover for the IKEA Micke desk. 
+
+== Introduction
+
+
+
+== Create a model for a cover
+The 3D model for the cover of the cable opening can be produced easily with CascadeStudio. The cover consists of the base shape that fits into the opening and a cover or lid. 
+
+[source,javascript]
+----
+// Base shape
+let outerRadius = 35;
+let baseHeight = 10;
+let baseShape = Cylinder(outerRadius, baseHeight,false);
+let baseRounded = FilletEdges(baseShape,1,[2]);
+
+// Lid shape
+let lidWidth = 10;
+let lidHeight = 3;
+let lidFillet = 1;
+let lid = Translate([0,0,baseHeight], Cylinder(outerRadius+lidWidth, lidHeight, false))
+let lidRounded = FilletEdges(lid, lidFillet,[0]);
+
+// make the base hollow
+let baseThickness = 1.5;
+let holeRadius = outerRadius - baseThickness;
+let hole = Cylinder(holeRadius, 40, true);
+
+let hollowBase = Difference(baseRounded, [hole], false);
+Union([hollowBase,lidRounded]);
+----
+
+== Export the 3D model to STL-format
+
+
+
+== Import the model into PrusaSlicer
+
+* import the STL
+* place the cover with the top flat on the print bed
+
+
+== Add a modifier to the center of the cover
+
+* right click and select "Add modifier", then choose Cylinder
+* scale the cylinder so that it covers the middle part of the cover
+* with the modifier selected, choose 
+
+
+
+
+
+
 
