@@ -2042,6 +2042,7 @@ CADQuery (https://github.com/CadQuery/cadquery) is at the opposite side of the s
 * CadQuery scripts can build STL, STEP, and AMF faster than OpenSCAD.
 
 Some added advantages compared to CascadeStudio are: 
+
 * CADQuery offers more functionality than CascadeStudio right out of the box. Part of this difference can be alleviated by extending the CascadeStudio functionality as was done in <<#newFunctions>>. 
 * CADQuery offers functionality to identify edges and faces using a more parametric approach. This makes the parametric capabilities of CADQuery more robust to handle large changes in the design. 
 * The documentation of CADQuery is very detailed. 
