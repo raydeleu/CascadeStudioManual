@@ -1336,6 +1336,31 @@ UnevenChamferEdges(box1,1,3,[1,9,5,11],5, false)
 ----
 
 
+==== MakeFace
+Sometimes it is useful to create a face out of a wire. In the code example below this function is used to extend a face of a shape that is offset with a shell thickness. By combining the shrunken version of a shape and a small extrusion of the face that should be open, it is possible to create a shelled version of a shape with one or more faces removed. 
+
+[source,javascript]
+----
+function MakeFace(wire)
+{
+    return new oc.BRepBuilderAPI_MakeFace(wire).Face();
+}
+
+let boxOuter = Box(50,50,10);
+let boxInner = Offset(boxOuter,-1,0.01,true);
+let wire = GetWire(boxInner,5,true);
+let face = MakeFace(wire);
+let ext  = Extrude(face,[0,0,20],false);
+let boxInnerExt = Union([boxInner,ext],false,0.01,false);
+Difference(boxOuter,[boxInnerExt])
+----
+
+---
+._Creating a clone of the OpenCascade MakeThickSolid function using a simple extrusion on a face_ 
+[#makethickclone]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/makeface.png[500]
+---
+
 
 
 [#extensions]
