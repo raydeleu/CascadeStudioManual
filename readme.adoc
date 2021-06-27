@@ -1255,7 +1255,7 @@ The following image shows the STL export settings in SolidEdge. It is important 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/se_export_stl.png[500]
 ---
 
-
+[#newFunctions]
 == Create new functions
 
 === What are functions? 
@@ -2020,6 +2020,57 @@ Apart from these benefits, using a Scripted CAD (SCAD) approach also has the ben
 
 
 == Comparison to similar tools
+
+=== OpenScad
+As already mentioned in the introduction to this document, OpenSCAD (http://openscad.org/) is probably the most popular script based CAD software. The total is popular amongst "makers" to create parametric models that can be 3D printed or cut with a CNC machine. CascadeStudio looks in many ways similar to OpenSCAD as it also offers an integrated environment that allows to run code and see the result in the same window. Even many of the shortcut keys such as kbd:[F5] to preview the result of the code are similar. 
+
+--- 
+._Interface of OpenSCAD_
+[#openscad_int]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad_interface.png[800] 
+---
+
+The main difference is that OpenSCAD uses its own geometrical kernel that is polygon based as opposed to the BRep based kernel of CascadeStudio. This makes operations like creating a bevel or rounding more difficult. OpenSCAD also has less functionality to create sketches as a starting point to create 3D shapes. Furthermore the result looks a bit less professional, as the faces of the polygons are clearly visible in the 3D renders. An advantage of the OpenSCAD kernel is its speed. Fore example, creating a large honeycomb grid is performed within seconds in OpenSCAD, where the same operation can take minutes in CascadeStudio (depending on the size of the grid). 
+
+=== CadQuery
+CADQuery (https://github.com/CadQuery/cadquery) is at the opposite side of the spectrum. The following list of advantages of CADQuery compared to OpenSCAD are directly taken from the github website of CADQuery: 
+
+* The scripts use a standard programming language, Python, and thus can benefit from the associated infrastructure. This includes many standard libraries and IDEs.
+* CadQuery's CAD kernel Open CASCADE Technology (OCCT) is much more powerful than CGAL. Features supported natively by OCCT include NURBS, splines, surface sewing, STL repair, STEP import/export, and other complex operations, in addition to the standard CSG operations supported by CGAL
+* Ability to import/export STEP and the ability to begin with a STEP model, created in a CAD package, and then add parametric features. This is possible in OpenSCAD using STL, but STL is a lossy format.
+* CadQuery scripts require less code to create most objects, because it is possible to locate features based on the position of other features, workplanes, vertices, etc.
+* CadQuery scripts can build STL, STEP, and AMF faster than OpenSCAD.
+
+Some added advantages compared to CascadeStudio are: 
+* CADQuery offers more functionality than CascadeStudio right out of the box. Part of this difference can be alleviated by extending the CascadeStudio functionality as was done in <<#newFunctions>>. 
+* CADQuery offers functionality to identify edges and faces using a more parametric approach. This makes the parametric capabilities of CADQuery more robust to handle large changes in the design. 
+* The documentation of CADQuery is very detailed. 
+* The community around CADQuery seems a bit larger, resulting in faster responses to issues raised on the github website. 
+
+CADQuery offers a separate editor at https://github.com/CadQuery/CQ-editor that has features that are comparable to those of OpenSCAD en CascadeStudio. 
+
+--- 
+._Interface of CQ Editor_
+[#CADQuery_int]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/cqeditor_interface.png[800] 
+---
+
+Some disadvantages of CADQuery are: 
+
+* The installation of CADQuery requires more space and is more complicated as it relies on the proper installation of the Python programming language. In comparison, CascadeStudio uses javascript that is available on every system that uses a modern internet browser. 
+* The approach to write code for CADQuery is less transparant to a non-programmer than that of CascadeStudio. When you started out in OpenSCAD you will quickly feel at home in CascadeStudio, whereas CADQuery really requires a different way of looking at your design. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
