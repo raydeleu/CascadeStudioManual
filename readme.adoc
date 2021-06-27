@@ -2048,10 +2048,9 @@ Apart from these benefits, using a Scripted CAD (SCAD) approach also has the ben
 
 A curated list of scripted CAD (SCAD) tools is available at https://learn.cadhub.xyz/blog/curated-code-cad/. Unfortunately many of the links to other software repositories are defunct. It is clearly an area of software development that is a kind of a niche, kept alive by motivated individuals. However, none of these seem to have been picked up for a commercial release and professional use. These two are often linked, as it would be a large risk to make a professional business dependent on voluntary programmers. 
 
+The list of SCAD softwares show that almost all are either based on the OpenSCAD kernel or on the OpenCascade kernel. Two programs stand out in the stability and support, namely OpenSCAD itself and CADQuery. The following paragraphs compare these two programs to CascadeStudio. 
 
-
-
-=== OpenScad
+=== OpenSCAD 
 As already mentioned in the introduction to this document, OpenSCAD (http://openscad.org/) is probably the most popular script based CAD software. The total is popular amongst "makers" to create parametric models that can be 3D printed or cut with a CNC machine. CascadeStudio looks in many ways similar to OpenSCAD as it also offers an integrated environment that allows to run code and see the result in the same window. Even many of the shortcut keys such as kbd:[F5] to preview the result of the code are similar. 
 
 --- 
