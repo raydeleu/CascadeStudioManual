@@ -907,7 +907,7 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/spline20
 ==== .Circle
 The `.Circle` method can be used to create a circular face that can be extruded or to create a circular hole in your sketch. However, be aware that creating a hole using a circle in a sketch is much more complicated than creating a separate cylinder and subtracting this from the shape. The only benefit is that adding a circle to a sketch seems to require less processing time than a boolean Difference. 
 
-The Circle method requires three parameters, namely the center of the circle [x,y], its radius and a boolean value that indicates whether the face should be reversed. 
+The Circle method requires three parameters, namely the center of the circle [x,y], its radius and a boolean value that indicates whether the face should be reversed. In the example below the direction of the main face and of the circle have to be opposite. If you add another circle this no longer works and the shape is no longer properly closed. 
 
 [source,javascript]
 ----
