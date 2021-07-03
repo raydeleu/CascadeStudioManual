@@ -2061,6 +2061,52 @@ image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/openscad
 
 The main difference is that OpenSCAD uses its own geometrical kernel that is polygon based as opposed to the BRep based kernel of CascadeStudio. This makes operations like creating a bevel or rounding more difficult. OpenSCAD also has less functionality to create sketches as a starting point to create 3D shapes. Furthermore the result looks a bit less professional, as the faces of the polygons are clearly visible in the 3D renders. An advantage of the OpenSCAD kernel is its speed. Fore example, creating a large honeycomb grid is performed within seconds in OpenSCAD, where the same operation can take minutes in CascadeStudio (depending on the size of the grid). 
 
+
+=== JSCAD
+If you like CascadeStudio and have some familiarity with Javascript, the Javascript version of OpenSCAD, JSCAD (formerly OpenJSCAD) could be very interesting. A live version can be found at https://www.openjscad.xyz/. Working with JSCAD is a bit more complex than working with OpenSCAD or CascadeStudio. Firstly the programming for JSCAD looks a bit different. The shapes have to be defined as part of a function. This function then has to be exported. The editor is not interactive like the one in OpenSCAD and CascadeStudio. You have to edit you design in an external editor and then drag and drop it in the browser UI. The benefit compared to OpenSCAD is that you can create designs as long as you have access to a text editor. There is no need to install anything locally on your computer except for a text editor. In terms of modelling it offers the same capabilities as OpenSCAD but also has the same limitations. The result is not a "real" CAD object but a polygonal representation of you object with a limited resolution.  
+
+[source,javascript]
+----
+/**
+ * Spheres of all sorts
+ * @category Creating Shapes
+ * @skillLevel 1
+ * @description Demonstrating the sphere() and geodesicSphere() functions
+ * @tags sphere, geodesic, geodesicsphere, ellipsoid, shape
+ * @authors Rene K. Mueller
+ * @licence MIT License
+ */
+
+const { sphere, geodesicSphere } = require('@jscad/modeling').primitives
+const { translate, scale } = require('@jscad/modeling').transforms
+
+const main = () => {
+  return [
+    translate([15, -25, 0], sphere({ radius: 10, segments: 12 })),
+    translate([-15, -25, 0], geodesicSphere({ radius: 10, frequency: 6 })),
+
+    translate([15, 0, 0], sphere({ radius: 10, segments: 32 })),
+    translate([-15, 0, 0], geodesicSphere({ radius: 10, frequency: 24 })),
+
+    scale([0.5, 1, 2], translate([15, 25, 0], sphere({ radius: 10, segments: 32 }))),
+    scale([0.5, 2, 1], translate([30, 25, 0], sphere({ radius: 10, segments: 32 }))),
+    scale([0.5, 1, 2], translate([-15, 25, 0], geodesicSphere({ radius: 10, frequency: 18 }))),
+    scale([0.5, 2, 1], translate([-30, 25, 0], geodesicSphere({ radius: 10, frequency: 18 })))
+  ]
+}
+
+module.exports = { main }
+----
+
+--- 
+._Interface of OpenSCAD_
+[#jscad_int]
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/jscad_interface.png[800] 
+---
+
+
+
+
 === CadQuery
 CADQuery (https://github.com/CadQuery/cadquery) is at the opposite side of the spectrum. The following list of advantages of CADQuery compared to OpenSCAD are directly taken from the github website of CADQuery: 
 
