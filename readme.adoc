@@ -122,9 +122,7 @@ If you want to know more on manufacturing techniques, many resources can be foun
 === On-line
 It is possible to access a fully working version of CascadeStudio by browsing to the following internet address: https://zalo.github.io/CascadeStudio/
 
-Another alternative is to go to the cadhub website at https://cadhub.xyz/
-
-If you sign up at this website it is possible to create a part in CascadeStudio and share this with other users. The site has a gallery of parts that can be studied to learn from the approaches other users have chosen to model their part. Examples can also be found at https://github.com/zalo/CascadeStudio/discussions/categories/show-and-tell but here it is not always possible to check the source code for each part. 
+Examples can be found at https://github.com/zalo/CascadeStudio/discussions/categories/show-and-tell. This manual also contains a lot of smaller examples. Some more examples can be found at https://github.com/raydeleu/CascadeStudioManual.  
 
 === Local installation
 
