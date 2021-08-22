@@ -1,8 +1,7 @@
-= This chapter describes an example to produce a cover for the IKEA Micke desk. 
+= Cover for the IKEA Micke desk. 
 
 == Introduction
-
-
+This chapter describes an example to produce a cover for the IKEA Micke desk.
 
 == Create a model for a cover
 The 3D model for the cover of the cable opening can be produced easily with CascadeStudio. The cover consists of the base shape that fits into the opening and a cover or lid. 
@@ -32,20 +31,16 @@ Union([hollowBase,lidRounded]);
 ----
 
 == Export the 3D model to STL-format
+When you are satisfied with the shape of the model, export it to STL-format. This can be achieved with the menu button on the top of the CascadeStudio window. Do not forget to save the project file (in json format) or the javascript file (exporting the contents of the editor window to a text editor) as well. If you want to modify the shape to account for inaccuracies of your printer, you will save time by re-using these files as a starting point. 
+
+== Slice the model with PrusaSlicer
+Now import the STL file into you favourite slicer. I used PrusaSlicer as I wanted to modify the cover with a hexagonal grid instead of a fully closed surface. You can also model the hexagonal grid in CascadeStudio, but this involves a large number of boolean operations and therefore takes a lot of time. Using the PrusaSlicer modifiers the same effect can be achieved with almost no effort. 
+
+After importing you will probably have to place the cover with the top flat surface on the print bed. 
+
+To add a modifier to achieve the hexagonal grid pattern, add a modifier shape. Right click and select "Add Modifier". Choose a Cylinder shape. Then scale the cylinder so that it covers the middle part of the Micke cover. With the modifier selected, choose "Layers and Perimeters". Set the Bottom and Top layers to 0. In the "Print Settings" tab, choose infill and select "honeycomb". The infill density of 20% produces nice results. 
 
 
-
-== Import the model into PrusaSlicer
-
-* import the STL
-* place the cover with the top flat on the print bed
-
-
-== Add a modifier to the center of the cover
-
-* right click and select "Add modifier", then choose Cylinder
-* scale the cylinder so that it covers the middle part of the cover
-* with the modifier selected, choose 
 
 
 
