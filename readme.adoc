@@ -2021,9 +2021,10 @@ Note that there are also CAD programs that do not have a design history. In such
 image::https://tharit.files.wordpress.com/2010/01/parametric-design-e28098turning-torso_-case-study.jpg?w=710[grasshopper,700]
 --- 
 
++
 ---
-._Model of a nut modelled with Antimony (https://github.com/mkeeter/antimony)
-image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/antimony-nut.png[antimony,700]
+._Model of a nut modelled with Antimony (https://github.com/mkeeter/antimony)_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/antimony-nut.png[antimony,900]
 ---
 
 
