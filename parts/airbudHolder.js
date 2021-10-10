@@ -34,6 +34,7 @@ hookPathR[3] = [10,42,0]
 hookPathR[4] = [-12,32,0]
 hookPathR[5] = [-20,35,0]
 
+// draw ear hook left
 let hookPathL = [];
 hookPathL[0] = [0,0,0]
 hookPathL[1] = [-20,10,0]
@@ -42,18 +43,24 @@ hookPathL[3] = [-10,42,0]
 hookPathL[4] = [12,32,0]
 hookPathL[5] = [20,35,0]
 
-
-
+// profile of the earhook, 
 let hookHeight = 3; // thickness of hook
-let hookWidth = 3;  // width of hook
-let hookRadius =1; 
-// let version = "right" ;
+let hookWidth = 3;  // width of hook, thinner make it more bendy, larger than 4 fails
+let hookRadius =1; // rounding of the hook around the ear to make it more comfortable
+
+// prepare some variables so you can build right and left hook at same time
 let path;
-let version = "right"
+let versions = ["left","right"]
+let version;
+
+for (version in versions) 
+{
+console.log(version)
+// version right = 1, left = 0
 
 let face = Rotate([1,0,0],90,FilletRect(hookWidth,hookHeight,hookRadius),true);
 
-if (version == "left")
+if (version == 0)
     {
     path = BSpline(hookPathL);
     }
@@ -92,14 +99,17 @@ airbudHook = Difference(airbudHook,[slit]);
 // right 
 // 
 
-if (version == "left")
+if (version == 0)
 {
    airbudHook = FilletEdges(airbudHook,2,[56,16]);
 }    
 else
 {
    airbudHook = FilletEdges(airbudHook,2,[16,65]);
+   airbudHook = Translate([50,0,0],airbudHook);
 }
 
-let flatCutter = Translate([0,0,-5],Box(100,100,10,true));
+let flatCutter = Translate([0,0,-5],Box(200,100,10,true));
 airbudHook = Difference(airbudHook,[flatCutter])
+
+}
