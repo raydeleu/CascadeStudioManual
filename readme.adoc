@@ -513,6 +513,23 @@ In the latest version the gizmo no longer seems to work
 ====
 
 
+=== Mirror
+The function Mirror creates a mirrored version of the shape listed in the arguments to the function. The first argument to the function is a vector that is normal to the symmetry plane. For example, using the vector [1,0,0] creates a mirrored version with reference to the YZ-plane. This also works for planes other than the orthographic planes. For example, using the vector [1,1,0] creates a mirror with reference to the XY plane that is turned 45 degrees counterclockwise, resulting in a shape that is rotated 90 degrees. 
+
+[source, javascript]
+----
+// Mirror([vector], shape, keepShape?)
+let box = Translate([10,0,5],Box(10,20,30));
+let xybox = Mirror([0,0,1],box,true);
+let yzbox = Mirror([1,0,0],box,true);
+----
+
+---
+._Effect of mirror function on shape_
+image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/mirror.png[mirror,500]
+---
+
+
 === Offset
 Dilates or contracts a shape by the specified distance. This is similar to the socalled minkowski sum with a sphere (known from the OpenSCAD application) which rolls a sphere around the base shape. 
 
