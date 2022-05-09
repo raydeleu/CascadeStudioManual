@@ -1045,7 +1045,7 @@ In the code exampe above the face is swept along a BSpline in three dimensions. 
 image::https://github.com/raydeleu/CascadeStudioManual/blob/main/images/pipe1.png[width=600]
 ---
 
-<<#pipewire>> shows another approach, where the wire is derived from a 2 dimensional sketch. Here the result can be controlled better. But still it is necessary to be very careful regarding the position and rotation of the face with reference to the wire. Unlike other programs it seems that CascadeStudio does not automatically place the normal of the face in the direction of the wire. Only if the initial conditions are correct, the result is as expected. Notice the rotations and translation in the code of <<#pipewire>> to align the face correctly with the wire.  
+<<#pipewire>> shows another approach, where the wire is derived from a 2 dimensional sketch. Here the result can be controlled better. But still it is necessary to be very careful regarding the position and rotation of the face with reference to the wire. Unlike other programs it seems that CascadeStudio does not automatically place the normal of the face in the direction of the wire. Only if the initial conditions are correct, the result is as expected. Notice the rotations and translation in the code of <<#pipewire>> to align the face correctly with the wire. The function FilletRect that is used in the example is an extension to the standard modeling functions and will be explained in section <<FilletRect>>. 
 
 ---
 ._Pipe swept along a Sketch.Wire()_
