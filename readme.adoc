@@ -2393,10 +2393,10 @@ function FahrenheitToCelsius(degFahrenheit) {
   return (5/9) * (degFahrenheit-32);
 }
 
-let degF = 68.0; 
-let degC = FahrenheitToCelsius(degF); 
-// or shorter
-let conversionText = "The temperature is " + FahrenheitToCelsius(77) + " Celsius";
+let degF = 68.0;
+let degC = FahrenheitToCelsius(degF);
+let conversionText = String(degF) + " degrees Fahrenheit is " + String(degC) + " degrees Celsius";
+console.log(conversionText);
 ----
 
 Variables that are declared inside a function are only visible inside the function. Therefore the function can be regarded as a kind of magic box, where you feed in some variables and some behaviour or values are received as output. The calculation that proceeds inside the function need not be visible to the user. 
