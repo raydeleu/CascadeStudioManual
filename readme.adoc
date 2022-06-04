@@ -2362,7 +2362,24 @@ console.log(words);
 // Expected output:
 // ["Hello", "Bird", "Table", "Football", "Pipe", "Code"]
 ----
+or with values
 
+[source,javascript]
+----
+function func() {
+        
+        // Original array
+        const items = [1, 29, 47];
+        const copy = [];
+  
+        items.forEach(function (item) {
+            copy.push(item * item);
+        });
+  
+        document.write(copy);
+    }
+    func();
+----
 
 ==== Conditional statements
 The basic shape of the conditional statement is: 
