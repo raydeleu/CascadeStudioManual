@@ -2348,6 +2348,22 @@ The `.map` method looks very similar to the `.forEach` method. The difference ho
 numbers.forEach(myFunction);
 ----
 
+A more complete example of the forEach method is: 
+
+[source,javascript]
+----
+const words = ['hello', 'bird', 'table', 'football', 'pipe', 'code'];
+const capWords = words.forEach(capitalize);
+ 
+function capitalize(word, index, arr) {
+  arr[index] = word[0].toUpperCase() + word.substring(1);
+}
+console.log(words);
+// Expected output:
+// ["Hello", "Bird", "Table", "Football", "Pipe", "Code"]
+----
+
+
 ==== Conditional statements
 The basic shape of the conditional statement is: 
 
