@@ -5,8 +5,9 @@
 :idprefix:
 :idseparator: -
 
-:sectnums: 
+
 :toc: 
+:sectnums: 
 
 ifdef::env-github[]
 :tip-caption: :bulb:
