@@ -15,7 +15,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-include::chapters/chapter-1.adoc[]
+include::chapters/introduction.adoc[]
 
 == Introduction
 
