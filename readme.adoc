@@ -5,6 +5,8 @@
 :idprefix:
 :idseparator: -
 
+:toc: 
+
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -17,7 +19,7 @@ endif::[]
 
 // include::chapters/introduction.adoc[]  // if you want to use separate chapters this would be a way. 
 
-:toc: 
+
 
 == Introduction
 
