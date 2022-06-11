@@ -5,6 +5,7 @@
 :idprefix:
 :idseparator: -
 
+:sectnums: 
 :toc: 
 
 ifdef::env-github[]
@@ -14,8 +15,6 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
-
-:sectnums: 
 
 // include::chapters/introduction.adoc[]  // if you want to use separate chapters this would be a way. 
 
