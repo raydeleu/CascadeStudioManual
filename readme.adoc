@@ -4,8 +4,6 @@
 :xrefstyle: short
 :idprefix:
 :idseparator: -
-:toc: 
-:sectnums: 
 
 ifdef::env-github[]
 :tip-caption: :bulb:
@@ -15,7 +13,11 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+:sectnums: 
+
 include::chapters/introduction.adoc[]
+
+:toc: 
 
 == Introduction
 
