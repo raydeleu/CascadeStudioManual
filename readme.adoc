@@ -15,7 +15,7 @@ endif::[]
 
 :sectnums: 
 
-include::chapters/introduction.adoc[]
+// include::chapters/introduction.adoc[]  // if you want to use separate chapters this would be a way. 
 
 :toc: 
 
