@@ -13,6 +13,8 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+include::chapters/chapter-1.adoc[]
+
 == Introduction
 
 === Purpose
