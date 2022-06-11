@@ -2,12 +2,10 @@
 :docdate:
 :experimental: 
 :xrefstyle: short
+:toc: 
+:sectnums:
 :idprefix:
 :idseparator: -
-
-
-:toc: 
-:sectnums: 
 
 ifdef::env-github[]
 :tip-caption: :bulb:
