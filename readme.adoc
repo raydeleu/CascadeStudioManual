@@ -2,6 +2,8 @@
 :docdate:
 :experimental: 
 :xrefstyle: short
+:idprefix:
+:idseparator: -
 :toc: 
 :sectnums: 
 
