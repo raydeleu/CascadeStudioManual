@@ -1,0 +1,162 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": true,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": false,
+    "showMaximiseIcon": false,
+    "showCloseIcon": false,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "row",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "content": [
+        {
+          "type": "stack",
+          "width": 50,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 0,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "codeEditor",
+              "title": "mollino-cs.json",
+              "componentState": {
+                "code": [
+                  "// define points of wavy curve",
+                  "let p0 = [0,0]",
+                  "let p1 = [50,45]",
+                  "let p2 = [100,3]",
+                  "let p3 = [130,65]",
+                  "let p4 = [150,40]",
+                  "let points = [p1,p2,p3,p4]",
+                  "",
+                  "// create sketch of wavy curve and rotate it to XZ-plane",
+                  "let sideView = new Sketch(p0)",
+                  ".BSplineTo(points)",
+                  ".End().Wire()",
+                  "sideView = Rotate([1,0,0],90,sideView)",
+                  "",
+                  "// create to random cylinders to cut holes in the shape",
+                  "let cyl = Translate([10,55,0],Rotate([1,0,0],30,Cylinder(8,100,false)))",
+                  "let cyl2 =  Translate([114,15,0],Rotate([1,0,0],-30,Cylinder(13,100,false)))",
+                  "",
+                  "// extrude the curve, create a copy and offset this copy",
+                  "let base = Extrude(sideView,[0,60,0])",
+                  "// It does not work to stencil the holes out first and loft the wires later. ",
+                  "// This is probably caused by the GetWire function that only converts the outer",
+                  "// boundary of a face to a wire.  ",
+                  "// base = Difference(base,[cyl,cyl2])",
+                  "",
+                  "let base1 = base;",
+                  "base1 = Offset(base1,1);",
+                  "",
+                  "// to create a solid, make wires out of the two surfaces and loft ",
+                  "// between them ",
+                  "let baseComplete = Loft([GetWire(base),GetWire(base1)])",
+                  "",
+                  "// add some fillets to the holes to disguise that these are not",
+                  "// cut normal to the face direction ",
+                  "baseComplete = Difference(baseComplete,[cyl,cyl2])",
+                  "baseComplete = FilletEdges(baseComplete,0.4,[10,18])",
+                  "",
+                  "",
+                  ""
+                ]
+              },
+              "width": 50,
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        },
+        {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "height": 80,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "cascadeView",
+                  "title": "CAD View",
+                  "componentState": {
+                    "componentName": "cascadeView",
+                    "MeshRes": 0.1,
+                    "Cache?": true,
+                    "Radius": 30
+                  },
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            },
+            {
+              "type": "stack",
+              "height": 20,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "console",
+                  "title": "Console",
+                  "componentState": {},
+                  "height": 20,
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}
