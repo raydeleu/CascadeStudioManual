@@ -882,7 +882,7 @@ Constructs an order-N Bezier Curve where the first N-1 points are control points
 // this.BezierTo(bezierControlPoints)
 ----
 
-<<#img-css-bezierto>> shows a shape created with the BezierTo command. Note that although the command can accept more points, these all have to be included into a single parameter by enclosing the points in square brackets. Adding a fillet to a shape with a Bezier spline requires the same work-around as explained for the ArcTo command. 
+<<#img-ccs-bezierto>> shows a shape created with the BezierTo command. Note that although the command can accept more points, these all have to be included into a single parameter by enclosing the points in square brackets. Adding a fillet to a shape with a Bezier spline requires the same work-around as explained for the ArcTo command. 
 
 ---
 ._Example of a sketch with BezierTo command_
