@@ -44,12 +44,14 @@ let cutterLanyard1 = Translate([0,gnsWidth/2+3,gnsDepth/2],cutterLanyard,true);
 let cutterLanyard2 = Translate([0,gnsWidth/2-3,gnsDepth/2],cutterLanyard,false);
 holder = Difference(holder,[cutterTop,cutterSides,cutterBottom,cutterLanyard1,cutterLanyard2])
 holder = Translate([0,0,hDepth],holder)
-holder = FilletEdges(holder,0.5,[21])
-holder = FilletEdges(holder,0.5,[124])
-holder = FilletEdges(holder,0.5,[164])
-holder = FilletEdges(holder,0.5,[174])
-holder = FilletEdges(holder,0.5,[112])
-holder = FilletEdges(holder,0.5,[60])
+holder = FilletEdges(holder,0.5,[41])  // side 1
+holder = FilletEdges(holder,0.5,[115]) // side 2 
+holder = FilletEdges(holder,0.5,[173]) // top1
+holder = FilletEdges(holder,0.5,[8]) // top2
+holder = FilletEdges(holder,0.5,[67])  // between tops
+holder = FilletEdges(holder,0.5,[176]) // bottom
+holder = FilletEdges(holder,0.5,[120,122]) // holes outside
+holder = FilletEdges(holder,0.5,[13,2]) // holes inside
 
 // I tried rounding the top edges but this failed as the edges were renumbered every time
 
