@@ -1,0 +1,186 @@
+{
+  "settings": {
+    "hasHeaders": true,
+    "constrainDragToContainer": true,
+    "reorderEnabled": true,
+    "selectionEnabled": false,
+    "popoutWholeStack": false,
+    "blockedPopoutsThrowError": true,
+    "closePopoutsOnUnload": true,
+    "showPopoutIcon": false,
+    "showMaximiseIcon": false,
+    "showCloseIcon": false,
+    "responsiveMode": "onload",
+    "tabOverlapAllowance": 0,
+    "reorderOnTabMenuClick": true,
+    "tabControlOffset": 10
+  },
+  "dimensions": {
+    "borderWidth": 5,
+    "borderGrabWidth": 15,
+    "minItemHeight": 10,
+    "minItemWidth": 10,
+    "headerHeight": 20,
+    "dragProxyWidth": 300,
+    "dragProxyHeight": 200
+  },
+  "labels": {
+    "close": "close",
+    "maximise": "maximise",
+    "minimise": "minimise",
+    "popout": "open in new window",
+    "popin": "pop in",
+    "tabDropdown": "additional tabs"
+  },
+  "content": [
+    {
+      "type": "row",
+      "isClosable": true,
+      "reorderEnabled": true,
+      "title": "",
+      "content": [
+        {
+          "type": "stack",
+          "width": 50,
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "activeItemIndex": 0,
+          "content": [
+            {
+              "type": "component",
+              "componentName": "codeEditor",
+              "title": "* flatbase_holder_cs.json",
+              "componentState": {
+                "code": [
+                  "",
+                  "  let lx = 45.25    // width of gns receiver",
+                  "  let ly = 79.25;   // length of gns receiver",
+                  "  let lz = 11.4;    // thickness of gns receiver",
+                  "  let lt = 0.5 ;    // tolerance for fit around the receiver    ",
+                  "  let th = 2   ;    // thickness of holder around the receiver",
+                  "  ",
+                  "  let wholder = 20  ;    // width of lanyard holder",
+                  "  let yholder = 10  ;    // amount that holder sticks out of body",
+                  "",
+                  "  let rlanhol = 3   ;    // radius of lanyard hole",
+                  "  let ycut    = 0.6  ;    // portion of side length to be cut",
+                  "",
+                  "  let rlandist = 7  ; // distance between two holes for lanyard, set to 0 for single hole  ",
+                  "",
+                  "  // add tolerances to the dimensions of object to be held",
+                  "  lx = lx + lt; ",
+                  "  ly = ly + lt;",
+                  "  lz = lz + lt; ",
+                  "",
+                  "  // shape of GNS receiver",
+                  "//   let receiver = Box(lx,ly,lz)",
+                  "//   let rReceiver = (lz-lt)/2",
+                  "//   receiver = Translate([0,0,th],(FilletEdges(receiver, rReceiver,[1,3,5,7])))",
+                  "",
+                  " // shape of object to be held, length increased to cut upper part",
+                  "    let rHollow = (lz-lt)/2; ",
+                  "    let hollow = Translate([0,th,th],Box(lx,ly+2*th,lz))",
+                  "    hollow = FilletEdges(hollow, rHollow,[1,3,5,7])",
+                  "",
+                  "// shape of holder, selected only top edges for filleting",
+                  "// so that the bottom is flat, which is better for 3D printing without supports",
+                  "    let shape = Translate([-th,0,0],Box(lx+2*th,ly+2*th,lz+2*th))",
+                  "    let rShape = (lz+2*th-lt)/2;  ",
+                  "    shape = FilletEdges(shape,rShape,[5,1])",
+                  "",
+                  "    let lanyardholder = Translate([(lx-wholder)/2,yholder,0],Box(wholder,ly+(2*th),th))",
+                  "    lanyardholder = FilletEdges(lanyardholder,wholder/2*0.9,[6,2])",
+                  "    shape = Union([shape,lanyardholder])",
+                  "    shape = Difference(shape,[hollow])",
+                  "// define two objects to cut away parts of the holder",
+                  "    let lCutter = ly*ycut",
+                  "    let wCutter = lx*1.2",
+                  "    let cutter = Translate([wCutter/2-2*th,ly/2+7,0.7*(lz+2*th)],Box(wCutter,lCutter,lz+2*th,true))",
+                  "    cutter = FilletEdges(cutter,4,[8,10])",
+                  "    ",
+                  "    shape = Difference(shape,[cutter])",
+                  "    shape = FilletEdges(shape,0.8,[15])",
+                  "",
+                  "    let cutterTop = Translate([lx/2,ly/2,lz/2+lz*1.12],Box(lx*1.2,ly*1.2,lz,true))",
+                  "    shape = Difference(shape,[cutterTop])",
+                  " ",
+                  " ",
+                  "    let lanyardCutter = Translate([lx/2,ly+8,-th],Cylinder(rlanhol,th*4))",
+                  "    shape = Difference(shape,[lanyardCutter])",
+                  "    shape = FilletEdges(shape,0.5,[133])",
+                  "    shape = FilletEdges(shape,0.5,[120])",
+                  "    shape = FilletEdges(shape,0.5,[14])",
+                  "    shape = FilletEdges(shape,0.5,[153])",
+                  "    ",
+                  ""
+                ]
+              },
+              "width": 50,
+              "isClosable": false,
+              "reorderEnabled": true
+            }
+          ]
+        },
+        {
+          "type": "column",
+          "isClosable": true,
+          "reorderEnabled": true,
+          "title": "",
+          "width": 50,
+          "content": [
+            {
+              "type": "stack",
+              "height": 80,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "cascadeView",
+                  "title": "CAD View",
+                  "componentState": {
+                    "componentName": "cascadeView",
+                    "MeshRes": 0.1,
+                    "Cache?": true,
+                    "GroundPlane?": true,
+                    "Grid?": true,
+                    "Radius": 30
+                  },
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            },
+            {
+              "type": "stack",
+              "height": 20,
+              "isClosable": true,
+              "reorderEnabled": true,
+              "title": "",
+              "activeItemIndex": 0,
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "console",
+                  "title": "Console",
+                  "componentState": {},
+                  "height": 20,
+                  "isClosable": false,
+                  "reorderEnabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isClosable": true,
+  "reorderEnabled": true,
+  "title": "",
+  "openPopouts": [],
+  "maximisedItemId": null
+}
