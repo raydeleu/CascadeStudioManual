@@ -15,8 +15,9 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-// include::chapters/introduction.adoc[]  // if you want to use separate chapters this would be a way. 
-
+// include::chapters/introduction.adoc[]  
+// if you want to use separate chapters this would be a way. 
+// does not seem to work in github though. 
 
 
 == Introduction
