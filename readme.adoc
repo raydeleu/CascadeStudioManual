@@ -19,11 +19,10 @@ endif::[]
 // if you want to use separate chapters this would be a way. 
 // does not seem to work in github though. https://github.com/github/markup/issues/1095
 
-
 == Introduction
 
 === Purpose
-This document is intended to create a short introduction and manual for the software CascadeStudio, created by Johnathon Selstad (@zalo, see https://github.com/zalo/CascadeStudio).
+This document is intended to create a short introduction and manual for the software CascadeStudio, created by Johnathon Selstad (@zalo, see https://github.com/zalo/CascadeStudio). If you want to use this document to generate a separate manual, uncomment the line `:toc:` in the header of this document. As in github the table of contents does not work to quickly jump to the required section, you can better use the outline facility of github. Click the bullet list icon in the header of this document.   
 
 === What is CascadeStudio?
 CascadeStudio is a software package that allows the user to enter a kind of script to create a 3D model. This model can then be exported in several formats,  allowing the user to create nice images (renders) or to send the shape to a 3D printer.
