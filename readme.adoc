@@ -2,7 +2,7 @@
 :docdate:
 :experimental: 
 :xrefstyle: short
-:toc: 
+// :toc: 
 :sectnums:
 :idprefix:
 :idseparator: -
@@ -15,9 +15,9 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-include::chapters/introduction.adoc[]  
+// include::chapters/introduction.adoc[]  
 // if you want to use separate chapters this would be a way. 
-// does not seem to work in github though. 
+// does not seem to work in github though. https://github.com/github/markup/issues/1095
 
 
 == Introduction
