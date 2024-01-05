@@ -1417,7 +1417,7 @@ The software CadQuery (https://github.com/CadQuery/cadquery) that is also based 
 | - 		| .offset2D			|
 |===		
 
-Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. Using the additional sketch functions it is possible to determine the absolute coordinates (with reference to the origing [0,0,0]) from the relative position of a point. 
+Having more sketch functions can speed up the translation of drawings into code. In most drawings an object is defined based on relative dimensions instead of absolute coordinates. If we take the plan view of a house as an example (see <<#houseplan>>) finding the absolute coordinates of the points that define the contour can be really complex. Using the additional sketch functions it is possible to determine the absolute coordinates (with reference to the origin [0,0,0]) from the relative position of a point. 
 
 ---
 ._Plan view of a house with a non-rectangular first floor_ 
