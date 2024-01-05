@@ -2481,17 +2481,17 @@ If you want to use the online version of CascadeStudio it is not possible to loa
 Javascript can use objects to define data and methods that can be applied to these data. This can look like: 
 
 [source,javascript]
----
+----
 let car = {type:"Tesla", power:"Electricity", color: white, length:5.1 };
----
+----
 
 The result of this assignment is that: 
 
 [source,javascript]
----
+----
 car.type = Tesla
 car.length = 5.1
----
+----
 
 We can also assign methods to objects. Methods are functions that describe the behaviour of an object. So for example a method for a car could be start(), charge(), stop(). 
 
