@@ -170,7 +170,7 @@ An even simpler approach is to install CascadeStudio as a Progressive Web App (P
 
 To install CascadeStudio as a Web App perform the following steps: 
 
-. Open the page https://zalo.github.io/cascadestudio/ 
+. Open the page https://zalo.github.io/CascadeStudio/ 
 . In the browser address bar, click on the "+" sign (MS Windows) or on the "download to computer" icon (MacOS). 
 +
 --
